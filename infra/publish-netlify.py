@@ -38,15 +38,25 @@ with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as bundle:
     for path in sorted((root / "dist").rglob("*")):
         if path.is_file():
             bundle.write(path, path.relative_to(root / "dist").as_posix())
-query = urllib.parse.urlencode({"draft": "false", "title": "GitHub main " + sha, "branch": "main"})
+query = urllib.parse.urlencode({"draft": "true", "title": "GitHub main " + sha})
 deploy = request(f"/sites/{site_id}/deploys?{query}", "POST", archive.getvalue())
 print("Created Netlify deployment", deploy["id"], "for", sha)
 for attempt in range(60):
     current = request("/deploys/" + deploy["id"])
     if current["state"] == "ready":
-        published = request("/sites/" + site_id).get("published_deploy") or {}
-        assert published.get("id") == deploy["id"], "Deploy was not published to production"
-        print("Published and verified", deploy["id"], "for", sha)
+        latest = subprocess.check_output(["git", "ls-remote", "origin", "refs/heads/main"], cwd=root, text=True).split()[0]
+        if latest != sha:
+            print("Skipping promotion: a newer main commit arrived during upload.")
+            raise SystemExit(0)
+        request(f"/sites/{site_id}/deploys/{deploy['id']}/restore", "POST", b"")
+        for poll in range(12):
+            published = request("/sites/" + site_id).get("published_deploy") or {}
+            if published.get("id") == deploy["id"]:
+                print("Published and verified", deploy["id"], "for", sha)
+                break
+            time.sleep(5)
+        else:
+            raise RuntimeError("Deploy was not published to production")
         break
     if current["state"] == "error":
         raise RuntimeError("Netlify deployment failed; inspect its deployment log")
