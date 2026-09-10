@@ -17,4 +17,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 validate.py
+      - run: node --test tests/router.test.mjs
       - run: python3 build.py
