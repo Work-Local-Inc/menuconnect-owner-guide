@@ -1,0 +1,8 @@
+/menuconnect        /       301!
+/menuconnect/       /       301!
+/menuconnect.html   /       301!
+/index.html         /       301!
+/guide              /start  301!
+/guide/             /start  301!
+/guide.html         /start  301!
+/start              /start.html 200

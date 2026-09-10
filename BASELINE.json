@@ -1,0 +1,18 @@
+{
+  "source": "Brian live guide.menuconnect.ca, 2026-09-10",
+  "tim_changes_included": false,
+  "normalization": "Only provider-injected Cloudflare challenge scripts removed; source HTML content unchanged.",
+  "sha256": {
+    "index.html": "1094f543dee360c37cfc28e828227bae7b080dca6d80e05818bad05a6569470f",
+    "guide.html": "8fd57c2f1ce34183517af1272896e910622f340a9bf259340d4f9186936f3628",
+    "assets/menu-ca-logo.png": "f86b61c31784ed50d82f1731087ae617a3e94b77d18103a4c544df3ed93ba548",
+    "assets/menuconnect-m-mark.png": "f86b61c31784ed50d82f1731087ae617a3e94b77d18103a4c544df3ed93ba548",
+    "assets/menuconnect-share.jpg": "86da60179a6d70b2816d9bb34895d1738251da6e6c2632fd1f54bb8f124f6792",
+    "assets/screenshots/artifact-bilingual-editor-preview.png": "e41df93613595a8d9bdc01655548abc2119000fc992422cf9720ef436e9684d8",
+    "assets/screenshots/artifact-photo-upload-preview.png": "288b14eef2f7914cc466bedabce7bde9a942b06894b3d3918277abecd9760d0a",
+    "assets/wok-bistro-hero.webp": "31c4186a04494f1cf1697c6b0d78027ca659d3ffa952c71b35a924f634128b31",
+    "assets/wok-bistro-logo.png": "3b369ac7e02ae5ead943a3d5f2a2208398e29a174ff000e83219af8ddaacb113",
+    "assets/wok-egg-roll.png": "ea18317ac46e221243bc53924a24ca24b744cb6640963ce649cce332e1dbac15",
+    "assets/wok-general-tso.png": "df261d965af84d2fbd280f2381a6df644fd5a95c0d9842475bbff9833481941d"
+  }
+}
