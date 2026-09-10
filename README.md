@@ -16,8 +16,30 @@ the combined preview or Tim’s later version have been included.
 See `BASELINE.json` for original file hashes. The preservation tag records this
 baseline independently of future changes. The raw HTTP backup remains with Brian’s agent.
 
-Migration is in progress: do not assume the custom domain has moved until the
-verified deployment and domain record are recorded below.
+The baseline is protected by tag `brian-live-preserved-2026-09-10`. Main requires
+pull requests, passing `validate` checks, an up-to-date branch, and resolved review
+conversations. Force pushes and main deletion are blocked, including for admins.
+A second person's approval is not mandatory, so either person can finish routine work.
+
+The publishing connection is Brian's Netlify GitHub App installation for this shared
+organization. Automatic builds are enabled; manual production uploads are blocked.
+
+### Domain routing
+
+Cloudflare serves `guide.menuconnect.ca` by fetching Brian's Netlify origin at
+`menuconnect-shared-guide.netlify.app`. The worker source is `infra/guide-router.mjs`;
+its only route is `guide.menuconnect.ca/*`. The guide DNS CNAME is proxied through
+Cloudflare. Site content stays on Netlify and updates automatically when main builds.
+The router forwards paths and queries and keeps redirects on the guide domain.
+
+This avoids depending on the old custom-domain registration held in another Netlify
+account. Do not switch the CNAME to DNS-only while this routing arrangement is used.
+Normal content updates do not require changing the worker. Worker changes require
+running `node --test tests/router.test.mjs`, reviewing a PR, and deploying the exact
+merged worker file to Cloudflare script `menuconnect-owner-guide-router`.
+
+Rollback: restore the guide CNAME to `custom-domains.chatgpt.site` with proxy disabled.
+The original OpenAI deployment remains intact. Only the guide record is in scope.
 
 ## Editing and publishing
 
