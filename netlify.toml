@@ -1,0 +1,9 @@
+[build]
+  command = "python3 validate.py && python3 build.py"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[build.processing.html]
+  pretty_urls = false
