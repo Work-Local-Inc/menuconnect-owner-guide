@@ -2,6 +2,8 @@
 """Publish only the public owner-guide files."""
 from pathlib import Path
 import shutil
+import os
+import re
 
 root = Path(__file__).resolve().parent
 output = root / "dist"
@@ -12,4 +14,9 @@ for source, target in [("index.html", "index.html"), ("guide.html", "start.html"
                        ("_redirects", "_redirects"), ("_headers", "_headers")]:
     shutil.copy2(root / source, output / target)
 shutil.copytree(root / "assets", output / "assets")
+sha = os.environ.get("GITHUB_SHA", "")
+if sha:
+    assert re.fullmatch(r"[0-9a-f]{40}", sha), "Invalid source commit"
+    with (output / "_headers").open("a") as headers:
+        headers.write("\n  X-Menuconnect-Commit: " + sha + "\n")
 print("Built public site in dist/")

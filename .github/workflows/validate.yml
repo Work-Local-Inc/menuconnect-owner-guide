@@ -1,4 +1,4 @@
-name: Guide checks
+name: Guide checks and publishing
 on:
   pull_request:
   push:
@@ -19,3 +19,24 @@ jobs:
       - run: python3 validate.py
       - run: node --test tests/router.test.mjs
       - run: python3 build.py
+  publish:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://guide.menuconnect.ca
+    concurrency:
+      group: owner-guide-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 build.py
+      - name: Publish current main to Brian Netlify
+        run: python3 infra/publish-netlify.py
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: eccdbf2f-ae8b-4036-bec7-7dc52e12dc3e
