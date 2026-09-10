@@ -1,5 +1,7 @@
 # MenuConnect Owner Guide
 
+**Agents: read [AGENTS.md](AGENTS.md) before making changes.** It includes Tim’s first-update handoff.
+
 Canonical shared repository: https://github.com/Work-Local-Inc/menuconnect-owner-guide
 
 Brian has administrator access. Tim (`tim1771`) has maintainer access. Both work here.
@@ -57,7 +59,7 @@ The original OpenAI deployment remains intact. Only the guide record is in scope
 2. Change only the intended content. Never overwrite these files with an old export.
 3. Run `python3 validate.py` and `python3 build.py` (Node 22 and Python 3 required).
 4. Open a pull request, inspect the diff, and resolve any conflicts against current main.
-5. Merge only after checks pass. Netlify builds `main`; other branches do not publish production.
+5. Merge only after checks pass. GitHub Actions publishes `main` to Brian’s Netlify; other branches do not publish production.
 
 Use `brian/<topic>` and `tim/<topic>` branches. Do not force-push or delete `main`.
 Do not publish to Tim’s former Netlify site or the OpenAI copy. Those are rollback references.
