@@ -21,8 +21,18 @@ pull requests, passing `validate` checks, an up-to-date branch, and resolved rev
 conversations. Force pushes and main deletion are blocked, including for admins.
 A second person's approval is not mandatory, so either person can finish routine work.
 
-The publishing connection is Brian's Netlify GitHub App installation for this shared
-organization. Automatic builds are enabled; manual production uploads are blocked.
+GitHub Actions builds and automatically publishes successful `main` updates to Brian's
+Netlify project. PRs run checks only. The `production` environment allows protected
+branches only and stores the deployment credential as an encrypted environment secret.
+The publisher checks the current main commit and serializes deployments, so a stale
+run cannot deploy after a newer main version. `X-Menuconnect-Commit` identifies the
+published commit without changing page content.
+
+Netlify's built-in builds do not support private organization repositories on Brian's
+current plan. The direct Netlify repository connection is therefore replaced by the
+GitHub publishing workflow. No plan upgrade or public repository is required. Netlify
+may label these as API/manual deploys; they are automated by GitHub Actions. Do not
+stop GitHub Actions or its production job when changing Netlify build settings.
 
 ### Domain routing
 
@@ -65,4 +75,4 @@ the approved baseline. Keep Brian’s current work unless a later change is expl
 - The HTML content is preserved exactly, including existing `/guide` links; redirects handle them.
 
 Only `dist/` is deployed. Build configuration is in `netlify.toml`. Never upload a
-separate production copy manually; production is restricted to Git-based deployments.
+separate production copy manually. Use the protected-main GitHub publishing workflow.
