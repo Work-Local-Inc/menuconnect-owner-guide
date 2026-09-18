@@ -451,6 +451,41 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
+
+/* Quick help supplements the complete lesson tour. */
+.quick-tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:10px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.quick-tools a,.task-link{color:var(--accent-ink);font-weight:700;text-decoration:none}
+.quick-tools a{padding:8px 10px;min-height:44px}
+.task-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0 24px}
+.task-link{display:block;border:1px solid var(--accent-line);border-radius:12px;background:var(--accent-soft);padding:16px}
+.task-link:hover{text-decoration:underline;border-color:var(--accent)}
+.quick-answer{margin:20px 0;padding:18px;border:1px solid var(--accent-line);border-radius:12px;background:var(--accent-soft)}
+.quick-answer h2,.quick-start h2{font-size:21px;margin:0 0 12px}
+.quick-answer p{margin:8px 0;font-size:14px}
+.quick-answer a,.quick-fix a{color:var(--accent-ink)}
+.quick-fix{margin:14px 0;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--card)}
+.quick-fix summary{cursor:pointer;font-weight:700;min-height:28px}
+.quick-fix p{font-size:14px;color:var(--muted)}
+.practice-notice{padding:10px 16px;margin:0;border-bottom:1px solid var(--line);background:var(--amber-soft);color:var(--amber);font-size:13px}
+.opening-list{display:grid;gap:10px;margin:18px 0}
+.opening-list label{display:flex;align-items:flex-start;gap:12px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.opening-list input{width:20px;height:20px;flex-shrink:0;accent-color:var(--accent)}
+.opening-list label:has(input:checked){color:var(--muted)}
+.quick-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+#copyStatus{font-size:14px;color:var(--accent-ink)}
+@media(max-width:480px){.task-grid{grid-template-columns:1fr}.quick-tools{gap:0}.quick-tools a{font-size:13px;padding:8px}}
+@media print{
+ body{background:white!important;color:black!important;font-size:11pt}
+ .rail,.menubtn,.quick-tools,#toast,main>.lesson{display:none!important}
+ .app{display:block}main{padding:0;max-width:none}
+ main>.lesson[data-title="Owner routine"]{display:block!important}
+ .lesson[data-title="Owner routine"]>*{display:none!important}
+ .lesson[data-title="Owner routine"]>#openingReference{display:block!important}
+ #openingReference .quick-actions,#openingCount{display:none!important}
+ #openingReference{border:0;padding:0;background:white;color:black}
+ #openingReference h2{font-size:20pt}.opening-list{gap:4px}.opening-list label{padding:7px;color:black!important;break-inside:avoid}
+ #openingReference a{color:black;text-decoration:none}
+}
 </style>
 
 <div class="app">
@@ -472,6 +507,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 </button>
 
 <main id="main">
+<nav class="quick-tools" aria-label="Quick help">
+<a href="#welcome" data-jump="0">Find a task</a>
+<a href="#owner-routine" data-jump="16">Opening checklist</a>
+<a href="#ask-for-help-clearly" data-jump="15">Get help</a>
+</nav>
 
 <!-- ================= 0 WELCOME ================= -->
 <section class="lesson" data-title="Welcome" data-part="start">
@@ -479,6 +519,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <div class="eyebrow">Menu.ca · Restaurant owner training</div>
     <h1>Run your restaurant on MenuConnect</h1>
     <p class="lede">MenuConnect is your restaurant's online-ordering home base — money, menu, hours, and orders in one connected place. This comprehensive guide covers the owner workflows available today and when to ask Menu.ca for help. Practice controls never touch a real restaurant.</p>
+    <div class="quick-start"><h2>What do you need to do?</h2><p class="hint">Jump to a quick answer, or take the full tour below.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="15">Get help →</a></div></div>
     <div class="value-cards">
       <div class="vcard">
         <div class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="3.5" width="15" height="13" rx="2"/><path d="M2.5 8h15M6.5 12h4"/></svg></div>
@@ -512,6 +553,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 1 · Getting in <span class="badge edit">Start here</span></div>
   <h1>Signing in with an emailed link</h1>
   <p class="lede">Your portal lives at your restaurant's own web address with <b>/portal</b> on the end. Choose <b>Email a sign-in link</b>, enter the owner email Menu.ca set up for you, then open the newest link in the same browser you want to use.</p>
+  <div class="quick-answer"><h2>Quick answer: Sign in</h2><p><b>Where:</b> Your restaurant’s web address, with /portal on the end.</p><p><b>Do this:</b> Request an emailed sign-in link using the owner email set up for you. Open the newest link within 15 minutes in the browser you want to use.</p><p><b>Check:</b> Confirm that the portal shows the correct restaurant.</p></div><details class="quick-fix"><summary>My sign-in email hasn’t arrived</summary><p>Check that you entered the configured owner email and check your spam folder. Use the newest link if you requested more than one. If you are unsure of the email or still cannot sign in, choose Owner help on the portal sign-in page.</p></details>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — request a link</div>
   <div class="frame">
@@ -652,6 +694,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 4 · Why the payout can differ <span class="badge viewonly">View only</span></div>
   <h1>Cash, card, refunds &amp; carried balances</h1>
   <p class="lede">A busy week does not always equal the same-size bank deposit. Your statement combines orders paid online with orders paid directly to the restaurant, then applies the charges in your agreement.</p>
+  <div class="quick-answer"><h2>Quick answer: Understand a smaller payout</h2><p><b>Where:</b> Overview → Statements.</p><p><b>Do this:</b> Open the relevant weekly statement. Compare cash and card sales, deductions, refunds, commission credits, and net payout. Cash collected at your restaurant is not money Menu.ca is holding to pay out.</p><p><b>Check:</b> Match unfamiliar amounts to the orders listed beneath the statement.</p></div><details class="quick-fix"><summary>The figures still do not make sense</summary><p>Record the statement period, order number, and amount you are asking about. Send those details through Owner help. Past statements stay frozen; do not manually adjust them.</p></details>
   <div class="status-grid">
     <article class="info-card"><span class="badge viewonly">Cash orders</span><h3>You already received the money</h3><p>Cash collected at the restaurant is part of sales, but it is not money Menu.ca is holding to pay out.</p></article>
     <article class="info-card"><span class="badge viewonly">Card orders</span><h3>Card funds move through the statement</h3><p>Card processing fees apply to card orders. The remaining held funds contribute to the net payout.</p></article>
@@ -672,6 +715,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 5 · Your weekly schedule <span class="badge edit">You can edit</span></div>
   <h1>Opening hours</h1>
   <p class="lede">Set the weekly schedule customers order against. One window per day — or add a second for a split shift. Every save goes straight to your live storefront.</p>
+  <div class="quick-answer"><h2>Quick answer: Change your regular hours</h2><p><b>Where:</b> Hours → Weekly schedule.</p><p><b>Do this:</b> Choose the day, edit the opening and closing times, then save. Use two windows for a lunch-and-dinner split.</p><p><b>Check:</b> Open the customer storefront and check the day and both service windows.</p></div><details class="quick-fix"><summary>My saved hours look wrong</summary><p>Confirm the day, 24-hour times, and any dated closure that overrides the weekly schedule. The tablet ordering window is view-only on this page; use Owner help if it is wrong.</p></details>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — toggle days, change times, then save</div>
   <div class="frame">
@@ -755,6 +799,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 8 · Same-day emergency <span class="badge edit">You can edit</span></div>
   <h1>Stop orders today — then reopen safely</h1>
   <p class="lede">A flood, power outage, equipment failure, or staff shortage needs a same-day action, not a permanent rewrite of your weekly schedule.</p>
+  <div class="quick-answer"><h2>Quick answer: Close early today</h2><p><b>Where:</b> Hours &amp; availability → Close for the rest of today.</p><p><b>Do this:</b> Apply a same-day closure. Keep your recurring weekly schedule for normal operating hours.</p><p><b>Check:</b> Open the customer storefront and confirm the restaurant is unavailable. Reopen only when you can fulfil new orders.</p></div><details class="quick-fix"><summary>What about orders already accepted?</summary><p>Closing today is for stopping new orders. Look up existing orders separately. After acceptance, use Owner help for a cancellation or refund; include the order details and requested outcome.</p></details>
   <div class="reference-grid">
     <article class="info-card"><span class="badge edit">Right now</span><h3>Close for the rest of today</h3><p>Use the same-day closure control when the restaurant cannot take more orders today.</p></article>
     <article class="info-card"><span class="badge edit">Later today</span><h3>Reopen when ready</h3><p>Remove the same-day closure only after the kitchen and ordering setup are genuinely ready.</p></article>
@@ -774,6 +819,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 9 · Manage your menu <span class="badge edit">Owner tools</span></div>
   <h1>Change prices and availability</h1>
   <p class="lede"><b>Edit your menu directly.</b> Search dishes, edit an existing dish's name, description, and price, hide or restore it, feature eligible dishes, and manage photos. New dishes, categories, modifier groups, and combos still go through Owner help.</p>
+  <div class="quick-answer"><h2>Quick answer: Mark a dish sold out</h2><p><b>Where:</b> Menu → Find the dish.</p><p><b>Do this:</b> Confirm the dish, then switch availability off. Restore it when the kitchen is ready to sell it again.</p><p><b>Check:</b> Check the customer menu to confirm the dish cannot be ordered.</p></div><details class="quick-fix"><summary>I cannot find the dish</summary><p>Search by dish name and use Show hidden items. Confirm the exact dish before restoring it. Use Owner help if the item, size, modifier, or category is wrong.</p></details>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — mark something sold out, change a price</div>
   <div class="frame">
@@ -881,6 +927,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 12 · When a customer calls <span class="badge viewonly">View only</span></div>
   <h1>Looking up orders</h1>
   <p class="lede">"Where's my order?" Search recent orders by number, customer name, or phone. The live table shows total, captured amount, refunded amount, status, and placement time. Before acceptance, the restaurant can reject or cancel the order on its tablet. After acceptance, the owner portal is view-only and Menu.ca handles cancellations and refunds.</p>
+  <div class="quick-answer"><h2>Quick answer: Find a customer’s order</h2><p><b>Where:</b> Orders.</p><p><b>Do this:</b> Search by order number, customer name, or part of their phone number. Open the matching order.</p><p><b>Check:</b> Confirm the customer, placement time, status, total, captured amount, and refunded amount.</p></div><details class="quick-fix"><summary>I cannot find the order or need a refund</summary><p>Try another identifier and check that the list says Live · Up to date. If unresolved, send the available details through Owner help. Before acceptance, reject or cancel on the restaurant tablet. After acceptance, Menu.ca handles cancellations and refunds.</p></details>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it · search "212", "Priya", or "0184", then open an order</div>
   <div class="frame">
@@ -960,11 +1007,13 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 15 · A complete request</div>
   <h1>Send Owner help everything needed the first time</h1>
   <p class="lede">A clear request protects the wrong order, item, restaurant, or date from being changed. Use Owner help on the portal sign-in page and include identifiers rather than relying on a description alone.</p>
+  <div class="quick-answer"><h2>Quick answer: Ask for help</h2><p><b>Where:</b> Your restaurant’s portal sign-in page → Owner help.</p><p><b>Do this:</b> Use the template below. Include the exact restaurant, order or item, requested outcome, and effective date.</p><p><b>Check:</b> Keep the team’s confirmation so you know what changed and when.</p></div><details class="quick-fix"><summary>What should I include?</summary><p>For an order: number, date, customer, amount, and requested outcome. For a menu change: exact category, dish, wording, sizes, prices, and effective date. Never include passwords, sign-in links, or payment-card details.</p></details>
   <div class="reference-grid">
     <article class="info-card"><h3>Order or refund issue</h3><p>Restaurant, order number, order date, customer name, amount, and the requested outcome.</p></article>
     <article class="info-card"><h3>Menu change</h3><p>Restaurant, exact category and item, current wording, requested wording, prices, sizes, and effective date.</p></article>
     <article class="info-card"><h3>Hours or delivery</h3><p>Restaurant, exact dates or recurring days, opening/closing times, delivery zone or minimum, and when it should start.</p></article>
   </div>
+  <div class="quick-actions"><button class="btn" id="copyRequest" type="button">Copy request template</button></div><p id="copyStatus" role="status"></p>
   <div class="owner-template"><b>Copy this template</b><code>Restaurant: Your Restaurant, Your City
 Request: [exact change or problem]
 Order/item/category: [exact identifier]
@@ -986,6 +1035,7 @@ Please confirm before changing anything that moves money.</code></div>
   <div class="eyebrow">Lesson 16 · Daily, weekly &amp; seasonal</div>
   <h1>A practical operating routine</h1>
   <p class="lede">The portal works best when it becomes part of opening, service, weekly bookkeeping, and holiday planning—not something opened only after a customer reports a problem.</p>
+  <div id="openingReference" class="quick-answer"><h2>Before service: opening checklist</h2><p>Use this each shift. Ticks are a reminder in this guide, not a check of your restaurant systems. They reset when you reload the page.</p><div class="opening-list"><label><input type="checkbox" class="opening-check"><span>Confirm today’s customer-facing hours and any holiday or vacation exception.</span></label><label><input type="checkbox" class="opening-check"><span>Review sold-out dishes; restore only the items the kitchen can make.</span></label><label><input type="checkbox" class="opening-check"><span>Check that current menu prices and active offers are correct.</span></label><label><input type="checkbox" class="opening-check"><span>Check the tablet, printer, internet, staffing, and kitchen readiness.</span></label><label><input type="checkbox" class="opening-check"><span>Open the customer storefront and verify the result of any changes.</span></label></div><p id="openingCount" role="status">0 of 5 checked</p><div class="quick-actions"><button class="btn" id="resetOpening" type="button">Reset checklist</button><button class="btn" id="printReference" type="button">Print one-page reference</button></div><h3>During service</h3><p><b>Sold out:</b> Menu → find the dish → switch availability off → verify the customer menu.</p><p><b>Close early:</b> Hours &amp; availability → close for today → verify the storefront. Check existing orders separately.</p><p><b>Order issue:</b> Before acceptance, reject or cancel on the tablet. After acceptance, use Owner help for cancellations or refunds.</p><h3>Need help?</h3><p>Choose Owner help on your restaurant’s portal sign-in page. Include the restaurant, exact order or item, current status, requested outcome, and date.</p><p>Full guide: guide.menuconnect.ca/start</p></div>
   <div class="routine-grid">
     <article class="routine-card"><span class="badge edit">Before service</span><h3>Two-minute opening check</h3><p>Hours, today's exceptions, sold-out items, active coupons, tablet, printer, and internet readiness.</p></article>
     <article class="routine-card"><span class="badge edit">During service</span><h3>Keep the storefront honest</h3><p>Update availability immediately, look up customer orders, and close today only when the restaurant cannot accept orders.</p></article>
@@ -1046,7 +1096,9 @@ var lessons=$$('.lesson');
 var railNav=$('#railNav');
 var visited={};
 var current=0;
+var lessonSlugs=lessons.map(function(sec,i){return i===0?'welcome':sec.getAttribute('data-title').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')});
 lessons.forEach(function(sec,i){
+  sec.id=lessonSlugs[i];
   var part=sec.getAttribute('data-part');
   if(part){var p=document.createElement('div');p.className='rail-part';p.textContent=part==='start'?'':part;if(part!=='start')railNav.appendChild(p)}
   var b=document.createElement('button');
@@ -1062,7 +1114,7 @@ function updateProgress(){
   $('#progressFill').style.width=(n/total*100)+'%';
   $('#progressLabel').textContent=n+' of '+total+' lessons viewed';
 }
-function go(i){
+function go(i,updateHash){
   if(i<0||i>=lessons.length)return;
   lessons[current].classList.remove('active');
   lessons[current]._railBtn.setAttribute('aria-current','false');
@@ -1076,6 +1128,7 @@ function go(i){
   window.scrollTo({top:0,behavior:'auto'});
   var heading=lessons[i].querySelector('h1');
   if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
+  if(updateHash&&location.hash!=='#'+lessonSlugs[i])history.pushState({lesson:i},'',location.pathname+location.search+'#'+lessonSlugs[i]);
 }
 /* prev/next footers */
 lessons.forEach(function(sec,i){
@@ -1092,7 +1145,10 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight')go(current+1);
   if(e.key==='ArrowLeft')go(current-1);
 });
-lessons[0].classList.add('active');lessons[0]._railBtn.setAttribute('aria-current','true');visited[0]=1;updateProgress();
+function indexFromHash(){var slug=location.hash.slice(1);var i=lessonSlugs.indexOf(slug);return i<0?null:i}
+var initialLesson=indexFromHash();if(initialLesson===null)initialLesson=0;
+current=initialLesson;lessons[current].classList.add('active');lessons[current]._railBtn.setAttribute('aria-current','true');visited[0]=1;visited[current]=1;updateProgress();
+window.addEventListener('hashchange',function(){var i=indexFromHash();if(i!==null&&i!==current)go(i,false)});
 
 /* mobile rail */
 var rail=$('#rail'),menuBtn=$('#menuBtn');
@@ -1377,5 +1433,32 @@ $('#qNext').addEventListener('click',function(){
 $('#qRetry').addEventListener('click',function(){qi=0;qScoreN=0;renderQ()});
 $('#qRestartTour').addEventListener('click',function(){qi=0;qScoreN=0;renderQ();go(0)});
 renderQ();
+
+/* ---------- quick help additions ---------- */
+document.addEventListener('click',function(e){
+  var jump=e.target.closest('[data-jump]');if(!jump)return;
+  e.preventDefault();go(Number(jump.getAttribute('data-jump')),true);closeRail(false);
+});
+$$('.frame,.live-ui-panel').forEach(function(frame){
+  var notice=document.createElement('p');notice.className='practice-notice';
+  notice.textContent='Practice only — these controls and confirmations never change your restaurant.';
+  frame.insertBefore(notice,frame.firstChild);
+});
+function openingCount(){var checked=$$('.opening-check:checked').length;$('#openingCount').textContent=checked+' of 5 checked'}
+$$('.opening-check').forEach(function(input){input.addEventListener('change',openingCount)});
+$('#resetOpening').addEventListener('click',function(){$$('.opening-check').forEach(function(input){input.checked=false});openingCount()});
+$('#printReference').addEventListener('click',function(){window.print()});
+$('#copyRequest').addEventListener('click',async function(){
+  var template=$('.owner-template code');
+  try{await navigator.clipboard.writeText(template.textContent);$('#copyStatus').textContent='Template copied. Paste it into Owner help and fill in your details.'}
+  catch(e){var range=document.createRange();range.selectNodeContents(template);var selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);$('#copyStatus').textContent='Select and copy the template below, then paste it into Owner help.'}
+});
+$('#qFeedback').addEventListener('click',function(e){var link=e.target.closest('[data-review]');if(link){e.preventDefault();go(Number(link.dataset.review),true)}});
+var quizLessons=[8,12,9,14,11,5,6,7,14,13,4,12,11,10,14];
+new MutationObserver(function(){
+  var feedback=$('#qFeedback');if(!feedback.textContent||feedback.querySelector('[data-review]'))return;
+  var link=document.createElement('a');link.href='#'+lessonSlugs[quizLessons[qi]];link.dataset.review=quizLessons[qi];link.textContent=' Review this lesson →';link.style.color='inherit';feedback.appendChild(link);
+}).observe($('#qFeedback'),{childList:true});
+
 })();
 </script>
