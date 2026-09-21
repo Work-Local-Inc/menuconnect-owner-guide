@@ -7,6 +7,7 @@
 
 :root{
   --paper:#F5FAF8; --card:#FFFFFF; --ink:#122530; --muted:#587179; --line:#DBE7E3;
+  --guide-practice-label:"Practice example"; --guide-meaning-label:"What this means";
   --accent:#0D9488; --accent-ink:#0B6B62; --accent-soft:#E1F3EF; --accent-line:#B5DED7;
   --brand-red:#E3342F;
   --amber:#A8600B; --amber-soft:#FBF1DF; --amber-line:#EBD5AC;
@@ -118,7 +119,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 /* ---------- browser frame ---------- */
 .frame{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);overflow:hidden;margin-top:6px}
 .chrome{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line)}
-.chrome::after{content:"Practice example";flex:0 0 auto;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-ink);border-radius:99px;padding:3px 8px;font:700 9.5px/1.2 'Ubuntu';letter-spacing:.08em;text-transform:uppercase}
+.chrome::after{content:var(--guide-practice-label,"Practice example");flex:0 0 auto;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-ink);border-radius:99px;padding:3px 8px;font:700 9.5px/1.2 'Ubuntu';letter-spacing:.08em;text-transform:uppercase}
 .dots{display:flex;gap:6px}
 .dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
 .urlbar{flex:1;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:8px;
@@ -244,7 +245,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 .srow.open .expl{display:block;animation:rise .25s ease}
 .srow.guide-line{cursor:default}
 .srow.guide-line .expl{display:block;padding:0 18px 14px}
-.srow.guide-line .expl::before{content:"What this means";display:block;margin-bottom:4px;color:var(--accent-ink);font:700 10px/1.2 'Ubuntu';letter-spacing:.08em;text-transform:uppercase}
+.srow.guide-line .expl::before{content:var(--guide-meaning-label,"What this means");display:block;margin-bottom:4px;color:var(--accent-ink);font:700 10px/1.2 'Ubuntu';letter-spacing:.08em;text-transform:uppercase}
 .srow.netrow{background:var(--accent-soft)}
 .srow:not(.guide-line):hover:not(.netrow){background:color-mix(in srgb,var(--accent-soft) 40%, var(--card))}
 .goodtoknow{margin-top:14px;border:1px solid var(--amber-line);background:var(--amber-soft);border-radius:12px;padding:14px 17px;font-size:14px}
@@ -473,6 +474,16 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 .opening-list label:has(input:checked){color:var(--muted)}
 .quick-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
 #copyStatus{font-size:14px;color:var(--accent-ink)}
+.language-switcher{margin:0 0 14px;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-sm)}
+.language-switcher-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.language-switcher-label{font-family:'Ubuntu',system-ui,sans-serif;font-weight:700;font-size:14px}
+.language-options{display:flex;flex-wrap:wrap;gap:6px}
+.language-options button{min-height:38px;padding:7px 11px;border:1px solid var(--line);border-radius:99px;background:var(--paper);font-size:13px;font-weight:700}
+.language-options button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.language-status{margin:8px 0 0;color:var(--muted);font-size:12px}
+[dir="rtl"] .language-switcher-head,[dir="rtl"] .quick-tools,[dir="rtl"] .quick-actions{direction:rtl}
+[dir="rtl"] input,[dir="rtl"] code,[dir="rtl"] .urlbar,[dir="rtl"] .amt{direction:ltr;text-align:left}
+@media(max-width:900px){[dir="rtl"] .rail{inset:0 0 0 auto;transform:translateX(100%)}[dir="rtl"] .rail.open{transform:none}[dir="rtl"] .menubtn{left:auto;right:14px}}
 @media(max-width:480px){.task-grid{grid-template-columns:1fr}.quick-tools{gap:0}.quick-tools a{font-size:13px;padding:8px}}
 @media print{
  body{background:white!important;color:black!important;font-size:11pt}
@@ -507,6 +518,19 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 </button>
 
 <main id="main">
+<section class="language-switcher" aria-labelledby="languageLabel">
+  <div class="language-switcher-head">
+    <span class="language-switcher-label" id="languageLabel">Guide language</span>
+    <div class="language-options" role="group" aria-labelledby="languageLabel" data-no-i18n>
+      <button type="button" data-guide-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-guide-lang="ar" aria-pressed="false" lang="ar">العربية</button>
+      <button type="button" data-guide-lang="fr" aria-pressed="false" lang="fr">Français</button>
+      <button type="button" data-guide-lang="zh" aria-pressed="false" lang="zh-Hans">中文</button>
+      <button type="button" data-guide-lang="pa" aria-pressed="false" lang="pa">ਪੰਜਾਬੀ</button>
+    </div>
+  </div>
+  <p class="language-status" id="languageStatus" role="status" data-no-i18n>The complete guide is shown in English.</p>
+</section>
 <nav class="quick-tools" aria-label="Quick help">
 <a href="#welcome" data-jump="0">Find a task</a>
 <a href="#owner-routine" data-jump="16">Opening checklist</a>
@@ -1462,3 +1486,5 @@ new MutationObserver(function(){
 
 })();
 </script>
+<script src="/assets/guide-translations.js"></script>
+<script src="/assets/guide-i18n.js"></script>
