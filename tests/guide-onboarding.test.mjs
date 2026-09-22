@@ -26,7 +26,7 @@ test('guide loads the progress store and integrates persistent progress controls
   assert.match(guide, /progressStore\.finishQuickCheck/);
   assert.match(guide, /progressStore\.reset/);
   assert.match(guide, /Continue Owner Setup/);
-  assert.match(guide, /Owner Setup complete/);
+  assert.match(guide, /Guide tour complete/);
 });
 
 test('mobile welcome keeps quick-help links compact above the setup card', () => {
@@ -65,9 +65,9 @@ test('fallback persistence messages are translated in every supported language',
   }
 });
 
-test('announces only a new transition to completed setup', () => {
+test('announces only a new transition to reviewed guide tour', () => {
   assert.match(guide, /!before\.complete&&after\.complete/);
-  assert.match(guide, /toast\('Owner Setup complete'\)/);
+  assert.match(guide, /toast\('Guide tour complete'\)/);
 });
 
 test('remaining lesson copy has singular forms in every supported language', async () => {

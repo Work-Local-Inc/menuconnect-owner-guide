@@ -5,6 +5,7 @@ from pathlib import Path
 import json
 import re
 import subprocess
+import sys
 import tempfile
 import unicodedata
 
@@ -149,4 +150,6 @@ for name in ["index.html", "guide.html"]:
             subprocess.run(["node", "--check", temp.name], check=True)
 for script in [root / "assets/guide-i18n.js", root / "assets/guide-translations.js", root / "assets/guide-progress.js"]:
     subprocess.run(["node", "--check", script], check=True)
+subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_public_*.py"],
+               cwd=root, check=True)
 print("PASS: complete curriculum, 15 scenarios, source assets, unique IDs, JavaScript syntax")

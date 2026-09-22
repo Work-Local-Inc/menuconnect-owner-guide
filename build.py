@@ -4,8 +4,10 @@ from pathlib import Path
 import shutil
 import os
 import re
+from public_png import validate_public_pngs
 
 root = Path(__file__).resolve().parent
+validate_public_pngs(root / "assets")
 output = root / "dist"
 if output.exists():
     shutil.rmtree(output)
