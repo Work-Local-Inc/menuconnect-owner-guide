@@ -504,7 +504,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 [dir="rtl"] .language-switcher-head,[dir="rtl"] .quick-tools,[dir="rtl"] .quick-actions{direction:rtl}
 [dir="rtl"] input,[dir="rtl"] code,[dir="rtl"] .urlbar,[dir="rtl"] .amt{direction:ltr;text-align:left}
 @media(max-width:900px){[dir="rtl"] .rail{inset:0 0 0 auto;transform:translateX(100%)}[dir="rtl"] .rail.open{transform:none}[dir="rtl"] .menubtn{left:auto;right:14px}}
-@media(max-width:480px){.task-grid{grid-template-columns:1fr}.quick-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.quick-tools a{display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.25;padding:7px 4px}}
+@media(max-width:480px){.task-grid{grid-template-columns:1fr}.quick-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.quick-tools a{display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.25;padding:7px 4px}.language-switcher{padding:9px 11px;margin-bottom:8px}.language-options{gap:3px}.language-options button{min-height:36px;padding:5px 8px;font-size:12px}html[lang="en"] .language-status{display:none}.hero .setup-card{margin-top:14px}}
 @media print{
  body{background:white!important;color:black!important;font-size:11pt}
  .rail,.menubtn,.quick-tools,#toast,main>.lesson{display:none!important}
@@ -562,11 +562,16 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="hero">
     <div class="eyebrow">Menu.ca · Restaurant owner training</div>
     <h1>Run your restaurant on MenuConnect</h1>
-    <p class="lede">MenuConnect is your restaurant's online-ordering home base — money, menu, hours, and orders in one connected place. This comprehensive guide covers the owner workflows available today and when to ask Menu.ca for help. Practice controls never touch a real restaurant.</p>
     <section class="setup-card" aria-labelledby="setupHeading">
       <span class="setup-kicker">15-minute setup</span>
       <h2 id="setupHeading">Finish your 15-minute MenuConnect Owner Setup</h2>
       <p>Learn the owner tasks that prevent delays during service and cut down on back-and-forth when you need help.</p>
+      <div class="setup-actions">
+        <button class="bigbtn" id="setupPrimaryBtn">Start Owner Setup →</button>
+        <button class="setup-reset" id="setupResetBtn" type="button" hidden>Reset progress</button>
+      </div>
+      <p class="setup-status" id="setupStatus" role="status">5 short stages · 17 practical lessons · about 15 minutes</p>
+      <p class="setup-note" id="setupPersistenceNote">Progress is saved on this device so you can close the guide and continue later.</p>
       <ol class="setup-stages" aria-label="5 short stages">
         <li class="setup-stage" data-setup-stage="0">Access your portal</li>
         <li class="setup-stage" data-setup-stage="1">Understand your money</li>
@@ -574,13 +579,9 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
         <li class="setup-stage" data-setup-stage="3">Keep your menu accurate</li>
         <li class="setup-stage" data-setup-stage="4">Orders, support &amp; final check</li>
       </ol>
-      <div class="setup-actions">
-        <button class="bigbtn" id="setupPrimaryBtn">Start Owner Setup →</button>
-        <button class="setup-reset" id="setupResetBtn" type="button" hidden>Reset progress</button>
-      </div>
-      <p class="setup-status" id="setupStatus" role="status">5 short stages · 17 practical lessons · about 15 minutes</p>
-      <p class="setup-note" id="setupPersistenceNote">Progress is saved on this device so you can close the guide and continue later.</p>
+      <p class="setup-note">Opening a lesson marks it viewed; the quick check records an attempt, not a passing score or completed restaurant setup.</p>
     </section>
+    <p class="lede">MenuConnect is your restaurant's online-ordering home base — money, menu, hours, and orders in one connected place. This comprehensive guide covers the owner workflows available today and when to ask Menu.ca for help. Practice controls never touch a real restaurant.</p>
     <div class="quick-start"><h2>Already set up? Find a quick answer.</h2><p class="hint">Use these shortcuts anytime. They do not replace the setup.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="15">Get help →</a></div></div>
     <div class="value-cards">
       <div class="vcard">
@@ -590,8 +591,8 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
       </div>
       <div class="vcard">
         <div class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10" cy="10" r="7.5"/><path d="M10 5.5V10l3 2"/></svg></div>
-        <h3>Live in seconds</h3>
-        <p>Hours and menu changes hit your live storefront the moment you save.</p>
+        <h3>Verify the live result</h3>
+        <p>After saving hours or menu changes, confirm the change on the customer storefront.</p>
       </div>
       <div class="vcard">
         <div class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 3l2 4 4.5.6-3.2 3.1.7 4.4L10 13l-4 2.1.7-4.4L3.5 7.6 8 7z"/></svg></div>
@@ -702,6 +703,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 3 · Where the money goes <span class="badge viewonly">View only</span></div>
   <h1>Weekly statements</h1>
   <p class="lede">Every week gets a frozen statement that walks from gross sales down to a payout or carried balance, with every order listed underneath. Download CSV for analysis or PDF for your records.</p>
+  <p class="hint">Sample statement: all orders paid online by card. This simplified teaching example does not include restaurant-collected cash, taxes or commission credits; use your actual statement for reconciliation.</p>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Guide walkthrough · what each line means</div>
   <div class="frame">
@@ -732,16 +734,16 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
         </div>
         <div class="srow guide-line">
           <span class="srow-main"><span class="lbl">Refunds (1)</span><span class="amt minus">−$24.15</span></span>
-          <span class="expl">One order was refunded this week. Refunds always land in the week they happen — a past statement never changes after it's frozen.</span>
+          <span class="expl">One order was processed as a refund in this statement period. A later refund generally appears in a later statement rather than changing a frozen statement; ask Owner help if its timing or amount is unclear.</span>
         </div>
         <div class="srow guide-line netrow">
           <span class="srow-main"><span class="lbl">Net payout</span><span class="amt net">$2,083.50</span></span>
-          <span class="expl">What lands in your bank account for the week. Below this section, the real statement lists every single order — number, time, total, and fee — so you can trace any figure.</span>
+          <span class="expl">The statement's net payout position for this sample; bank arrival can take additional time. Your real statement lists orders and deductions so you can trace each figure.</span>
         </div>
       </div>
       <div class="goodtoknow">
         <b>Good to know — cash-heavy weeks.</b>
-        <p>Commission is collected from the card money we hold for you. If a week is mostly cash orders, the card money may not cover commission and fees — the small balance simply carries forward to a future week. Your home page banner shows this whenever it happens.</p>
+        <p>If customers paid cash at the restaurant, that cash is not part of the funds Menu.ca holds to pay out. Held card funds may not cover commission and fees in a cash-heavy week, so a balance can carry forward. Check the real statement and ask Owner help if it does not reconcile.</p>
       </div>
     </div>
   </div>
@@ -772,7 +774,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 <section class="lesson" data-title="Opening hours" data-part="">
   <div class="eyebrow">Lesson 5 · Your weekly schedule <span class="badge edit">You can edit</span></div>
   <h1>Opening hours</h1>
-  <p class="lede">Set the weekly schedule customers order against. One window per day — or add a second for a split shift. Every save goes straight to your live storefront.</p>
+  <p class="lede">Set the weekly schedule customers order against. One window per day — or add a second for a split shift. Save, then confirm the change on the customer storefront; if it has not appeared, use Owner help.</p>
   <div class="quick-answer"><h2>Quick answer: Change your regular hours</h2><p><b>Where:</b> Hours → Weekly schedule.</p><p><b>Do this:</b> Choose the day, edit the opening and closing times, then save. Use two windows for a lunch-and-dinner split.</p><p><b>Check:</b> Open the customer storefront and check the day and both service windows.</p></div><details class="quick-fix"><summary>My saved hours look wrong</summary><p>Confirm the day, 24-hour times, and any dated closure that overrides the weekly schedule. The tablet ordering window is view-only on this page; use Owner help if it is wrong.</p></details>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — toggle days, change times, then save</div>
@@ -1016,7 +1018,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 <section class="lesson" data-title="Promotions" data-part="">
   <div class="eyebrow">Lesson 13 · Your offers <span class="badge edit">You can edit</span></div>
   <h1>Promotions — turn existing coupons on and off</h1>
-  <p class="lede">Your Promotions screen lists each coupon code and whether it is active. Turn an existing code on or off; every change is audited, reversible, and includes a ten-second undo.</p>
+  <p class="lede">Your Promotions screen lists each coupon code and whether it is active. Use the available control for an existing offer, then confirm its live state. This practice example shows a ten-second undo; check the real portal before relying on it.</p>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — flip a coupon, then catch the undo</div>
   <div class="frame">
@@ -1037,7 +1039,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <div class="hcard">
       <div class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M10 2.5v15M14.5 5.5h-6a2.5 2.5 0 000 5h3a2.5 2.5 0 010 5h-6"/></svg></div>
       <h3>Refunds &amp; cancels</h3>
-      <p>Reject or cancel an incoming order on the tablet before accepting it. After acceptance, contact our team and we'll take care of any cancellation or refund.</p>
+      <p>Reject or cancel an incoming order on the tablet before accepting it. After acceptance, contact our team with the order details; we'll review the request and confirm the outcome. Do not promise a refund before confirmation.</p>
     </div>
     <div class="hcard">
       <div class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h9"/></svg></div>
@@ -1056,7 +1058,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     </div>
   </div>
   <div class="helpnote">
-    <p style="margin:0"><b>How to reach us:</b> return to the portal sign-in page and use <b>Owner help</b>. It goes straight to our team. Tell us the restaurant and what you need; we confirm before anything changes.</p>
+    <p style="margin:0"><b>How to reach us:</b> return to the portal sign-in page and use <b>Owner help</b>. Tell us the restaurant and what you need; we confirm before anything changes. If the sign-in page is unavailable, use your restaurant's existing Menu.ca support contact. Do not send passwords, sign-in links, or payment-card details.</p>
   </div>
 </section>
 
@@ -1122,7 +1124,7 @@ Please confirm before changing anything that moves money.</code></div>
       <button class="btn primary qnext" id="qNext" hidden>Next question →</button>
       <div class="qresult" id="qResult">
         <div class="setup-completion" id="setupCompletion" role="status" hidden>
-          <strong id="setupCompletionTitle">Owner Setup complete</strong>
+          <strong id="setupCompletionTitle">Guide tour complete</strong>
           <p id="setupCompletionNote">Your progress is saved on this device. You can return anytime for a refresher.</p>
         </div>
         <div class="score" id="qScore"></div>
@@ -1190,7 +1192,7 @@ function updateProgress(state){
   $('#setupResetBtn').hidden=state.viewedCount===0&&!state.quizComplete;
   if(state.complete){
     $('#setupPrimaryBtn').textContent='Review Owner Setup →';
-    $('#setupStatus').textContent='Owner Setup complete';
+    $('#setupStatus').textContent='Guide tour complete';
   }else if(state.viewedCount){
     $('#setupPrimaryBtn').textContent='Continue Owner Setup →';
     $('#setupStatus').textContent=state.viewedCount+' of '+total+' lessons reviewed · '+state.completedStages+' of 5 stages complete';
@@ -1216,7 +1218,7 @@ function go(i,updateHash){
 function markLessonViewed(i){
   var before=progressStore.snapshot();
   var after=progressStore.markViewed(i);
-  if(!before.complete&&after.complete)toast('Owner Setup complete');
+  if(!before.complete&&after.complete)toast('Guide tour complete');
   return after;
 }
 /* prev/next footers */
@@ -1329,7 +1331,7 @@ hoursPanel.addEventListener('change',function(e){
   var i=e.target;if(i.tagName!=='INPUT')return;
   days[+i.getAttribute('data-d')].w[+i.getAttribute('data-w')][+i.getAttribute('data-i')]=i.value;
 });
-$('#saveHours').addEventListener('click',function(){toast('Saved — live on your storefront now ✓')});
+$('#saveHours').addEventListener('click',function(){toast('Practice saved — check your real storefront after a real change ✓')});
 
 /* ---------- lesson 5: closures ---------- */
 var sayInput=$('#sayInput'),sayCard=$('#sayCard'),sayCardText=$('#sayCardText');
@@ -1349,7 +1351,7 @@ function preview(){
 $('#sayPreview').addEventListener('click',preview);
 sayInput.addEventListener('keydown',function(e){if(e.key==='Enter')preview()});
 $('#sayCancel').addEventListener('click',function(){sayCard.classList.remove('show')});
-$('#sayApply').addEventListener('click',function(){sayCard.classList.remove('show');sayInput.value='';toast('Applied — your storefront shows it immediately ✓')});
+$('#sayApply').addEventListener('click',function(){sayCard.classList.remove('show');sayInput.value='';toast('Practice applied — verify your real storefront after any real change ✓')});
 $('#closeToday').addEventListener('click',function(){$('#closedBanner').classList.add('show');$('#closeToday').disabled=true});
 $('#reopenToday').addEventListener('click',function(){$('#closedBanner').classList.remove('show');$('#closeToday').disabled=false;toast('Reopened — back to your normal hours ✓')});
 
@@ -1523,8 +1525,8 @@ $('#qNext').addEventListener('click',function(){
     var setupState=updateProgress(progressStore.finishQuickCheck(qScoreN,quiz.length));
     $('#setupCompletion').hidden=false;
     if(setupState.complete){
-      $('#setupCompletionTitle').textContent='Owner Setup complete';
-      $('#setupCompletionNote').textContent=setupState.persistent?'Your progress is saved on this device. You can return anytime for a refresher.':'Your setup is complete for this visit. Keep this page open if you want to review it.';
+      $('#setupCompletionTitle').textContent='Guide tour complete';
+      $('#setupCompletionNote').textContent=setupState.persistent?'Guide tour reviewed on this device. This does not verify your restaurant setup or a passing score. Return anytime for a refresher.':'Guide tour reviewed for this visit only. This does not verify your restaurant setup or a passing score; keep this page open to review it.';
     }else{
       $('#setupCompletionTitle').textContent='Quick check complete';
       var remaining=quiz.length?lessons.length-1-setupState.viewedCount:0;
