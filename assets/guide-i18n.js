@@ -46,9 +46,23 @@ function translated(lang,key){
   match=key.match(/^(\d+) of (\d+) lessons viewed$/);
   if(match){
     if(lang==='ar')return 'تمت مشاهدة '+match[1]+' من '+match[2]+' درسًا';
-    if(lang==='fr')return match[1]+' leçons consultées sur '+match[2];
+    if(lang==='fr')return match[1]+' leçon'+(match[1]==='1'?'':'s')+' consultée'+(match[1]==='1'?'':'s')+' sur '+match[2];
     if(lang==='zh')return '已查看 '+match[1]+' / '+match[2]+' 课';
     if(lang==='pa')return match[2]+' ਵਿੱਚੋਂ '+match[1]+' ਪਾਠ ਵੇਖੇ';
+  }
+  match=key.match(/^(\d+) of (\d+) lessons reviewed · (\d+) of 5 stages complete$/);
+  if(match){
+    if(lang==='ar')return 'تمت مراجعة '+match[1]+' من '+match[2]+' درسًا · اكتملت '+match[3]+' من 5 مراحل';
+    if(lang==='fr')return match[1]+' leçon'+(match[1]==='1'?'':'s')+' révisée'+(match[1]==='1'?'':'s')+' sur '+match[2]+' · '+match[3]+' étape'+(match[3]==='1'?'':'s')+' terminée'+(match[3]==='1'?'':'s')+' sur 5';
+    if(lang==='zh')return '已复习 '+match[1]+' / '+match[2]+' 课 · 已完成 '+match[3]+' / 5 个阶段';
+    if(lang==='pa')return match[2]+' ਵਿੱਚੋਂ '+match[1]+' ਪਾਠ ਵੇਖੇ · 5 ਵਿੱਚੋਂ '+match[3]+' ਪੜਾਅ ਪੂਰੇ';
+  }
+  match=key.match(/^(\d+) remaining lesson(?:s)? — review (?:it|them) to complete your Owner Setup\.$/);
+  if(match){
+    if(lang==='ar')return match[1]==='1'?'تبقّى درس واحد — راجعه لإكمال إعداد المالك.':'تبقّى '+match[1]+' من الدروس — راجعها لإكمال إعداد المالك.';
+    if(lang==='fr')return match[1]==='1'?'Il reste 1 leçon — révisez-la pour terminer votre configuration propriétaire.':'Il reste '+match[1]+' leçons — révisez-les pour terminer votre configuration propriétaire.';
+    if(lang==='zh')return match[1]==='1'?'还剩 1 节课——请复习本课以完成店主设置。':'还剩 '+match[1]+' 节课——请复习它们以完成店主设置。';
+    if(lang==='pa')return match[1]==='1'?'1 ਪਾਠ ਬਾਕੀ ਹੈ — ਮਾਲਕ ਸੈਟਅੱਪ ਪੂਰੀ ਕਰਨ ਲਈ ਇਸਦੀ ਸਮੀਖਿਆ ਕਰੋ।':match[1]+' ਪਾਠ ਬਾਕੀ ਹਨ — ਮਾਲਕ ਸੈਟਅੱਪ ਪੂਰੀ ਕਰਨ ਲਈ ਉਹਨਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰੋ।';
   }
   match=key.match(/^(\d+) of 5 checked$/);
   if(match){

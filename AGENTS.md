@@ -37,7 +37,7 @@ conflicts. Flag any disputed content in the PR instead of silently replacing it.
 
    ```sh
    python3 validate.py
-   node --test tests/router.test.mjs
+   node --test tests/*.test.mjs
    python3 build.py
    git diff --check
    ```
