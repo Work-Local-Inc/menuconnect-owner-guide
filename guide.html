@@ -182,15 +182,35 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 
 /* ============ WELCOME ============ */
 .hero{padding:10px 0 4px}
+.setup-card{margin-top:26px;border:1px solid var(--accent-line);border-radius:18px;padding:clamp(20px,4vw,30px);background:linear-gradient(135deg,var(--accent-soft),var(--card) 72%);box-shadow:var(--shadow)}
+.setup-card h2{font-size:clamp(22px,3vw,29px);margin:8px 0 8px}
+.setup-card>p{color:var(--muted);margin:0;max-width:64ch}
+.setup-kicker{display:inline-flex;border-radius:99px;background:var(--accent);color:#fff;padding:4px 10px;font-family:'Ubuntu';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.setup-stages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;list-style:none;margin:22px 0 0;padding:0;counter-reset:stage}
+.setup-stage{position:relative;min-width:0;border:1px solid var(--line);border-radius:11px;background:var(--card);padding-block:12px;padding-inline-end:10px;padding-inline-start:38px;color:var(--muted);font-size:12px;line-height:1.35}
+.setup-stage::before{counter-increment:stage;content:counter(stage);position:absolute;inset-inline-start:10px;top:11px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--accent-line);color:var(--accent-ink);font:700 10px 'Ubuntu'}
+.setup-stage.done{border-color:var(--accent-line);background:color-mix(in srgb,var(--accent-soft) 72%,var(--card));color:var(--ink)}
+.setup-stage.done::before{content:'✓';background:var(--accent);border-color:var(--accent);color:#fff}
+.setup-actions{margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.setup-status{margin-top:12px!important;color:var(--accent-ink)!important;font-size:13px;font-weight:700}
+.setup-note{margin-top:6px!important;font-size:12.5px}
+.setup-reset{border:0;background:transparent;color:var(--muted);font-size:13px;text-decoration:underline;text-underline-offset:3px;padding:10px 4px}
+.setup-reset:hover{color:var(--ink)}
+.quick-start{margin-top:34px}
 .hero .value-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:30px}
 .vcard{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:20px;box-shadow:var(--shadow-sm)}
 .vcard .ic{width:38px;height:38px;border-radius:10px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;margin-bottom:12px}
 .vcard h3{font-size:16px;font-weight:700;margin-bottom:6px}
 .vcard p{margin:0;font-size:14px;color:var(--muted)}
-.start-row{margin-top:30px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .bigbtn{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:14px 26px;font-family:'Ubuntu';font-weight:700;font-size:16px;box-shadow:var(--shadow)}
 .bigbtn:hover{background:var(--accent-ink)}
 .legend-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.setup-completion{margin:0 0 18px;border:1px solid var(--accent-line);border-radius:12px;background:var(--accent-soft);padding:14px 16px;text-align:start}
+.setup-completion[hidden]{display:none}
+.setup-completion strong{display:block;font-family:'Ubuntu';font-size:17px;color:var(--accent-ink)}
+.setup-completion p{margin:4px 0 0;color:var(--muted);font-size:13px}
+@media(max-width:700px){.setup-stages{grid-template-columns:1fr 1fr}.setup-stage:last-child{grid-column:1/-1}}
+@media(max-width:430px){.setup-stages{grid-template-columns:1fr}.setup-stage:last-child{grid-column:auto}.setup-actions .bigbtn{width:100%}}
 
 /* ============ SIGN IN ============ */
 .signin-box{max-width:420px;margin:22px auto;text-align:center}
@@ -484,7 +504,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 [dir="rtl"] .language-switcher-head,[dir="rtl"] .quick-tools,[dir="rtl"] .quick-actions{direction:rtl}
 [dir="rtl"] input,[dir="rtl"] code,[dir="rtl"] .urlbar,[dir="rtl"] .amt{direction:ltr;text-align:left}
 @media(max-width:900px){[dir="rtl"] .rail{inset:0 0 0 auto;transform:translateX(100%)}[dir="rtl"] .rail.open{transform:none}[dir="rtl"] .menubtn{left:auto;right:14px}}
-@media(max-width:480px){.task-grid{grid-template-columns:1fr}.quick-tools{gap:0}.quick-tools a{font-size:13px;padding:8px}}
+@media(max-width:480px){.task-grid{grid-template-columns:1fr}.quick-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.quick-tools a{display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.25;padding:7px 4px}}
 @media print{
  body{background:white!important;color:black!important;font-size:11pt}
  .rail,.menubtn,.quick-tools,#toast,main>.lesson{display:none!important}
@@ -543,7 +563,25 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <div class="eyebrow">Menu.ca · Restaurant owner training</div>
     <h1>Run your restaurant on MenuConnect</h1>
     <p class="lede">MenuConnect is your restaurant's online-ordering home base — money, menu, hours, and orders in one connected place. This comprehensive guide covers the owner workflows available today and when to ask Menu.ca for help. Practice controls never touch a real restaurant.</p>
-    <div class="quick-start"><h2>What do you need to do?</h2><p class="hint">Jump to a quick answer, or take the full tour below.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="15">Get help →</a></div></div>
+    <section class="setup-card" aria-labelledby="setupHeading">
+      <span class="setup-kicker">15-minute setup</span>
+      <h2 id="setupHeading">Finish your 15-minute MenuConnect Owner Setup</h2>
+      <p>Learn the owner tasks that prevent delays during service and cut down on back-and-forth when you need help.</p>
+      <ol class="setup-stages" aria-label="5 short stages">
+        <li class="setup-stage" data-setup-stage="0">Access your portal</li>
+        <li class="setup-stage" data-setup-stage="1">Understand your money</li>
+        <li class="setup-stage" data-setup-stage="2">Keep hours accurate</li>
+        <li class="setup-stage" data-setup-stage="3">Keep your menu accurate</li>
+        <li class="setup-stage" data-setup-stage="4">Orders, support &amp; final check</li>
+      </ol>
+      <div class="setup-actions">
+        <button class="bigbtn" id="setupPrimaryBtn">Start Owner Setup →</button>
+        <button class="setup-reset" id="setupResetBtn" type="button" hidden>Reset progress</button>
+      </div>
+      <p class="setup-status" id="setupStatus" role="status">5 short stages · 17 practical lessons · about 15 minutes</p>
+      <p class="setup-note" id="setupPersistenceNote">Progress is saved on this device so you can close the guide and continue later.</p>
+    </section>
+    <div class="quick-start"><h2>Already set up? Find a quick answer.</h2><p class="hint">Use these shortcuts anytime. They do not replace the setup.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="15">Get help →</a></div></div>
     <div class="value-cards">
       <div class="vcard">
         <div class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="3.5" width="15" height="13" rx="2"/><path d="M2.5 8h15M6.5 12h4"/></svg></div>
@@ -564,10 +602,6 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <div class="legend-row">
       <span class="badge edit">You can edit</span><span class="hint" style="align-self:center">— screens where your changes go live</span>
       <span class="badge viewonly">View only</span><span class="hint" style="align-self:center">— screens for looking things up</span>
-    </div>
-    <div class="start-row">
-      <button class="bigbtn" id="startBtn">Start the tour →</button>
-      <span class="hint">17 practical lessons · about 15 minutes</span>
     </div>
   </div>
 </section>
@@ -1087,6 +1121,10 @@ Please confirm before changing anything that moves money.</code></div>
       <div class="qfeedback" id="qFeedback"></div>
       <button class="btn primary qnext" id="qNext" hidden>Next question →</button>
       <div class="qresult" id="qResult">
+        <div class="setup-completion" id="setupCompletion" role="status" hidden>
+          <strong id="setupCompletionTitle">Owner Setup complete</strong>
+          <p id="setupCompletionNote">Your progress is saved on this device. You can return anytime for a refresher.</p>
+        </div>
         <div class="score" id="qScore"></div>
         <p id="qScoreNote"></p>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
@@ -1105,6 +1143,7 @@ Please confirm before changing anything that moves money.</code></div>
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
 
+<script src="/assets/guide-progress.js"></script>
 <script>
 (function(){
 "use strict";
@@ -1118,9 +1157,12 @@ function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearT
 /* ---------- lessons / rail ---------- */
 var lessons=$$('.lesson');
 var railNav=$('#railNav');
-var visited={};
 var current=0;
+var setupStages=[[1,2],[3,4],[5,6,7,8],[9,10,11],[12,13,14,15,16,17]];
+var progressBackend=window.MenuConnectProgress.selectStorage(window);
+var progressStore=window.MenuConnectProgress.createStore(progressBackend.storage,{total:lessons.length-1,stages:setupStages,persistent:progressBackend.persistent});
 var lessonSlugs=lessons.map(function(sec,i){return i===0?'welcome':sec.getAttribute('data-title').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')});
+function doneIcon(){return '<svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l3 3 5-6"/></svg>'}
 lessons.forEach(function(sec,i){
   sec.id=lessonSlugs[i];
   var part=sec.getAttribute('data-part');
@@ -1132,11 +1174,31 @@ lessons.forEach(function(sec,i){
   railNav.appendChild(b);
   sec._railBtn=b;
 });
-function updateProgress(){
-  var n=0;for(var k in visited)if(k!=='0')n++;
+function updateProgress(state){
+  state=state||progressStore.snapshot();
   var total=lessons.length-1;
-  $('#progressFill').style.width=(n/total*100)+'%';
-  $('#progressLabel').textContent=n+' of '+total+' lessons viewed';
+  $('#progressFill').style.width=(state.viewedCount/total*100)+'%';
+  $('#progressLabel').textContent=state.viewedCount+' of '+total+' lessons viewed';
+  lessons.forEach(function(lesson,i){
+    if(i===0)return;
+    var done=state.viewed.indexOf(i)>-1;
+    lesson._railBtn.classList.toggle('done',done);
+    lesson._railBtn.querySelector('.rail-num').innerHTML=done?doneIcon():i;
+  });
+  $$('.setup-stage').forEach(function(stage,i){stage.classList.toggle('done',state.stageComplete[i])});
+  $('#setupPersistenceNote').textContent=state.persistent?'Progress is saved on this device so you can close the guide and continue later.':'Progress is available for this visit only. Keep this page open to continue your setup.';
+  $('#setupResetBtn').hidden=state.viewedCount===0&&!state.quizComplete;
+  if(state.complete){
+    $('#setupPrimaryBtn').textContent='Review Owner Setup →';
+    $('#setupStatus').textContent='Owner Setup complete';
+  }else if(state.viewedCount){
+    $('#setupPrimaryBtn').textContent='Continue Owner Setup →';
+    $('#setupStatus').textContent=state.viewedCount+' of '+total+' lessons reviewed · '+state.completedStages+' of 5 stages complete';
+  }else{
+    $('#setupPrimaryBtn').textContent='Start Owner Setup →';
+    $('#setupStatus').textContent='5 short stages · 17 practical lessons · about 15 minutes';
+  }
+  return state;
 }
 function go(i,updateHash){
   if(i<0||i>=lessons.length)return;
@@ -1145,14 +1207,17 @@ function go(i,updateHash){
   current=i;
   lessons[i].classList.add('active');
   lessons[i]._railBtn.setAttribute('aria-current','true');
-  if(!visited[i]){visited[i]=1;lessons[i]._railBtn.classList.add('done');
-    if(i>0)lessons[i]._railBtn.querySelector('.rail-num').innerHTML='<svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l3 3 5-6"/></svg>';
-  }
-  updateProgress();
+  updateProgress(i>0?markLessonViewed(i):progressStore.snapshot());
   window.scrollTo({top:0,behavior:'auto'});
   var heading=lessons[i].querySelector('h1');
   if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
   if(updateHash&&location.hash!=='#'+lessonSlugs[i])history.pushState({lesson:i},'',location.pathname+location.search+'#'+lessonSlugs[i]);
+}
+function markLessonViewed(i){
+  var before=progressStore.snapshot();
+  var after=progressStore.markViewed(i);
+  if(!before.complete&&after.complete)toast('Owner Setup complete');
+  return after;
 }
 /* prev/next footers */
 lessons.forEach(function(sec,i){
@@ -1163,7 +1228,10 @@ lessons.forEach(function(sec,i){
   if(i<lessons.length-1){next.innerHTML='<small>Next lesson →</small><span>'+lessons[i+1].getAttribute('data-title')+'</span>';next.addEventListener('click',function(){go(i+1)})}else next.hidden=true;
   nav.appendChild(prev);nav.appendChild(next);sec.appendChild(nav);
 });
-$('#startBtn').addEventListener('click',function(){go(1)});
+$('#setupPrimaryBtn').addEventListener('click',function(){var state=progressStore.snapshot();go(state.complete?1:state.nextLesson||1,true)});
+$('#setupResetBtn').addEventListener('click',function(){
+  progressStore.reset();qi=0;qScoreN=0;renderQ();$('#setupCompletion').hidden=true;updateProgress();go(0,true);
+});
 document.addEventListener('keydown',function(e){
   if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
   if(e.key==='ArrowRight')go(current+1);
@@ -1171,7 +1239,7 @@ document.addEventListener('keydown',function(e){
 });
 function indexFromHash(){var slug=location.hash.slice(1);var i=lessonSlugs.indexOf(slug);return i<0?null:i}
 var initialLesson=indexFromHash();if(initialLesson===null)initialLesson=0;
-current=initialLesson;lessons[current].classList.add('active');lessons[current]._railBtn.setAttribute('aria-current','true');visited[0]=1;visited[current]=1;updateProgress();
+current=initialLesson;lessons[current].classList.add('active');lessons[current]._railBtn.setAttribute('aria-current','true');updateProgress(current>0?markLessonViewed(current):progressStore.snapshot());
 window.addEventListener('hashchange',function(){var i=indexFromHash();if(i!==null&&i!==current)go(i,false)});
 
 /* mobile rail */
@@ -1427,6 +1495,7 @@ function renderQ(){
   $('#qNext').hidden=true;
   $('#qBtns').style.display='flex';
   $('#qResult').classList.remove('show');
+  $('#setupCompletion').hidden=true;
   $$('#qBtns .qbtn').forEach(function(b){b.disabled=false;b.style.borderColor=''});
 }
 $$('#qBtns .qbtn').forEach(function(b){
@@ -1451,6 +1520,16 @@ $('#qNext').addEventListener('click',function(){
     $('#qFeedback').className='qfeedback';$('#qNext').hidden=true;
     $('#qScore').textContent=qScoreN+' / '+quiz.length;
     $('#qScoreNote').textContent=qScoreN===quiz.length?'Perfect — you know exactly where everything lives. Your portal is going to feel like home.':qScoreN>=11?'Strong — one skim back through the lessons and you’ve got it all.':qScoreN>=8?'Good foundation — review the explanations you missed, then try once more.':'Keep going — review the money, hours, menu, and Owner help lessons, then run the check again.';
+    var setupState=updateProgress(progressStore.finishQuickCheck(qScoreN,quiz.length));
+    $('#setupCompletion').hidden=false;
+    if(setupState.complete){
+      $('#setupCompletionTitle').textContent='Owner Setup complete';
+      $('#setupCompletionNote').textContent=setupState.persistent?'Your progress is saved on this device. You can return anytime for a refresher.':'Your setup is complete for this visit. Keep this page open if you want to review it.';
+    }else{
+      $('#setupCompletionTitle').textContent='Quick check complete';
+      var remaining=quiz.length?lessons.length-1-setupState.viewedCount:0;
+      $('#setupCompletionNote').textContent=remaining===1?'1 remaining lesson — review it to complete your Owner Setup.':remaining+' remaining lessons — review them to complete your Owner Setup.';
+    }
     $('#qResult').classList.add('show');
   }
 });

@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 validate.py
-      - run: node --test tests/router.test.mjs
+      - run: node --test tests/*.test.mjs
       - run: python3 build.py
   publish:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'

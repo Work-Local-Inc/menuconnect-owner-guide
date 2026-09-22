@@ -42,6 +42,10 @@ for name in ["index.html", "guide.html"]:
             "Language selector group must use the localized visible label as its accessible name"
         assert 'src="/assets/guide-translations.js"' in source, "Translation catalog is not loaded"
         assert 'src="/assets/guide-i18n.js"' in source, "Translation runtime is not loaded"
+        assert 'src="/assets/guide-progress.js"' in source, "Persistent Owner Setup progress is not loaded"
+        progress_runtime = (root / "assets/guide-progress.js").read_text()
+        assert "menuconnect-owner-setup-v1" in progress_runtime and "finishQuickCheck" in progress_runtime, \
+            "Persistent Owner Setup progress is incomplete"
         runtime = (root / "assets/guide-i18n.js").read_text()
         assert "document.documentElement.dir" in runtime and "rtl={ar:true}" in runtime, "Arabic RTL support is incomplete"
         catalog = (root / "assets/guide-translations.js").read_text()
@@ -143,6 +147,6 @@ for name in ["index.html", "guide.html"]:
             temp.write(script)
             temp.flush()
             subprocess.run(["node", "--check", temp.name], check=True)
-for script in [root / "assets/guide-i18n.js", root / "assets/guide-translations.js"]:
+for script in [root / "assets/guide-i18n.js", root / "assets/guide-translations.js", root / "assets/guide-progress.js"]:
     subprocess.run(["node", "--check", script], check=True)
 print("PASS: complete curriculum, 15 scenarios, source assets, unique IDs, JavaScript syntax")
