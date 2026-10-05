@@ -26,7 +26,7 @@ expected = ["Welcome", "Signing in", "Your owner home", "Weekly statements",
     "Cash, card & refunds", "Opening hours", "Split shifts", "Holidays & closures",
     "Close today safely", "Prices & availability", "Availability routine",
     "Photos & bilingual editing", "Orders", "Promotions", "We handle these",
-    "Ask for help clearly", "Owner routine", "Quick check"]
+    "Ask for help clearly", "Kitchen tablet", "Owner routine", "Quick check"]
 for name in ["index.html", "guide.html"]:
     source = (root / name).read_text()
     page = Page()
