@@ -17,6 +17,9 @@ for source, target in [("index.html", "index.html"), ("guide.html", "start.html"
                        ("_redirects", "_redirects"), ("_headers", "_headers")]:
     shutil.copy2(root / source, output / target)
 shutil.copytree(root / "assets", output / "assets")
+# Menu Brian's pages (menu-ottawa, brand-guide, plan, emails) are part of this site too. This org repo is the
+# ONE source for both teams; never delete menu-brian/ (Brian 2026-10-05).
+shutil.copytree(root / "menu-brian", output, dirs_exist_ok=True)
 # The hosting build sets COMMIT_REF; GitHub Actions sets GITHUB_SHA.
 # Version the script URLs by content so browsers fetch a changed file immediately
 # instead of reusing a cached copy (assets are cacheable for hours). Source pages keep
