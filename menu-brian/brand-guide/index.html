@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<title>menuconnect Brand Guide</title>
+<style>
+/* Mode tokens from tokens.json. No data-mode yet (script off) = light. */
+:root, [data-mode="light"] {
+  color-scheme: light;
+  --page-bg: #eef1f4; --shell-bg: #ffffff; --card-bg: #eef1f4;
+  --ink: #1a1d23; --body-ink: #3a3f47; --muted: #6b7280;
+  --menuca-accent: #fe4745; --button-text: #ffffff; --line: #e6e9ee;
+}
+[data-mode="dark"] {
+  color-scheme: dark;
+  --page-bg: #0d1b2e; --shell-bg: #0d1b2e; --card-bg: #16283f;
+  --ink: #ffffff; --body-ink: #d5deea; --muted: #9fb0c3;
+  --menuca-accent: #2dd4bf; --button-text: #0d1b2e; --line: #26395a;
+}
+:root {
+  --brand-red: #fe4745;
+  --font-sans: Arial, 'Helvetica Neue', sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+  --space-4: 4px; --space-8: 8px; --space-12: 12px; --space-16: 16px; --space-18: 18px;
+  --space-20: 20px; --space-24: 24px; --space-26: 26px; --space-30: 30px; --space-34: 34px;
+  --radius-shell: 14px; --radius-card: 12px; --radius-button: 10px;
+  --shell-width: 600px; --topbar-height: 5px; --mark-size: 48px; --mark-column: 60px;
+}
+/* Only the current mode's text is ever shown. */
+[data-mode="dark"] .only-light, :root:not([data-mode="dark"]) .only-dark { display: none !important; }
+
+* { box-sizing: border-box; }
+html { background: var(--shell-bg); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--shell-bg); color: var(--body-ink); font: 17px/25px var(--font-sans); overflow-x: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  body, .seg span { transition: background-color .2s, color .2s; }
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+p { margin: 0 0 var(--space-16); }
+strong, b { color: var(--ink); }
+code { font-family: var(--font-mono); font-size: .92em; color: var(--ink); }
+
+/* Type styles (tokens.json type.groups) */
+.wordmark { font-size: 34px; line-height: 38px; font-weight: 700; letter-spacing: -.5px; }
+.wordmark-footer { font-size: 18px; line-height: 24px; font-weight: 700; }
+.eyebrow { font-size: 14px; line-height: 18px; letter-spacing: 2.5px; }
+.headline { font-size: 42px; line-height: 48px; font-weight: 700; letter-spacing: -1px; }
+.intro { font-size: 21px; line-height: 28px; }
+.section-heading { font-size: 26px; line-height: 32px; font-weight: 700; }
+.card-heading { font-size: 22px; line-height: 28px; font-weight: 700; }
+.button-label { font-size: 22px; line-height: 26px; font-weight: 700; }
+.link { font-size: 18px; line-height: 24px; font-weight: 700; }
+.note { font-size: 17px; line-height: 25px; }
+.value { font-size: 18px; line-height: 24px; }
+.label { font-size: 14px; line-height: 18px; }
+.footer { font-size: 14px; line-height: 20px; }
+.value-mono { font-family: var(--font-mono); font-size: 18px; line-height: 24px; }
+
+/* Guide navigation; brand specimens retain their original tokens. */
+.skip { position: fixed; top: -100px; left: 16px; z-index: 30; padding: 12px 18px; background: var(--ink); color: var(--shell-bg); border-radius: 8px; }
+.skip:focus { top: 12px; }
+.guide-header { position: sticky; top: 0; z-index: 20; background: var(--shell-bg); border-top: 4px solid var(--menuca-accent); border-bottom: 1px solid var(--line); }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+.bar { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.guide-identity { display: flex; align-items: center; gap: 24px; }
+.guide-identity .lk .wm { font-size: 25px; line-height: 30px; }
+.guide-identity .lk .by { font-size: 13px; line-height: 18px; }
+.guide-title { border-left: 1px solid var(--line); padding-left: 24px; font-size: 14px; color: var(--muted); }
+.seg { display: inline-flex; flex: none; margin: 0; padding: 4px; border: 0; background: var(--card-bg); border-radius: var(--radius-button); }
+.seg legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.seg label { position: relative; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg span { display: block; padding: 10px 20px; border-radius: 7px; font-size: 14px; line-height: 20px; font-weight: 700; color: var(--body-ink); }
+.seg input:checked + span { background: var(--ink); color: var(--shell-bg); }
+.seg input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+.guide-layout { display: grid; grid-template-columns: 208px minmax(0, 1fr); gap: 64px; align-items: start; }
+.contents { position: sticky; top: 121px; max-height: calc(100dvh - 145px); overflow-y: auto; padding: 0 24px 24px 0; margin-top: 40px; border-right: 1px solid var(--line); }
+.contents > summary { display: none; }
+.toc-group { margin: 0 0 12px 12px; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); }
+.toc ul { display: grid; gap: 4px; list-style: none; margin: 0 0 28px; padding: 0; }
+.toc a { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 10px 12px; border-radius: 8px; font-size: 14px; line-height: 20px; color: var(--body-ink); text-decoration: none; }
+.toc a:hover { background: var(--card-bg); color: var(--ink); }
+.toc a[aria-current="location"] { background: var(--card-bg); color: var(--ink); font-weight: 700; }
+.toc a[aria-current="location"]::after { content: ''; width: 6px; height: 6px; flex: none; border-radius: 50%; background: var(--menuca-accent); }
+.guide-content { min-width: 0; scroll-margin-top: 148px; }
+.guide-kicker { font-size: 14px; line-height: 20px; color: var(--muted); margin-bottom: 16px; }
+.mode-note { display: inline-flex; align-items: center; gap: 8px; margin: 8px 0 0; font-size: 13px; line-height: 20px; color: var(--muted); }
+.mode-note::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--menuca-accent); }
+@media (max-width: 1000px) {
+  .guide-layout { grid-template-columns: 180px minmax(0, 1fr); gap: 32px; }
+  .contents { padding-right: 16px; }
+  .guide-title { display: none; }
+}
+@media (max-width: 760px) {
+  .wrap { padding: 0 20px; }
+  .bar { min-height: 76px; gap: 12px; }
+  .guide-identity .lk { gap: 8px; }
+  .guide-identity .lk .m { width: 32px; height: 32px; }
+  .guide-identity .lk .wm { font-size: 20px; line-height: 24px; letter-spacing: -.4px; }
+  .guide-identity .lk .by { font-size: 11px; line-height: 14px; }
+  .seg span { padding: 10px 12px; font-size: 13px; }
+  .guide-layout { display: block; }
+  .contents { top: 81px; z-index: 15; max-height: none; overflow: visible; margin: 0 -20px; padding: 0 20px; border-right: 0; border-bottom: 1px solid var(--line); background: var(--shell-bg); }
+  .contents > summary { display: flex; justify-content: space-between; align-items: center; min-height: 52px; gap: 12px; font-size: 13px; cursor: pointer; list-style: none; }
+  .contents > summary::-webkit-details-marker { display: none; }
+  .contents > summary::after { content: '+'; font-size: 20px; color: var(--ink); }
+  .contents[open] > summary::after { content: '−'; }
+  .contents > summary span { color: var(--ink); margin-left: auto; font-weight: 700; }
+  .toc { position: absolute; top: 100%; left: 0; right: 0; padding: 16px 20px 4px; max-height: calc(100dvh - 150px); overflow-y: auto; background: var(--shell-bg); border-bottom: 1px solid var(--line); }
+  .toc ul { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 16px; }
+  .toc-group { margin-bottom: 6px; }
+}
+@media (max-width: 360px) {
+  .guide-identity .lk .m { display: none; }
+}
+
+.lk { display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.lk .m { width: 48px; height: 48px; display: block; flex: none; }
+.lk .col { display: flex; flex-direction: column; }
+.lk .wm { color: var(--ink); }
+.r { color: var(--brand-red); }
+.lk.stack .by { font-size: 16px; line-height: 20px; color: var(--muted); margin-top: 2px; }
+.lk.inline .by { font-size: 20px; line-height: 24px; color: var(--muted); align-self: flex-end; padding-bottom: 4px; }
+.masthead { padding: 56px 0 40px; }
+.masthead h1 { margin: 0 0 20px; color: var(--ink); font-size: clamp(42px, 5vw, 64px); line-height: 1.05; letter-spacing: -2px; }
+.masthead .intro { max-width: 600px; color: var(--body-ink); }
+@media (max-width: 760px) { .masthead { padding: 36px 0 32px; } .masthead .intro { font-size: 18px; line-height: 27px; } }
+
+section.part { padding: 40px 0 24px; border-top: 1px solid var(--line); scroll-margin-top: 116px; }
+@media (max-width: 760px) { section.part { scroll-margin-top: 156px; } }
+.masthead + section.part { padding-top: 32px; }
+h2 { margin: 0 0 var(--space-18); color: var(--ink); }
+h3 { margin: var(--space-30) 0 var(--space-12); color: var(--ink); }
+.prose { max-width: 720px; }
+.prose ul { padding-left: 20px; margin: 0 0 var(--space-16); }
+.prose li { margin-bottom: var(--space-8); }
+.small { font-size: 14px; line-height: 20px; color: var(--muted); }
+.card { background: var(--card-bg); border-radius: var(--radius-card); padding: var(--space-24) var(--space-24) var(--space-8); margin: 0 0 var(--space-16); }
+.card p { max-width: 720px; }
+.dd p { margin-bottom: var(--space-8); }
+.mode-line { font-size: 14px; line-height: 20px; color: var(--muted); margin: var(--space-12) 0 var(--space-8); }
+.scroll { overflow-x: auto; margin: 0 0 var(--space-16); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; line-height: 21px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); }
+th { font-size: 14px; font-weight: 400; color: var(--muted); }
+td.nm { white-space: nowrap; }
+.sw { width: 44px; height: 44px; border-radius: 8px; border: 1px solid var(--line); }
+.swatches { min-width: 680px; }
+.pairs { min-width: 420px; }
+
+/* Logo versions */
+.ver { margin: 0 0 var(--space-16); }
+.ver h3 { margin: var(--space-24) 0 var(--space-4); font-size: 18px; line-height: 24px; }
+.ver h3 span { font-weight: 400; color: var(--muted); font-size: 15px; }
+.stage { padding: 36px 24px; margin: 16px 0; display: flex; align-items: center; min-height: 132px; overflow-x: auto; background: var(--card-bg); border-radius: var(--radius-card); }
+.stage .lk { flex: none; }
+@media (max-width: 760px) { .stage { padding: 28px 16px; } }
+
+/* Type specimens */
+.spec { padding: var(--space-16) 0; border-bottom: 1px solid var(--line); }
+.spec .meta { font-size: 14px; line-height: 20px; color: var(--muted); margin-bottom: var(--space-8); }
+.spec .meta b { color: var(--ink); }
+.spec { color: var(--ink); }
+.spec .s { overflow-wrap: anywhere; }
+
+/* Spacing */
+.sp { display: grid; grid-template-columns: 80px 60px 1fr; gap: var(--space-12); align-items: center; padding: var(--space-8) 0; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 21px; }
+.sp .bar-v { height: 14px; background: var(--ink); border-radius: 2px; }
+.sp .u { grid-column: 1 / -1; color: var(--muted); font-size: 14px; line-height: 20px; margin-top: -4px; }
+.radii { display: flex; flex-wrap: wrap; gap: var(--space-16); margin: var(--space-16) 0; }
+.radii div { width: 140px; height: 96px; background: var(--card-bg); padding: 12px; font-size: 14px; line-height: 20px; color: var(--ink); }
+
+/* Email examples: bundle.css renditions */
+.mc-page { padding: var(--space-24) var(--space-12); background: var(--page-bg); border-radius: var(--radius-shell); }
+.mc-shell { max-width: var(--shell-width); margin: 0 auto; background: var(--shell-bg); border-radius: var(--radius-shell); overflow: hidden; }
+.mc-shell.mc-open { padding-bottom: var(--space-24); }
+.mc-topbar { height: var(--topbar-height); background: var(--menuca-accent); }
+.mc-row { text-align: left; padding: 0 var(--space-24); }
+.mc-row p { margin: 0; }
+.mc-lockup { display: flex; align-items: center; padding-top: var(--space-30); }
+.mc-lockup img { display: block; width: var(--mark-size); height: var(--mark-size); margin-right: calc(var(--mark-column) - var(--mark-size)); }
+.mc-ink { color: var(--ink); }
+.mc-body { color: var(--body-ink); }
+.mc-muted { color: var(--muted); }
+.mc-dot { color: var(--menuca-accent); }
+.mc-eyebrow { text-transform: uppercase; }
+.mc-btn { display: block; text-align: center; padding: var(--space-20); background: var(--menuca-accent); color: var(--button-text); border-radius: var(--radius-button); text-decoration: none; }
+.mc-card { background: var(--card-bg); border-radius: var(--radius-card); padding: var(--space-24) var(--space-24) var(--space-8); }
+.mc-cred { padding-bottom: var(--space-16); }
+.mc-cred .value, .mc-cred .value-mono { margin-top: var(--space-4); word-break: break-all; }
+.mc-rule { height: 1px; background: var(--line); }
+.mc-link { display: block; color: var(--menuca-accent); text-decoration: none; margin: 0 0 var(--space-12); }
+.mc-foot { display: flex; justify-content: space-between; gap: var(--space-12); }
+.mc-foot > div:last-child { text-align: right; }
+@media (max-width: 480px) { .mc-foot { flex-direction: column; } .mc-foot > div:last-child { text-align: left; } .mc-row { padding: 0 16px; } }
+.ex { margin: 0 0 var(--space-30); }
+.ex h3 { margin-top: var(--space-24); }
+
+/* Page footer */
+.pagefoot { margin-top: var(--space-34); border-top: 1px solid var(--line); }
+.pagefoot .mc-foot { padding: var(--space-34) 0; }
+</style>
+<script>
+(function () {
+  var m;
+  try { m = localStorage.getItem('mc-brand-guide-mode'); } catch (e) {}
+  if (m !== 'light' && m !== 'dark') {
+    m = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-mode', m);
+})();
+</script>
+
+</head>
+<body>
+<a class="skip" href="#guide-content">Skip to brand guidelines</a>
+<header class="guide-header">
+  <div class="wrap bar">
+    <div class="guide-identity">
+      <div class="lk stack"><img class="m" src="menu-ca-mark.png" width="48" height="48" alt="Menu.ca"><span class="col"><span class="wm wordmark">menu<span class="r">connect</span></span><span class="by">by Menu<span class="r">.</span>ca</span></span></div>
+      <span class="guide-title">Brand guidelines</span>
+    </div>
+    <fieldset class="seg" id="mode-switch">
+      <legend>Guide mode</legend>
+      <label><input type="radio" name="mode" value="light" checked><span>Light</span></label>
+      <label><input type="radio" name="mode" value="dark"><span>Dark</span></label>
+    </fieldset>
+  </div>
+</header>
+<div class="wrap guide-layout">
+  <details class="contents" open>
+    <summary>On this page <span id="current-section">Overview</span></summary>
+    <nav class="toc" aria-label="Brand guide sections">
+      <p class="toc-group">Foundations</p>
+      <ul>
+        <li><a href="#overview" aria-current="location">Overview</a></li>
+        <li><a href="#logos">Logos</a></li>
+        <li><a href="#colours">Colours</a></li>
+        <li><a href="#type">Typography</a></li>
+        <li><a href="#spacing">Spacing &amp; corners</a></li>
+      </ul>
+      <p class="toc-group">In practice</p>
+      <ul>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#web">Web pages</a></li>
+        <li><a href="#emails">Emails</a></li>
+      </ul>
+    </nav>
+  </details>
+  <main class="guide-content" id="guide-content" tabindex="-1">
+    <header class="masthead">
+      <p class="guide-kicker">The menuconnect identity</p>
+      <h1 class="headline">Brand guidelines.</h1>
+      <p class="intro">One brand, in every detail. The logos, colours, type and words that make menuconnect feel like menuconnect.</p>
+      <p class="mode-note"><span class="only-light">You’re viewing the light-mode guidelines.</span><span class="only-dark">You’re viewing the dark-mode guidelines.</span></p>
+    </header>
+
+  <!-- 1 Overview -->
+  <section class="part" id="overview">
+    <h2 class="section-heading">Overview</h2>
+    <div class="prose">
+      <p>This is the brand for menuconnect by Menu.ca: every email, page, sales and client piece we make. The owner welcome email (“&lt;Restaurant&gt;, your dashboard is ready”) stays the reference for emails: match it, never change it.</p>
+      <p class="only-light"><strong>Light mode.</strong> White and light grey, ink text, one red. Every example and colour on this page is shown in light mode.</p>
+      <p class="only-dark"><strong>Dark mode.</strong> Navy, white text, teal for the accent; the brand’s red stays on the mark. Every example and colour on this page is shown in dark mode. Emails show it only in mail apps that honour <code>prefers-color-scheme: dark</code>; Gmail keeps the light layout.</p>
+    </div>
+  </section>
+
+  <!-- 2 Logos -->
+  <section class="part" id="logos">
+    <h2 class="section-heading">Logos</h2>
+    <div class="prose">
+      <p>The brand logo is for anything about the ordering platform itself: the M mark beside the “menuconnect” wordmark over “by Menu.ca”, in four versions. D is the primary; A, B and C are alternates. Chosen by Brian on 2026-09-25; Jordan’s idea: “menuconnect by menu.ca”.</p>
+    </div>
+
+    <div class="ver">
+      <h3>D. Stacked, “connect” in red <span>Primary, Brian’s pick</span></h3>
+      <div class="stage"><div class="lk stack"><img class="m" src="menu-ca-mark.png" width="48" height="48" alt="Menu.ca"><span class="col"><span class="wm wordmark">menu<span class="r">connect</span></span><span class="by">by Menu<span class="r">.</span>ca</span></span></div></div>
+      <p><strong>Use:</strong> by default for anything about the platform: owner dashboard, sales pages, rollout pages, case studies.</p>
+          <p class="small">Download: <a href="logos/menuconnect-logo-D-light.png" download>for light backgrounds (PNG)</a> · <a href="logos/menuconnect-logo-D-dark.png" download>for dark backgrounds (PNG)</a></p>
+    </div>
+    <div class="ver">
+      <h3>E. Stacked, with the old MENU.CA logo as the byline <span>Trial, for your review</span></h3>
+      <div class="stage"><div class="lk stack"><img class="m" src="menu-ca-mark.png" width="48" height="48" alt="Menu.ca"><span class="col"><span class="wm wordmark">menu<span class="r">connect</span></span><span class="by" style="display:flex;align-items:center;gap:6px">by <img class="only-light" src="legacy-light.png" alt="MENU.CA" style="height:17px;width:auto"><img class="only-dark" src="legacy-dark.png" alt="MENU.CA" style="height:17px;width:auto"></span></span></div></div>
+      <p><strong>Use:</strong> a trial of D where “by Menu.ca” is the real MENU.CA logo from the old system, so owners who know the old logo see the link at a glance.</p>
+      <p class="small">Download: <a href="logos/menuconnect-logo-E-light.png" download>for light backgrounds (PNG)</a> · <a href="logos/menuconnect-logo-E-dark.png" download>for dark backgrounds (PNG)</a></p>
+    </div>
+    <div class="ver">
+      <h3>A. All on one line <span>Alternate</span></h3>
+      <div class="stage"><div class="lk inline"><img class="m" src="menu-ca-mark.png" width="48" height="48" alt="Menu.ca"><span class="wm wordmark">menuconnect</span><span class="by">by Menu<span class="r">.</span>ca</span></div></div>
+      <p><strong>Use:</strong> where height is tight, such as a single-line header bar. “by Menu.ca” sits on the same line at 20/24, aligned to the wordmark’s baseline.</p>
+          <p class="small">Download: <a href="logos/menuconnect-logo-A-light.png" download>for light backgrounds (PNG)</a> · <a href="logos/menuconnect-logo-A-dark.png" download>for dark backgrounds (PNG)</a></p>
+    </div>
+    <div class="ver">
+      <h3>B. Stacked, lowercase <span>Alternate</span></h3>
+      <div class="stage"><div class="lk stack"><img class="m" src="menu-ca-mark.png" width="48" height="48" alt="Menu.ca"><span class="col"><span class="wm wordmark">menuconnect</span><span class="by">by Menu<span class="r">.</span>ca</span></span></div></div>
+      <p><strong>Use:</strong> only when a design needs the plainer form with no red in the wordmark.</p>
+          <p class="small">Download: <a href="logos/menuconnect-logo-B-light.png" download>for light backgrounds (PNG)</a> · <a href="logos/menuconnect-logo-B-dark.png" download>for dark backgrounds (PNG)</a></p>
+    </div>
+    <div class="ver">
+      <h3>C. Stacked, two words <span>Alternate</span></h3>
+      <div class="stage"><div class="lk stack"><img class="m" src="menu-ca-mark.png" width="48" height="48" alt="Menu.ca"><span class="col"><span class="wm wordmark">Menu Connect</span><span class="by">by Menu<span class="r">.</span>ca</span></span></div></div>
+      <p><strong>Use:</strong> only when a design needs the two-word “Menu Connect” form.</p>
+          <p class="small">Download: <a href="logos/menuconnect-logo-C-light.png" download>for light backgrounds (PNG)</a> · <a href="logos/menuconnect-logo-C-dark.png" download>for dark backgrounds (PNG)</a></p>
+    </div>
+
+    <div class="card dd">
+      <p><strong>Build.</strong> The M mark at 48 x 48 (<code>mark-size</code>), never tinted or boxed; 12px gap to the words. The wordmark in <code>wordmark</code> style (34/38 bold) in <code>ink</code>; for D, “menu” in <code>ink</code> and “connect” in #fe4745. Stacked versions (B, C, D): “by Menu.ca” below at 16/20 regular in <code>muted</code>. The dot in #fe4745 in every version.</p>
+      <p class="only-light"><strong>In light.</strong> The wordmark is <code>ink</code> #1a1d23, “by Menu.ca” is <code>muted</code> #6b7280; “connect”, the dot and the M mark are #fe4745.</p>
+      <p class="only-dark"><strong>In dark.</strong> The wordmark (<code>ink</code>) turns white #ffffff; “by Menu.ca” (<code>muted</code>) turns #9fb0c3. “connect”, the dot and the M mark stay #fe4745: they are part of the mark, not the teal link accent (#fe4745 on #0d1b2e is 5.1:1).</p>
+      <p><strong>Do:</strong> keep “menuconnect” lowercase and one word in A, B and D; keep “connect” and the dot in #fe4745 in both themes.</p>
+      <p><strong>Don’t:</strong> tint, recolour or box the mark; capitalise “menuconnect” or split it outside C; put “by Menu.ca” on the same line outside A; use it next to a restaurant’s own logo.</p>
+    </div>
+
+    <div class="ver">
+      <h3>The plain Menu.ca lockup <span>Email header</span></h3>
+      <div class="stage"><div class="lk"><img class="m" src="menu-ca-mark.png" width="48" height="48" alt="Menu.ca"><span class="wordmark mc-ink">Menu<span class="mc-dot">.</span>&#8203;ca</span></div></div>
+      <p><strong>Use:</strong> unchanged on every other email Menu.ca sends to owners (the welcome email and the owner campaign). Emails a restaurant sends its customers from its storefront are the restaurant’s and carry its logo instead.</p>
+    </div>
+    <div class="card dd">
+      <p><strong>Build.</strong> The M mark at 48px in a 60px (<code>mark-column</code>) cell, then the <code>wordmark</code> “Menu.ca” in <code>ink</code> with the dot in <code>menuca-accent</code>. The wordmark is live text, not an image.</p>
+      <p class="only-light"><strong>In light.</strong> The wordmark is <code>ink</code> #1a1d23 and its dot is the Menu.ca red #fe4745.</p>
+      <p class="only-dark"><strong>In dark.</strong> The wordmark turns white #ffffff and its dot follows <code>menuca-accent</code> to teal #2dd4bf. The M mark stays red #fe4745.</p>
+      <p><strong>Do:</strong> show the mark only at 48px in the header, beside the wordmark.</p>
+      <p><strong>Don’t:</strong> add a restaurant logo or tagline beside it, tint, recolour, box, crop or redraw the mark, link the wordmark, or shrink it for a “compact” variant.</p>
+    </div>
+    <p class="prose"><strong>Iconography.</strong> None. The M mark is the only image in the welcome email. Arrows are the → character in text.</p>
+  </section>
+
+  <!-- 3 Colours -->
+  <section class="part" id="colours">
+    <h2 class="section-heading">Colours</h2>
+    <p class="prose">Red is the only hue. <code>menuca-accent</code> goes on the top bar, the wordmark dot, the one button and the arrow links, nowhere else. Text is <code>ink</code> (headline, headings, values), <code>body-ink</code> (paragraphs) and <code>muted</code> (eyebrow, labels, footer).</p>
+
+    <div class="scroll only-light">
+      <table class="swatches">
+        <caption class="small" style="text-align:left;padding-bottom:8px">Light mode palette</caption>
+        <thead><tr><th scope="col">Swatch</th><th scope="col">Name</th><th scope="col">Hex</th><th scope="col">For</th><th scope="col">Contrast</th></tr></thead>
+        <tbody>
+          <tr><td><div class="sw" style="background:#eef1f4"></div></td><td class="nm"><code>page-bg</code></td><td>#eef1f4</td><td>The page behind the 600px email card.</td><td>Background.</td></tr>
+          <tr><td><div class="sw" style="background:#ffffff"></div></td><td class="nm"><code>shell-bg</code></td><td>#ffffff</td><td>The email card; the page itself on web pages.</td><td>Background.</td></tr>
+          <tr><td><div class="sw" style="background:#eef1f4"></div></td><td class="nm"><code>card-bg</code></td><td>#eef1f4</td><td>The sign-in card; cards and stat cells on web pages.</td><td>Background; <code>ink</code> on it 14.9:1, <code>muted</code> on it 4.3:1.</td></tr>
+          <tr><td><div class="sw" style="background:#1a1d23"></div></td><td class="nm"><code>ink</code></td><td>#1a1d23</td><td>Wordmark, “menu” in the brand logo, headlines, headings, values, the bold lead of a note.</td><td>14.9:1 or better on every background.</td></tr>
+          <tr><td><div class="sw" style="background:#3a3f47"></div></td><td class="nm"><code>body-ink</code></td><td>#3a3f47</td><td>Paragraphs: the intro line and notes.</td><td>10.6:1 on <code>shell-bg</code>.</td></tr>
+          <tr><td><div class="sw" style="background:#6b7280"></div></td><td class="nm"><code>muted</code></td><td>#6b7280</td><td>Eyebrow, labels, “by Menu.ca”, footer.</td><td>4.8:1 on <code>shell-bg</code>; 4.3:1 on <code>card-bg</code>, kept exact from the source.</td></tr>
+          <tr><td><div class="sw" style="background:#fe4745"></div></td><td class="nm"><code>menuca-accent</code></td><td>#fe4745</td><td>The Menu.ca red: top bar, wordmark dot, the one button, arrow links. Also “connect”, the logo dot and the M mark.</td><td>3.4:1 as text on <code>shell-bg</code>: bold 18px links and the dot only.</td></tr>
+          <tr><td><div class="sw" style="background:#ffffff"></div></td><td class="nm"><code>button-text</code></td><td>#ffffff</td><td>The button label on red.</td><td>3.4:1; passes only because the label is 22px bold.</td></tr>
+          <tr><td><div class="sw" style="background:#e6e9ee"></div></td><td class="nm"><code>line</code></td><td>#e6e9ee</td><td>The one rule.</td><td>Decorative only; never the sole divider of meaning.</td></tr>
+          <tr><td><div class="sw" style="background:#0f766e"></div></td><td class="nm">Turquoise</td><td>#0f766e</td><td>Web pages only: small bold stat labels.</td><td>5.5:1 on #ffffff.</td></tr>
+          <tr><td><div class="sw" style="background:#15803d"></div></td><td class="nm">Green</td><td>#15803d</td><td>Web pages only: a live or done state (progress bar, “Live” label, a logged call).</td><td>5.0:1 on #ffffff.</td></tr>
+          <tr><td><div class="sw" style="background:#fdf1db;border-color:#9a5a06"></div></td><td class="nm">Amber</td><td>#9a5a06 on #fdf1db</td><td>Web pages only: a blocked state.</td><td>4.9:1.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="scroll only-dark">
+      <table class="swatches">
+        <caption class="small" style="text-align:left;padding-bottom:8px">Dark mode palette</caption>
+        <thead><tr><th scope="col">Swatch</th><th scope="col">Name</th><th scope="col">Hex</th><th scope="col">For</th><th scope="col">Contrast</th></tr></thead>
+        <tbody>
+          <tr><td><div class="sw" style="background:#0d1b2e"></div></td><td class="nm"><code>page-bg</code></td><td>#0d1b2e</td><td>The page; the same navy as the card, so it reads as one surface.</td><td>Background.</td></tr>
+          <tr><td><div class="sw" style="background:#0d1b2e"></div></td><td class="nm"><code>shell-bg</code></td><td>#0d1b2e</td><td>The email card and web page.</td><td>Background.</td></tr>
+          <tr><td><div class="sw" style="background:#16283f"></div></td><td class="nm"><code>card-bg</code></td><td>#16283f</td><td>The sign-in card; cards on web pages.</td><td>Background; <code>ink</code> on it 14.9:1, <code>muted</code> on it 6.7:1.</td></tr>
+          <tr><td><div class="sw" style="background:#ffffff"></div></td><td class="nm"><code>ink</code></td><td>#ffffff</td><td>Wordmark, “menu” in the brand logo, headlines, headings, values, the bold lead of a note.</td><td>14.9:1 or better on every background.</td></tr>
+          <tr><td><div class="sw" style="background:#d5deea"></div></td><td class="nm"><code>body-ink</code></td><td>#d5deea</td><td>Paragraphs.</td><td>12.8:1 on <code>shell-bg</code>.</td></tr>
+          <tr><td><div class="sw" style="background:#9fb0c3"></div></td><td class="nm"><code>muted</code></td><td>#9fb0c3</td><td>Eyebrow, labels, “by Menu.ca”, footer.</td><td>7.8:1 on <code>shell-bg</code>.</td></tr>
+          <tr><td><div class="sw" style="background:#2dd4bf"></div></td><td class="nm"><code>menuca-accent</code></td><td>#2dd4bf</td><td>Teal replaces red: top bar, the Menu.ca wordmark dot, the one button, arrow links.</td><td>9.3:1 on <code>shell-bg</code>.</td></tr>
+          <tr><td><div class="sw" style="background:#0d1b2e"></div></td><td class="nm"><code>button-text</code></td><td>#0d1b2e</td><td>The button label, navy on teal.</td><td>9.3:1.</td></tr>
+          <tr><td><div class="sw" style="background:#26395a"></div></td><td class="nm"><code>line</code></td><td>#26395a</td><td>The one rule.</td><td>Decorative only; never the sole divider of meaning.</td></tr>
+          <tr><td><div class="sw" style="background:#fe4745"></div></td><td class="nm">Brand red</td><td>#fe4745</td><td>Stays red in dark: the M mark, “connect” and the dot in “by Menu.ca”.</td><td>5.1:1 on #0d1b2e.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <p class="only-light"><strong>In the other mode.</strong> The page and card go navy, cards #16283f, text white and blue-greys, and every use of <code>menuca-accent</code> turns teal #2dd4bf with a navy button label. The M mark, “connect” and the logo dot stay red #fe4745. Turquoise, green and amber have no dark values yet: keep pages that need them light.</p>
+      <p class="only-dark"><strong>In the other mode.</strong> The page is white #ffffff with #eef1f4 cards, text <code>ink</code> #1a1d23, and <code>menuca-accent</code> is the Menu.ca red #fe4745 with a white button label. Turquoise, green and amber exist only there: the rollout tracker is light only, so keep pages that need them light.</p>
+      <p><strong>Accessibility.</strong> Text pairs clear 4.5:1 in both themes except three kept exactly as the source has them: <code>muted</code> labels on <code>card-bg</code> in light (4.3:1), <code>menuca-accent</code> links on <code>shell-bg</code> in light (3.4:1, bold 18px), and <code>button-text</code> on <code>menuca-accent</code> in light (3.4:1, passes only because the label is 22px bold). Do not set smaller or lighter text in these colours.</p>
+    </div>
+  </section>
+
+  <!-- 4 Type -->
+  <section class="part" id="type">
+    <h2 class="section-heading">Type</h2>
+    <div class="prose">
+      <p>One system sans, <code>sans</code> (Arial, 'Helvetica Neue', sans-serif); no web fonts. <code>mono</code> (Courier New) only for values an owner copies: <code>value-mono</code>. The scale is large on purpose: owners read on phones. Bold is the only weight above regular.</p>
+    </div>
+    <div class="spec"><div class="meta"><b>wordmark</b> 34/38 bold, -0.5px, <code>ink</code>. The header lockup beside the 48px mark.</div><div class="s wordmark">Menu<span class="mc-dot">.</span>&#8203;ca</div></div>
+    <div class="spec"><div class="meta"><b>wordmark-footer</b> 18/24 bold, <code>ink</code>. The footer’s left column, above the tagline.</div><div class="s wordmark-footer">Menu<span class="mc-dot">.</span>&#8203;ca</div></div>
+    <div class="spec"><div class="meta"><b>eyebrow</b> 14/18 regular, 2.5px, <code>muted</code>. Written in sentence case, set uppercase by CSS.</div><div class="s eyebrow mc-eyebrow mc-muted">Welcome to Menu.ca</div></div>
+    <div class="spec"><div class="meta"><b>headline</b> 42/48 bold, -1px, <code>ink</code>. One per email, the restaurant’s name first.</div><div class="s headline">Wok Bistro TEST, your dashboard is ready.</div></div>
+    <div class="spec"><div class="meta"><b>intro</b> 21/28 regular, <code>body-ink</code>. One line under the headline.</div><div class="s intro mc-body">Manage your menu, orders, and account in one place.</div></div>
+    <div class="spec"><div class="meta"><b>section-heading</b> 26/32 bold, <code>ink</code>. Heading over the help links.</div><div class="s section-heading">A little help getting started</div></div>
+    <div class="spec"><div class="meta"><b>card-heading</b> 22/28 bold, <code>ink</code>. Heading inside the sign-in card.</div><div class="s card-heading">Your sign-in details</div></div>
+    <div class="spec"><div class="meta"><b>button-label</b> 22/26 bold, <code>button-text</code> on <code>menuca-accent</code>. The one button.</div><div class="s" style="max-width:420px"><a class="mc-btn button-label" href="#ex-button">Open your dashboard</a></div></div>
+    <div class="spec"><div class="meta"><b>link</b> 18/24 bold, <code>menuca-accent</code>, no underline. Arrow links in the help block.</div><div class="s link"><a class="mc-link" style="margin:0" href="#ex-links">Read the owner’s guide &rarr;</a></div></div>
+    <div class="spec"><div class="meta"><b>note</b> 17/25 regular. The lead question in bold <code>ink</code>, the rest <code>body-ink</code>.</div><div class="s note mc-body"><strong class="mc-ink">Prefer Google?</strong> Sign in with the same email above.</div></div>
+    <div class="spec"><div class="meta"><b>value</b> 18/24 regular, <code>ink</code>. A card value that is prose-like (the sign-in email).</div><div class="s value">owner@wokbistro.example</div></div>
+    <div class="spec"><div class="meta"><b>value-mono</b> Courier New 18/24 regular, <code>ink</code>, <code>word-break: break-all</code>. Values the owner copies: password, tablet PIN.</div><div class="s value-mono">2580</div></div>
+    <div class="spec"><div class="meta"><b>label</b> 14/18 regular, <code>muted</code>. Card labels.</div><div class="s label mc-muted">Sign-in email</div></div>
+    <div class="spec"><div class="meta"><b>footer</b> 14/20 regular, <code>muted</code>. Footer lines.</div><div class="s footer mc-muted">Good food moves further.</div></div>
+  </section>
+
+  <!-- 5 Spacing and corners -->
+  <section class="part" id="spacing">
+    <h2 class="section-heading">Spacing and corners</h2>
+    <p class="prose">Exact source values, not a grid. Every row is padded <code>space-24</code> left and right. The rhythm down the welcome email: <code>space-30</code> above the lockup, <code>space-34</code> to the eyebrow, <code>space-18</code> between eyebrow, headline and intro, <code>space-26</code> above the button and the sign-in card, <code>space-30</code> above the first note, <code>space-16</code> between notes, <code>space-30</code> above the rule and the help block, <code>space-34</code> above and below the footer.</p>
+    <div class="sp"><code>space-4</code><span>4px</span><div class="bar-v" style="width:4px"></div><div class="u">Card label to its value.</div></div>
+    <div class="sp"><code>space-8</code><span>8px</span><div class="bar-v" style="width:8px"></div><div class="u">Sign-in card bottom padding (rows carry their own 16px).</div></div>
+    <div class="sp"><code>space-12</code><span>12px</span><div class="bar-v" style="width:12px"></div><div class="u">Between arrow links; the outer page’s side padding.</div></div>
+    <div class="sp"><code>space-16</code><span>16px</span><div class="bar-v" style="width:16px"></div><div class="u">Between card rows; above the second note; under the help heading.</div></div>
+    <div class="sp"><code>space-18</code><span>18px</span><div class="bar-v" style="width:18px"></div><div class="u">Eyebrow to headline, headline to intro; under the card heading.</div></div>
+    <div class="sp"><code>space-20</code><span>20px</span><div class="bar-v" style="width:20px"></div><div class="u">Button padding, all sides.</div></div>
+    <div class="sp"><code>space-24</code><span>24px</span><div class="bar-v" style="width:24px"></div><div class="u">The content inset: left and right of every row; sign-in card padding; the outer page’s top and bottom padding.</div></div>
+    <div class="sp"><code>space-26</code><span>26px</span><div class="bar-v" style="width:26px"></div><div class="u">Above the button and above the sign-in card.</div></div>
+    <div class="sp"><code>space-30</code><span>30px</span><div class="bar-v" style="width:30px"></div><div class="u">Above the header lockup, the first note, the rule and the help block.</div></div>
+    <div class="sp"><code>space-34</code><span>34px</span><div class="bar-v" style="width:34px"></div><div class="u">Above the eyebrow; the footer’s top and bottom padding.</div></div>
+
+    <h3 class="card-heading">Corners</h3>
+    <div class="radii">
+      <div style="border-radius:14px"><code>radius-shell</code><br>14px: the 600px card, overflow hidden so the top bar follows it.</div>
+      <div style="border-radius:12px"><code>radius-card</code><br>12px: the sign-in card.</div>
+      <div style="border-radius:10px"><code>radius-button</code><br>10px: the button.</div>
+    </div>
+    <h3 class="card-heading">Fixed sizes</h3>
+    <div class="prose">
+      <ul>
+        <li><code>shell-width</code> 600px: max width of the card; width 100% below it.</li>
+        <li><code>topbar-height</code> 5px: the <code>menuca-accent</code> bar across the top of the card.</li>
+        <li><code>mark-size</code> 48px: the M mark in the header (sent as a 96px PNG for sharp screens).</li>
+        <li><code>mark-column</code> 60px: the cell holding the mark, 48px plus a 12px gap before the wordmark.</li>
+      </ul>
+      <p>No shadows, no borders on cards, no coloured left edge.</p>
+    </div>
+  </section>
+
+  <!-- 6 Examples -->
+  <section class="part" id="examples">
+    <h2 class="section-heading">Examples</h2>
+    <p class="prose">The rows of the owner welcome email, rendered live in <span class="only-light">light</span><span class="only-dark">dark</span> mode on the 600px card over <code>page-bg</code>.</p>
+
+    <div class="ex" id="ex-header">
+      <h3 class="card-heading">Email header</h3>
+      <div class="mc-page"><div class="mc-shell mc-open">
+        <div class="mc-topbar"></div>
+        <div class="mc-row mc-lockup"><img src="menu-ca-mark.png" width="48" height="48" alt="Menu.ca"><span class="wordmark mc-ink">Menu<span class="mc-dot">.</span>&#8203;ca</span></div>
+      </div></div>
+      <p class="mode-line only-light">Light: a 5px red #fe4745 top bar, the wordmark <code>ink</code> #1a1d23 with a red dot, on the white #ffffff card over #eef1f4.</p>
+      <p class="mode-line only-dark">Dark: page and card both navy #0d1b2e, so the email reads as one surface; the top bar and the wordmark dot turn teal #2dd4bf; the wordmark turns white; the M mark stays red #fe4745.</p>
+      <p class="dd"><strong>Do:</strong> use it unchanged on every email Menu.ca sends to owners. <strong>Don’t:</strong> add a restaurant logo or tagline beside it, tint or box the mark, link the wordmark, or shrink it.</p>
+    </div>
+
+    <div class="ex" id="ex-headline">
+      <h3 class="card-heading">Headline</h3>
+      <div class="mc-page"><div class="mc-shell mc-open">
+        <div class="mc-row" style="padding-top:var(--space-34)">
+          <p class="eyebrow mc-eyebrow mc-muted">Welcome to Menu.ca</p>
+          <p class="headline mc-ink" style="margin-top:var(--space-18)">Wok Bistro TEST,<br>your dashboard is ready.</p>
+          <p class="intro mc-body" style="margin-top:var(--space-18)">Manage your menu, orders, and account in one place.</p>
+        </div>
+      </div></div>
+      <p class="mode-line only-light">Light: eyebrow <code>muted</code> #6b7280, headline <code>ink</code> #1a1d23, intro <code>body-ink</code> #3a3f47, on <code>shell-bg</code> #ffffff.</p>
+      <p class="mode-line only-dark">Dark: eyebrow <code>muted</code> #9fb0c3, headline <code>ink</code> #ffffff, intro <code>body-ink</code> #d5deea, on <code>shell-bg</code> #0d1b2e.</p>
+      <p class="dd"><strong>Do:</strong> name the restaurant first; end the headline with a period. <strong>Don’t:</strong> stack a second headline, or add a paragraph between the intro and the button.</p>
+    </div>
+
+    <div class="ex" id="ex-card">
+      <h3 class="card-heading">Sign-in card</h3>
+      <div class="mc-page"><div class="mc-shell mc-open">
+        <div class="mc-row" style="padding-top:var(--space-26)"><div class="mc-card">
+          <p class="card-heading mc-ink" style="margin:0 0 var(--space-18)">Your sign-in details</p>
+          <div class="mc-cred"><p class="label mc-muted">Sign-in email</p><p class="value mc-ink">owner@wokbistro.example</p></div>
+          <div class="mc-cred"><p class="label mc-muted">Password</p><p class="value-mono mc-ink">sample-only-1234</p></div>
+          <div class="mc-cred"><p class="label mc-muted">Tablet PIN</p><p class="value-mono mc-ink">2580</p></div>
+        </div></div>
+      </div></div>
+      <p class="mode-line only-light">Light: card <code>card-bg</code> #eef1f4; heading and values <code>ink</code> #1a1d23; labels <code>muted</code> #6b7280 (4.3:1, kept exact).</p>
+      <p class="mode-line only-dark">Dark: card <code>card-bg</code> #16283f; heading and values <code>ink</code> #ffffff; labels <code>muted</code> #9fb0c3.</p>
+      <p class="dd"><strong>Do:</strong> keep it to the facts; the prose around it goes in notes. <strong>Don’t:</strong> use it for marketing points or stats, add icons, or change what the welcome email’s card shows.</p>
+    </div>
+
+    <div class="ex" id="ex-note">
+      <h3 class="card-heading">Note</h3>
+      <div class="mc-page"><div class="mc-shell mc-open">
+        <div class="mc-row" style="padding-top:var(--space-30)"><p class="note mc-body"><strong class="mc-ink">Prefer Google?</strong> Sign in with the same email above.</p></div>
+        <div class="mc-row" style="padding-top:var(--space-16)"><p class="note mc-body"><strong class="mc-ink">Trouble signing in?</strong> Choose “Email me a sign-in link” on the sign-in page.</p></div>
+      </div></div>
+      <p class="mode-line only-light">Light: lead <code>ink</code> #1a1d23, body <code>body-ink</code> #3a3f47, on <code>shell-bg</code> #ffffff.</p>
+      <p class="mode-line only-dark">Dark: lead <code>ink</code> #ffffff, body <code>body-ink</code> #d5deea, on <code>shell-bg</code> #0d1b2e.</p>
+      <p class="dd"><strong>Do:</strong> open with a short bold question, answer it in one sentence. <strong>Don’t:</strong> turn it into a paragraph; two sentences is the limit.</p>
+    </div>
+
+    <div class="ex" id="ex-button">
+      <h3 class="card-heading">Button</h3>
+      <div class="mc-page"><div class="mc-shell mc-open">
+        <div class="mc-row" style="padding-top:var(--space-26)"><a class="mc-btn button-label" href="#ex-button">Open your dashboard</a></div>
+      </div></div>
+      <p class="mode-line only-light">Light: fill <code>menuca-accent</code> red #fe4745, label <code>button-text</code> white #ffffff (3.4:1, passes only at 22px bold).</p>
+      <p class="mode-line only-dark">Dark: fill <code>menuca-accent</code> turns teal #2dd4bf; the label <code>button-text</code> turns navy #0d1b2e (9.3:1).</p>
+      <p class="dd"><strong>Do:</strong> one button per email, for the thing the email is for. <strong>Don’t:</strong> a second button, an outline or grey variant, an icon in the label. Secondary actions are arrow links.</p>
+    </div>
+
+    <div class="ex" id="ex-links">
+      <h3 class="card-heading">Arrow links</h3>
+      <div class="mc-page"><div class="mc-shell mc-open">
+        <div class="mc-row" style="padding-top:var(--space-30)">
+          <p class="section-heading mc-ink" style="margin:0 0 var(--space-16)">A little help getting started</p>
+          <a class="mc-link link" href="#ex-links">Read the owner’s guide &rarr;</a>
+          <a class="mc-link link" href="#ex-links">Contact support &rarr;</a>
+        </div>
+      </div></div>
+      <p class="mode-line only-light">Light: heading <code>ink</code> #1a1d23; links <code>menuca-accent</code> red #fe4745, bold 18px, no underline.</p>
+      <p class="mode-line only-dark">Dark: heading <code>ink</code> #ffffff; links <code>menuca-accent</code> teal #2dd4bf, bold, no underline.</p>
+      <p class="dd"><strong>Do:</strong> start with a verb and end with →; contact goes to restaurants@menu.ca. <strong>Don’t:</strong> underline, or use it for the email’s main action (that is the button).</p>
+    </div>
+
+    <div class="ex" id="ex-rule">
+      <h3 class="card-heading">Rule</h3>
+      <div class="mc-page"><div class="mc-shell mc-open">
+        <div class="mc-row" style="padding-top:var(--space-30)"><div class="mc-rule"></div></div>
+      </div></div>
+      <p class="mode-line only-light">Light: <code>line</code> #e6e9ee, 1px, on white.</p>
+      <p class="mode-line only-dark">Dark: <code>line</code> turns #26395a, 1px, on navy.</p>
+      <p class="dd"><strong>Do:</strong> one rule, closing the body and opening the help block. <strong>Don’t:</strong> use it between every section; the welcome email has exactly one.</p>
+    </div>
+
+    <div class="ex" id="ex-footer">
+      <h3 class="card-heading">Footer</h3>
+      <div class="mc-page"><div class="mc-shell">
+        <div class="mc-row mc-foot" style="padding-top:var(--space-34);padding-bottom:var(--space-34)">
+          <div class="footer mc-muted"><span class="wordmark-footer mc-ink">Menu<span class="mc-dot">.</span>&#8203;ca</span><br>Good food moves further.</div>
+          <div class="footer mc-muted">&copy; 2026 Menu.ca<br>All rights reserved.</div>
+        </div>
+      </div></div>
+      <p class="mode-line only-light">Light: text <code>muted</code> #6b7280; <code>wordmark-footer</code> <code>ink</code> #1a1d23 with a red #fe4745 dot.</p>
+      <p class="mode-line only-dark">Dark: text <code>muted</code> #9fb0c3; <code>wordmark-footer</code> <code>ink</code> #ffffff; its dot follows <code>menuca-accent</code> and turns teal #2dd4bf.</p>
+      <p class="dd"><strong>Do:</strong> a campaign email that needs a “why you get this” line puts it in its own footer-style row above this one, after the rule. <strong>Don’t:</strong> add social icons, addresses or a second logo.</p>
+    </div>
+  </section>
+
+  <!-- 7 Writing -->
+  <section class="part" id="writing">
+    <h2 class="section-heading">Writing</h2>
+    <div class="prose">
+      <p><strong>Get to the point.</strong> Owners read nothing that is not to the point. The welcome email carries three beats and no fourth: the dashboard and sign-in, the owner’s guide, one contact address. Each beat is a line or two.</p>
+      <p><strong>Speak to the owner as “you”.</strong> Name the restaurant first, then the news: “Wok Bistro TEST, your dashboard is ready.” The welcome email speaks in plain instructions (“Open your dashboard”, “Sign in with the same email above.”) and never says “I”. Campaign emails may say “we” for the Menu.ca team.</p>
+      <p><strong>Sentence case everywhere.</strong> Headings, buttons and links start with a capital and nothing else: “Your sign-in details”, “A little help getting started”, “Open your dashboard”, “Read the owner’s guide”. The eyebrow is written in sentence case and set in capitals by CSS, never typed in capitals.</p>
+      <p><strong>Buttons and links start with a verb.</strong> “Open your dashboard”, “Read the owner’s guide”, “Contact support”. Help links end with a right arrow (→).</p>
+      <p><strong>Short questions lead a note.</strong> The question is bold; the answer is one sentence.</p>
+      <p><strong>Punctuation.</strong> No em dashes, ever: use a period, a comma or a colon. Curly quotes and apostrophes (“ ” ’). A headline ends with a period.</p>
+      <p><strong>Names.</strong> “Menu.ca” with a capital M; in the header and footer it is the wordmark, never a link. The product owners sign in to is “your dashboard”. Contact goes to restaurants@menu.ca.</p>
+      <p><strong>Tagline.</strong> “Good food moves further.” Only in the footer.</p>
+      <p><strong>Sign-off.</strong> The welcome email has no sign-off line; it closes with the help links and the footer. A campaign email that needs one signs “The Menu.ca team”.</p>
+      <p><strong>No emoji</strong>, no icons in copy.</p>
+      <p><strong>French.</strong> Every string has a French pair, chosen by the restaurant’s language (English when unset). French puts a space before ? and uses « » quotes.</p>
+    </div>
+    <div class="scroll">
+      <table class="pairs">
+        <thead><tr><th scope="col">English</th><th scope="col">French</th></tr></thead>
+        <tbody>
+          <tr><td>Welcome to Menu.ca</td><td lang="fr">Bienvenue chez Menu.ca</td></tr>
+          <tr><td>Open your dashboard</td><td lang="fr">Ouvrir votre tableau de bord</td></tr>
+          <tr><td>Tablet PIN</td><td lang="fr">NIP de la tablette</td></tr>
+          <tr><td>Good food moves further.</td><td lang="fr">La bonne cuisine va plus loin.</td></tr>
+          <tr><td>All rights reserved.</td><td lang="fr">Tous droits réservés.</td></tr>
+          <tr><td>Trouble signing in?</td><td lang="fr">Un problème de connexion ?</td></tr>
+          <tr><td>“Email me a sign-in link”</td><td lang="fr">« Recevoir un lien de connexion par courriel »</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 8 Web pages -->
+  <section class="part" id="web">
+    <h2 class="section-heading">Web pages</h2>
+    <div class="prose">
+      <p>Taken from the pages built in this brand: the sales rollout tracker, the case study and the owner’s guide.</p>
+      <ul>
+        <li class="only-light"><strong>Page.</strong> White #ffffff. A working page (the rollout tracker) runs up to 1040px wide on white; a client letter (the case study, the owner’s guide) keeps the email’s card, 600 to 680px, on <code>page-bg</code> #eef1f4.</li>
+        <li class="only-dark"><strong>Page.</strong> Navy #0d1b2e. A working page runs up to 1040px wide; a client letter (the case study, the owner’s guide) keeps the email’s card, 600 to 680px, on <code>page-bg</code>, the same navy.</li>
+        <li><strong>Header.</strong> The 5px <code>menuca-accent</code> top bar across the page, then the brand logo, version D: the 48px M mark, “menu” in <code>ink</code> and “connect” in #fe4745, over “by Menu.ca” in <code>muted</code> with a red dot. A dense working page may set the wordmark at 28/32 and “by Menu.ca” at 15/19, as the tracker does.</li>
+        <li class="only-light"><strong>Cards.</strong> <code>card-bg</code> #eef1f4; rounded, no shadows, no borders, no coloured edge.</li>
+        <li class="only-dark"><strong>Cards.</strong> <code>card-bg</code> #16283f; rounded, no shadows, no borders, no coloured edge.</li>
+        <li><strong>Type.</strong> Arial (<code>sans</code>), sentence case, bold the only weight above regular; the eyebrow is set in capitals by CSS, never typed in capitals.</li>
+        <li class="only-light"><strong>Colour.</strong> One red. Turquoise #0f766e only for small bold stat labels. Green #15803d only for a live or done state; amber #9a5a06 on #fdf1db only for blocked.</li>
+        <li class="only-dark"><strong>Colour.</strong> One accent, teal #2dd4bf; the brand red #fe4745 stays on the mark, “connect” and the logo dot. Turquoise, green and amber have no dark values yet: the rollout tracker is light only, so keep pages that need them light.</li>
+        <li><strong>Footer.</strong> As in the emails: the <code>line</code> rule, then “Menu.ca” and “Good food moves further.” on the left, “© &lt;year&gt; Menu.ca / All rights reserved.” on the right, in <code>muted</code>.</li>
+        <li><strong>Don’t</strong> bring the staff admin dashboard look into client or sales pages: no mono uppercase labels, no grey or teal admin colours.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9 Emails -->
+  <section class="part" id="emails">
+    <h2 class="section-heading">Emails</h2>
+    <div class="prose">
+      <p><strong>The reference.</strong> The owner welcome email (“&lt;Restaurant&gt;, your dashboard is ready”): match it, never change it.</p>
+      <p class="only-light"><strong>The shell.</strong> A 600px (<code>shell-width</code>) white #ffffff card with 14px (<code>radius-shell</code>) corners on a #eef1f4 <code>page-bg</code> page padded 24px top and bottom, 12px at the sides. A 5px red #fe4745 bar runs across the top of the card. Every row inside is a table cell padded 24px left and right, left aligned. No shadows, no borders on the card.</p>
+      <p class="only-dark"><strong>The shell.</strong> A 600px (<code>shell-width</code>) card with 14px (<code>radius-shell</code>) corners; page and card are both navy #0d1b2e, so the email reads as one surface. A 5px teal #2dd4bf bar runs across the top of the card. Every row inside is a table cell padded 24px left and right, left aligned. No shadows, no borders on the card.</p>
+      <p><strong>Which logo.</strong> Emails Menu.ca sends to owners carry the plain Menu.ca lockup only, never the restaurant’s logo (the owner reads our email as coming from us). Emails a restaurant sends its customers from its storefront are the restaurant’s and carry its logo instead.</p>
+      <p><strong>Email-safe construction.</strong> Tables with <code>role="presentation"</code>, inline styles on every cell, the class names <code>em-ink</code>, <code>em-body</code>, <code>em-muted</code>, <code>em-card</code>, <code>em-btn</code>, <code>em-btn-text</code>, <code>em-link</code>, <code>em-rule</code>, <code>em-topbar</code> and <code>em-dot</code> only as hooks for the dark-mode rules. Images go as inline (CID) attachments, never SVG, data URIs or hotlinks.</p>
+      <p><strong>The wordmark.</strong> Live text: <code>Menu&lt;span style="color:menuca-accent"&gt;.&lt;/span&gt;&amp;#8203;ca</code>. The zero-width space stops mail apps from turning it into a blue link.</p>
+      <p><strong>The mark.</strong> Ships as an inline (CID) attachment rendered to 96 x 96 from the 1024 x 1024 master (<code>menu-ca-logo.png</code>), shown at 48 x 48, CID <code>ic-menuca-mark-fe4745</code>.</p>
+      <p class="only-light"><strong>Light mode in mail apps.</strong> This is the layout every mail app shows by default, and the only one Gmail shows: Gmail ignores <code>prefers-color-scheme: dark</code> and keeps the light layout.</p>
+      <p class="only-dark"><strong>Dark mode in mail apps.</strong> The welcome email ships dark mode through <code>prefers-color-scheme: dark</code> (Apple Mail, iOS Mail, Outlook mobile); Gmail ignores it and keeps the light layout. The page and card go navy, the sign-in card #16283f, text white and blue-greys, and <code>menuca-accent</code> turns teal with a navy button label. The M mark stays red. Every colour token carries both values.</p>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <div class="mc-foot">
+      <div class="footer mc-muted"><span class="wordmark-footer mc-ink">Menu<span class="mc-dot">.</span>&#8203;ca</span><br>Good food moves further.</div>
+      <div class="footer mc-muted">&copy; 2026 Menu.ca<br>All rights reserved.</div>
+    </div>
+  </footer>
+</main>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var radios = document.querySelectorAll('#mode-switch input[name="mode"]');
+  function sync() {
+    var m = root.getAttribute('data-mode') === 'dark' ? 'dark' : 'light';
+    for (var i = 0; i < radios.length; i++) radios[i].checked = radios[i].value === m;
+  }
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', function (e) {
+      root.setAttribute('data-mode', e.target.value);
+      try { localStorage.setItem('mc-brand-guide-mode', e.target.value); } catch (err) {}
+    });
+  }
+  sync();
+})();
+</script>
+
+
+<script>
+(function () {
+  var menu = document.querySelector('.contents');
+  var mobile = window.matchMedia('(max-width: 760px)');
+  var links = Array.from(document.querySelectorAll('.toc a'));
+  var sections = links.map(function (link) { return document.querySelector(link.hash); });
+  var current = document.getElementById('current-section');
+  function layout() { menu.open = !mobile.matches; }
+  layout();
+  mobile.addEventListener('change', layout);
+  menu.addEventListener('click', function (event) {
+    if (mobile.matches && event.target.closest('a')) menu.open = false;
+  });
+  function update() {
+    var index = 0;
+    var top = mobile.matches ? 168 : 128;
+    sections.forEach(function (section, i) {
+      if (section.getBoundingClientRect().top <= top) index = i;
+    });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) index = links.length - 1;
+    links.forEach(function (link, i) {
+      if (i === index) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    current.textContent = links[index].textContent;
+  }
+  var scheduled = false;
+  function schedule() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(function () { update(); scheduled = false; });
+  }
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  window.addEventListener('load', schedule);
+  document.getElementById('mode-switch').addEventListener('change', schedule);
+  update();
+})();
+</script>
+</body>
+</html>

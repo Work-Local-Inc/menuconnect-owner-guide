@@ -71,3 +71,9 @@ Share the PR link and, after the deploy, the live page. Do not call a change liv
 because it was committed or merged; check the live page first. If a deploy does not
 appear, tell Brian rather than publishing a copy manually. The last successful deployment
 remains available.
+
+## Shared site: two teams, one repo (Brian, 2026-10-05)
+- This org repo (Work-Local-Inc/menuconnect-owner-guide) is the ONE source for guide.menuconnect.ca. Netlify rebuilds the whole site from `main` on every merge. Tim's old personal repo is retired: never publish from it.
+- Menu Brian's pages live in `menu-brian/` (served at /menu-ottawa/, /brand-guide/, /plan, /emails). build.py copies them into dist/. Never delete, rename or edit `menu-brian/`, and keep that copy line in build.py. Menu Brian's agent changes them only through PRs to this repo.
+- The guide's own files (index.html, guide.html -> /start.html, assets/, _redirects, _headers) are the guide agent's to change.
+- Never upload to Netlify directly: a direct upload is wiped by the next merge (that is what removed Menu Brian's pages on 2026-10-05).
