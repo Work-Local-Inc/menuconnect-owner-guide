@@ -517,7 +517,15 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
  #openingReference h2{font-size:20pt}.opening-list{gap:4px}.opening-list label{padding:7px;color:black!important;break-inside:avoid}
  #openingReference a{color:black;text-decoration:none}
 }
+
+/* Tutorial videos (YouTube, privacy-enhanced embeds) */
+.lesson-video{margin:20px 0 6px}
+.lesson-video-frame{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0d1b2e}
+.lesson-video.short .lesson-video-frame{aspect-ratio:9/16;max-width:300px}
+.lesson-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lesson-video figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 </style>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"How to navigate and view insights","description":"Read your owner home and Insights. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/HV8NARECdok/hqdefault.jpg","uploadDate":"2026-10-02","duration":"PT1M20S","embedUrl":"https://www.youtube-nocookie.com/embed/HV8NARECdok","url":"https://www.youtube.com/watch?v=HV8NARECdok","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to view statements","description":"Find and read your weekly statements. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/SLErMDvIS6g/hqdefault.jpg","uploadDate":"2026-09-29","duration":"PT1M17S","embedUrl":"https://www.youtube-nocookie.com/embed/SLErMDvIS6g","url":"https://www.youtube.com/watch?v=SLErMDvIS6g","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to adjust hours on MenuConnect","description":"Change your opening hours. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/YWAbTZHQHcU/hqdefault.jpg","uploadDate":"2026-09-30","duration":"PT1M24S","embedUrl":"https://www.youtube-nocookie.com/embed/YWAbTZHQHcU","url":"https://www.youtube.com/watch?v=YWAbTZHQHcU","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to edit your menu on MenuConnect mobile","description":"Change a dish's price and hide it when it sells out. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/eDu90ZwPHpQ/hqdefault.jpg","uploadDate":"2026-10-02","duration":"PT1M34S","embedUrl":"https://www.youtube-nocookie.com/embed/eDu90ZwPHpQ","url":"https://www.youtube.com/watch?v=eDu90ZwPHpQ","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to request refunds","description":"Ask Menu.ca to review a refund. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/aI3paESK3AE/hqdefault.jpg","uploadDate":"2026-09-29","duration":"PT1M15S","embedUrl":"https://www.youtube-nocookie.com/embed/aI3paESK3AE","url":"https://www.youtube.com/watch?v=aI3paESK3AE","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to submit a request","description":"Send a request from your portal. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/ACqXj6bBVDM/hqdefault.jpg","uploadDate":"2026-09-30","duration":"PT1M8S","embedUrl":"https://www.youtube-nocookie.com/embed/ACqXj6bBVDM","url":"https://www.youtube.com/watch?v=ACqXj6bBVDM","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}}]</script>
 
 <div class="app">
 <aside class="rail" id="rail">
@@ -657,6 +665,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <h1>Your owner home</h1>
   <p class="lede">The first screen shows whether money is owed to you or carried forward, plus revenue, commission, cash/card mix, taxes, bank fees, the latest week, and longer-term trends. Everything else is one click away. Tap the numbered pins to explore.</p>
 
+  <figure class="lesson-video" data-video="HV8NARECdok">
+    <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/HV8NARECdok?rel=0" title="Video walkthrough: read your owner home and Insights" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>Video walkthrough: read your owner home and Insights</figcaption>
+  </figure>
+
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — tap the pins</div>
   <div class="frame">
     <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="urlbar">https://<b>yourrestaurant</b>.menuconnect.ca/portal</div></div>
@@ -704,6 +717,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <h1>Weekly statements</h1>
   <p class="lede">Every week gets a frozen statement that walks from gross sales down to a payout or carried balance, with every order listed underneath. Download CSV for analysis or PDF for your records.</p>
   <p class="hint">Sample statement: all orders paid online by card. This simplified teaching example does not include restaurant-collected cash, taxes or commission credits; use your actual statement for reconciliation.</p>
+
+  <figure class="lesson-video" data-video="SLErMDvIS6g">
+    <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/SLErMDvIS6g?rel=0" title="Video walkthrough: find and read your weekly statements" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>Video walkthrough: find and read your weekly statements</figcaption>
+  </figure>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Guide walkthrough · what each line means</div>
   <div class="frame">
@@ -776,6 +794,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <h1>Opening hours</h1>
   <p class="lede">Set the weekly schedule customers order against. One window per day — or add a second for a split shift. Save, then confirm the change on the customer storefront; if it has not appeared, use Owner help.</p>
   <div class="quick-answer"><h2>Quick answer: Change your regular hours</h2><p><b>Where:</b> Hours → Weekly schedule.</p><p><b>Do this:</b> Choose the day, edit the opening and closing times, then save. Use two windows for a lunch-and-dinner split.</p><p><b>Check:</b> Open the customer storefront and check the day and both service windows.</p></div><details class="quick-fix"><summary>My saved hours look wrong</summary><p>Confirm the day, 24-hour times, and any dated closure that overrides the weekly schedule. The tablet ordering window is view-only on this page; use Owner help if it is wrong.</p></details>
+
+  <figure class="lesson-video short" data-video="YWAbTZHQHcU">
+    <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/YWAbTZHQHcU?rel=0" title="Video walkthrough (phone): change your opening hours" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>Video walkthrough (phone): change your opening hours</figcaption>
+  </figure>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — toggle days, change times, then save</div>
   <div class="frame">
@@ -880,6 +903,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <h1>Change prices and availability</h1>
   <p class="lede"><b>Edit your menu directly.</b> Search dishes, edit an existing dish's name, description, and price, hide or restore it, feature eligible dishes, and manage photos. New dishes, categories, modifier groups, and combos still go through Owner help.</p>
   <div class="quick-answer"><h2>Quick answer: Mark a dish sold out</h2><p><b>Where:</b> Menu → Find the dish.</p><p><b>Do this:</b> Confirm the dish, then switch availability off. Restore it when the kitchen is ready to sell it again.</p><p><b>Check:</b> Check the customer menu to confirm the dish cannot be ordered.</p></div><details class="quick-fix"><summary>I cannot find the dish</summary><p>Search by dish name and use Show hidden items. Confirm the exact dish before restoring it. Use Owner help if the item, size, modifier, or category is wrong.</p></details>
+
+  <figure class="lesson-video short" data-video="eDu90ZwPHpQ">
+    <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/eDu90ZwPHpQ?rel=0" title="Video walkthrough (phone): change a dish's price and hide it when it sells out" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>Video walkthrough (phone): change a dish's price and hide it when it sells out</figcaption>
+  </figure>
 
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — mark something sold out, change a price</div>
   <div class="frame">
@@ -989,6 +1017,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <p class="lede">"Where's my order?" Search recent orders by number, customer name, or phone. The live table shows total, captured amount, refunded amount, status, and placement time. Before acceptance, the restaurant can reject or cancel the order on its tablet. After acceptance, the owner portal is view-only and Menu.ca handles cancellations and refunds.</p>
   <div class="quick-answer"><h2>Quick answer: Find a customer’s order</h2><p><b>Where:</b> Orders.</p><p><b>Do this:</b> Search by order number, customer name, or part of their phone number. Open the matching order.</p><p><b>Check:</b> Confirm the customer, placement time, status, total, captured amount, and refunded amount.</p></div><details class="quick-fix"><summary>I cannot find the order or need a refund</summary><p>Try another identifier and check that the list says Live · Up to date. If unresolved, send the available details through Owner help. Before acceptance, reject or cancel on the restaurant tablet. After acceptance, Menu.ca handles cancellations and refunds.</p></details>
 
+  <figure class="lesson-video" data-video="aI3paESK3AE">
+    <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/aI3paESK3AE?rel=0" title="Video walkthrough: ask Menu.ca to review a refund" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>Video walkthrough: ask Menu.ca to review a refund</figcaption>
+  </figure>
+
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it · search "212", "Priya", or "0184", then open an order</div>
   <div class="frame">
     <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="urlbar" id="orderMockUrl">…/portal/<b>orders</b></div></div>
@@ -1088,6 +1121,11 @@ Please confirm before changing anything that moves money.</code></div>
     <li>Use one clear request per issue when several unrelated things need work.</li>
     <li>Keep the confirmation so you know what was changed and when.</li>
   </ul>
+  <figure class="lesson-video" data-video="ACqXj6bBVDM">
+    <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/ACqXj6bBVDM?rel=0" title="Video walkthrough: send a request from your portal" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>Video walkthrough: send a request from your portal</figcaption>
+  </figure>
+
 </section>
 
 <!-- ================= 16 OWNER ROUTINE ================= -->
