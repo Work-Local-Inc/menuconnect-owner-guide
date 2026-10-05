@@ -8,7 +8,7 @@ https://github.com/Work-Local-Inc/menuconnect-owner-guide
 Brian (`brianlapp`) has administrator access. Tim (`tim1771`) has maintainer/write
 access. Both can push topic branches here and merge checked pull requests.
 Use an account authorized to this repository. If an agent cannot open it, check that
-agent's GitHub account/app access; do not move the site or request a Netlify token.
+agent's GitHub account/app access; do not move the site or request a hosting token.
 
 The migration is complete. The live splash is https://guide.menuconnect.ca/ and the
 owner guide is https://guide.menuconnect.ca/start. The old URLs still redirect.
@@ -49,32 +49,25 @@ conflicts. Flag any disputed content in the PR instead of silently replacing it.
 7. Merge only after the required checks pass and review conversations are resolved.
    A second person's approval is not required for routine work; each agent must still
    review its proposed changes. Main blocks direct/force pushes and deletion.
-8. Watch the **Guide checks and publishing** GitHub Actions run for the merged commit.
-   Confirm both `validate` and `publish` succeed, then check the affected live page.
-   The response header `X-Menuconnect-Commit` should identify that merged main commit.
-   A superseded run can skip publishing; verify the newer main run in that case.
+8. Merging to `main` deploys automatically within a few minutes. Then check the affected
+   live page. The response header `X-Menuconnect-Commit` identifies the deployed main
+   commit; if it is missing, compare the live page with a local `python3 build.py` of main.
 
-## Publishing: already automatic
+## Publishing: automatic from main
 
-GitHub Actions builds successful main updates and publishes them to **Brian's**
-Netlify project `menuconnect-shared-guide`. Its encrypted production credential is
-already configured. PR runs cannot access it or publish production. Routine edits
-require only GitHub access; no token exchange or manual upload is needed.
+The hosting is connected to this repository and deploys `main` automatically. Agents only
+commit to topic branches and merge checked pull requests. No hosting account, deploy
+token or manual upload is needed, and agents should not set any of those up.
 
-Netlify's built-in Git builds are NOT the publishing mechanism. They do not support
-this private organization repo on the current Netlify plan. Netlify may label the
-resulting uploads API/manual, but GitHub Actions publishes them automatically.
-Do not enable native Git builds, pause the GitHub workflow, or replace the connection.
-
-Cloudflare routes only `guide.menuconnect.ca/*` to Brian's Netlify origin. Leave DNS,
-the Cloudflare router, production secrets, and hosting settings alone for content
-updates. The guide CNAME must remain proxied. Do not point it at Tim's old Netlify site.
+Cloudflare routes only `guide.menuconnect.ca/*` to the hosting origin. Leave DNS,
+the Cloudflare router and hosting settings alone for content updates. The guide CNAME
+must remain proxied. Do not point it at Tim's old Netlify site.
 The router contains no guide content, so it needs no deployment for ordinary edits.
 See README.md for infrastructure details and the documented rollback.
 
 ## Reporting
 
-Share the PR link and, after publishing, the successful Actions run and live page.
-Do not call a change live just because it was committed, pushed, or uploaded.
-For a failed publish, inspect the failed job and fix it through a PR; do not publish
-an older copy manually. The last successful production deployment remains available.
+Share the PR link and, after the deploy, the live page. Do not call a change live just
+because it was committed or merged; check the live page first. If a deploy does not
+appear, tell Brian rather than publishing a copy manually. The last successful deployment
+remains available.

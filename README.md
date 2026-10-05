@@ -23,25 +23,17 @@ pull requests, passing `validate` checks, an up-to-date branch, and resolved rev
 conversations. Force pushes and main deletion are blocked, including for admins.
 A second person's approval is not mandatory, so either person can finish routine work.
 
-GitHub Actions builds and automatically publishes successful `main` updates to Brian's
-Netlify project. PRs run checks only. The `production` environment allows protected
-branches only and stores the deployment credential as an encrypted environment secret.
-The publisher checks the current main commit and serializes deployments, so a stale
-run cannot deploy after a newer main version. `X-Menuconnect-Commit` identifies the
-published commit without changing page content.
-
-Netlify's built-in builds do not support private organization repositories on Brian's
-current plan. The direct Netlify repository connection is therefore replaced by the
-GitHub publishing workflow. No plan upgrade or public repository is required. Netlify
-may label these as API/manual deploys; they are automated by GitHub Actions. Do not
-stop GitHub Actions or its production job when changing Netlify build settings.
+Merging to `main` deploys automatically: the hosting is connected to this repository and
+builds `main` itself (`netlify.toml` runs the checks, then `build.py`). GitHub Actions runs
+the same checks on every pull request and on `main`; it no longer publishes anything.
+`X-Menuconnect-Commit` identifies the deployed commit without changing page content.
 
 ### Domain routing
 
-Cloudflare serves `guide.menuconnect.ca` by fetching Brian's Netlify origin at
+Cloudflare serves `guide.menuconnect.ca` by fetching Brian's hosting origin at
 `menuconnect-shared-guide.netlify.app`. The worker source is `infra/guide-router.mjs`;
 its only route is `guide.menuconnect.ca/*`. The guide DNS CNAME is proxied through
-Cloudflare. Site content stays on Netlify and updates automatically when main builds.
+Cloudflare. Site content updates automatically when main deploys.
 The router forwards paths and queries and keeps redirects on the guide domain.
 
 This avoids depending on the old custom-domain registration held in another Netlify
@@ -59,11 +51,11 @@ The original OpenAI deployment remains intact. Only the guide record is in scope
 2. Change only the intended content. Never overwrite these files with an old export.
 3. Run `python3 validate.py` and `python3 build.py` (Node 22 and Python 3 required).
 4. Open a pull request, inspect the diff, and resolve any conflicts against current main.
-5. Merge only after checks pass. GitHub Actions publishes `main` to Brian’s Netlify; other branches do not publish production.
+5. Merge only after checks pass. Merging to `main` deploys automatically; other branches do not.
 
 Use `brian/<topic>` and `tim/<topic>` branches. Do not force-push or delete `main`.
 Do not publish to Tim’s former Netlify site or the OpenAI copy. Those are rollback references.
-Routine updates need GitHub access, not a personal Netlify token.
+Routine updates need GitHub access only.
 
 Tim’s latest changes must arrive in a separate PR based on THIS main. Port individual
 changes from the old repo and review deletions. The earlier combined preview is not
@@ -77,4 +69,4 @@ the approved baseline. Keep Brian’s current work unless a later change is expl
 - The HTML content is preserved exactly, including existing `/guide` links; redirects handle them.
 
 Only `dist/` is deployed. Build configuration is in `netlify.toml`. Never upload a
-separate production copy manually. Use the protected-main GitHub publishing workflow.
+separate production copy manually; merge to `main` instead.
