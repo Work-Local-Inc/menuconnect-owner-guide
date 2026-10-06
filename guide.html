@@ -1555,13 +1555,17 @@ var promos=[
 ];
 var promoList=$('#promoList');
 function renderPromos(){
-  promoList.innerHTML='';
+  promoList.textContent='';
+  // Built with text nodes: names and codes can come from what the visitor typed.
+  function el(tag,cls,text){var n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n}
   promos.forEach(function(p,i){
-    var row=document.createElement('div');row.className='promo-row';
-    row.innerHTML='<span class="pdesc"><b>'+p.name+'</b><span>'+p.desc+'</span><span class="pused"><span>Orders using it:</span> <b>'+p.used+'</b></span></span>'+
-      '<span class="pacts"><span class="pstate '+(p.on?'run':'paused')+'">'+(p.on?'Running':'Paused')+'</span>'+
-      '<button class="btn" type="button" data-pe="'+i+'">Edit</button><button class="btn" type="button" data-pp="'+i+'">'+(p.on?'Pause':'Restart')+'</button></span>';
-    promoList.appendChild(row);
+    var row=el('div','promo-row');
+    var d=el('span','pdesc');d.appendChild(el('b',null,p.name));d.appendChild(el('span',null,p.desc));
+    var u=el('span','pused');u.appendChild(el('span',null,'Orders using it:'));u.appendChild(document.createTextNode(' '));u.appendChild(el('b',null,String(p.used)));d.appendChild(u);
+    var a=el('span','pacts');a.appendChild(el('span','pstate '+(p.on?'run':'paused'),p.on?'Running':'Paused'));
+    var e=el('button','btn','Edit');e.type='button';e.setAttribute('data-pe',i);a.appendChild(e);
+    var b=el('button','btn',p.on?'Pause':'Restart');b.type='button';b.setAttribute('data-pp',i);a.appendChild(b);
+    row.appendChild(d);row.appendChild(a);promoList.appendChild(row);
   });
 }
 renderPromos();
@@ -1592,7 +1596,8 @@ function pbSync(){
   if(pb.when==='days')parts.push('on Tuesdays');
   if(pb.when==='dates')parts.push('between your chosen dates');
   if(pb.type!=='both')parts.push(pb.type==='pickup'?'pickup only':'delivery only');
-  $('#pbSummary').innerHTML=parts.map(function(x){return '<span>'+x+'</span>'}).join('<span> · </span>');
+  var sum=$('#pbSummary');sum.textContent='';
+  parts.forEach(function(x,i){if(i){var dot=document.createElement('span');dot.textContent=' · ';sum.appendChild(dot)}var n=document.createElement('span');n.textContent=x;sum.appendChild(n)});
   $('#pbHow').textContent=pb.get==='code'?'Customers enter the code at checkout.':'It comes off by itself. No code needed.';
 }
 pbBuilder.addEventListener('click',function(e){
