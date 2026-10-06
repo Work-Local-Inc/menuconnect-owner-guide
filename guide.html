@@ -371,19 +371,37 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 .odemo-panel time{min-width:64px;font-variant-numeric:tabular-nums;color:var(--ink)}
 @media(max-width:720px){.odemo-summary{grid-template-columns:repeat(2,1fr)}.odemo-grid{grid-template-columns:1fr}}
 
-/* ============ COUPONS ============ */
-.coupon{display:flex;align-items:center;gap:14px;padding:15px 17px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.coupon:last-child{border-bottom:0}
-.code{font-family:ui-monospace,'Cascadia Code',Menlo,monospace;font-weight:700;font-size:14.5px;background:var(--paper);border:1px dashed var(--line);border-radius:8px;padding:5px 11px}
-.cdesc{flex:1;min-width:170px}
-.cdesc b{display:block;font-size:14.5px}
-.cdesc span{font-size:12.5px;color:var(--muted)}
-.cstate{display:flex;align-items:center;gap:10px;margin-left:auto}
-.cstate em{font-style:normal;font-size:12px;font-weight:700;width:32px;color:var(--muted)}
-.coupon.on .cstate em{color:var(--accent-ink)}
-.undo-pill{display:none;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:4px 6px 4px 12px}
-.undo-pill.show{display:inline-flex;animation:rise .2s ease}
-.undo-pill button{border:0;background:var(--ink);color:var(--paper);border-radius:99px;padding:3px 11px;font-size:12px;font-weight:700}
+/* ============ PROMOTIONS ============ */
+.promo-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 17px;border-bottom:1px solid var(--line)}
+.promo-head h3{font-size:15px;margin:0}
+.promo-row{display:flex;align-items:center;gap:12px;padding:14px 17px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.promo-row .pdesc{flex:1;min-width:190px}
+.promo-row .pdesc b{display:block;font-size:14.5px}
+.promo-row .pdesc span{font-size:12.5px;color:var(--muted)}
+.promo-row .pused{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+.promo-row .pacts{display:flex;align-items:center;gap:8px;margin-left:auto}
+.promo-row .btn,.promo-head .btn{font-size:12.5px;padding:6px 11px}
+.pstate{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:99px}
+.pstate.run{color:var(--ok);background:var(--ok-soft)}
+.pstate.paused{color:var(--amber);background:var(--amber-soft)}
+.promo-quick{padding:13px 17px;background:var(--paper);border-radius:0 0 12px 12px}
+.promo-quick .chips{margin-top:8px}
+.promo-builder{padding:16px 17px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px}
+.promo-builder[hidden]{display:none}
+.pb-step{margin-bottom:14px}
+.pb-step h4{font-size:13.5px;margin:0 0 7px}
+.pb-opts{display:flex;gap:6px;flex-wrap:wrap}
+.pb-opts button{border:1px solid var(--line);background:var(--card);border-radius:9px;padding:6px 11px;font-size:12.5px;font-weight:600;color:var(--ink)}
+.pb-opts button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft,var(--paper));color:var(--accent-ink);box-shadow:inset 0 0 0 1px var(--accent)}
+.pb-inline{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px;font-size:13px}
+.pb-inline[hidden]{display:none}
+.promo-row .pused b{display:inline;font-size:12px;color:var(--ink)}
+.pb-inline input[type=text]{border:1px solid var(--line);border-radius:9px;padding:7px 11px;background:var(--paper);font-size:14px;width:120px}
+.pb-preview{border:1px dashed var(--accent-line);border-radius:11px;padding:13px 15px;background:var(--card);align-self:start;font-size:13.5px}
+.pb-preview small{display:block;color:var(--muted);font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.pb-preview p{margin:0 0 6px}
+.pb-actions{display:flex;gap:8px;margin-top:4px}
+@media(max-width:720px){.promo-builder{grid-template-columns:1fr}}
 
 /* ============ HANDLED FOR YOU ============ */
 .handled-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:24px}
@@ -590,7 +608,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
       <p class="setup-note">Opening a lesson marks it viewed; the quick check records an attempt, not a passing score or completed restaurant setup.</p>
     </section>
     <p class="lede">MenuConnect is your restaurant's online-ordering home base — money, menu, hours, and orders in one connected place. This comprehensive guide covers the owner workflows available today and when to ask Menu.ca for help. Practice controls never touch a real restaurant.</p>
-    <div class="quick-start"><h2>Already set up? Find a quick answer.</h2><p class="hint">Use these shortcuts anytime. They do not replace the setup.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="15">Get help →</a></div></div>
+    <div class="quick-start"><h2>Already set up? Find a quick answer.</h2><p class="hint">Use these shortcuts anytime. They do not replace the setup.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#promotions" data-jump="13">Create a promotion →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="15">Get help →</a></div></div>
     <div class="value-cards">
       <div class="vcard">
         <div class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="3.5" width="15" height="13" rx="2"/><path d="M2.5 8h15M6.5 12h4"/></svg></div>
@@ -687,7 +705,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
           <div class="tool"><div class="t-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="2.5" width="12" height="11" rx="1.5"/><path d="M2 6h12M5 9.5h3"/></svg></div><h4>Statements</h4><p>Payout history — net paid, fees, refunds</p></div>
           <div class="tool"><div class="t-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.3 1.5"/></svg></div><h4>Hours</h4><p>Weekly schedule your customers order against</p></div>
           <div class="tool"><div class="t-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 4h11M2.5 8h11M2.5 12h7"/></svg></div><h4>Menu</h4><p>Edit prices, availability, photos, and bilingual menu content</p></div>
-          <div class="tool"><div class="t-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 8l3-5h5l3 5-5.5 6z"/></svg></div><h4>Promotions</h4><p>Switch existing coupon codes on and off</p></div>
+          <div class="tool"><div class="t-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 8l3-5h5l3 5-5.5 6z"/></svg></div><h4>Promotions</h4><p>Create, pause, and restart deals and promo codes</p></div>
           <div class="tool"><div class="t-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 12l3-3 2 2 5-6 2 2"/></svg></div><h4>Insights</h4><p>Traffic, funnel, sales, seasonality, and promo performance</p></div>
           <div class="tool"><div class="t-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="1.8" width="10" height="12.4" rx="1.5"/><path d="M6 5h4M6 8h4M6 11h2.5"/></svg></div><h4>Orders</h4><p>Recent orders and their status · view only</p></div>
         </div>
@@ -1044,23 +1062,50 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <article class="info-card"><span class="badge viewonly">Live</span><h3>Check freshness</h3><p>“Live · Up to date” confirms the recent-order list is current. Sound alerts are optional.</p></article>
     <article class="info-card"><span class="badge viewonly">Payment trail</span><h3>Compare the columns</h3><p>Total, captured, and refunded amounts can differ. Read the status and refund result before escalating.</p></article>
     <article class="info-card"><span class="badge viewonly">Search</span><h3>Use exact identifiers</h3><p>Order number is best. Customer name or part of the phone number also works.</p></article>
+    <article class="info-card"><span class="badge viewonly">Discounts</span><h3>Each discount on its own line</h3><p>On the order and the kitchen ticket, each discount has its own line with its name. Subtotal is the food total before discounts, so Subtotal minus the discounts, plus delivery, tip, and tax, equals the Total. Orders placed before October 5, 2026 show a single Discount line.</p></article>
   </div>
 </section>
 
-<!-- ================= 8 COUPONS ================= -->
+<!-- ================= 8 PROMOTIONS ================= -->
 <section class="lesson" data-title="Promotions" data-part="">
   <div class="eyebrow">Lesson 13 · Your offers <span class="badge edit">You can edit</span></div>
-  <h1>Promotions — turn existing coupons on and off</h1>
-  <p class="lede">Your Promotions screen lists each coupon code and whether it is active. Use the available control for an existing offer, then confirm its live state. This practice example shows a ten-second undo; check the real portal before relying on it.</p>
+  <h1>Promotions — create a deal and manage it</h1>
+  <p class="lede">Open the Promotions card on your owner home. New promotion walks you through a deal one question at a time, and a preview shows what customers will see before you start it. Every promotion in your list can be edited, paused, or restarted, and shows how many orders used it.</p>
+  <div class="quick-answer"><h2>Quick answer: Create a promotion</h2><p><b>Where:</b> Owner home → Promotions → New promotion.</p><p><b>Do this:</b> Answer each step: what the deal is, what it covers, how much, when it runs, and how customers get it. Check the names customers see in French and English, then choose Start promotion.</p><p><b>Check:</b> The promotion shows Running in your list. Use Check it in your cart to see it on your storefront.</p></div><details class="quick-fix"><summary>A customer says the code did not work</summary><p>Find the promotion in your list. Make sure it is Running, not Paused or Ended, and that the order matches its days, dates, order type, and minimum. A code set to once per customer works only once for each customer. Use Check it in your cart to test it yourself.</p></details>
 
-  <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — flip a coupon, then catch the undo</div>
+  <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — build a deal, then pause it</div>
   <div class="frame">
-    <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="urlbar">…/portal/<b>manage</b></div></div>
+    <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="urlbar">…/<b>coupons</b></div></div>
     <div class="screen">
-      <div class="panel" style="padding:0" id="couponPanel"></div>
-      <p class="hint" style="margin:13px 0 0">Want a brand-new offer or a change to what a code does? Use Owner help — see Lessons 14–15.</p>
+      <div class="panel" style="padding:0">
+        <div class="promo-head"><h3>Your promotions</h3><button class="btn primary" type="button" id="promoNewBtn">+ New promotion</button></div>
+        <div class="promo-builder" id="promoBuilder" hidden>
+          <div>
+            <div class="pb-step"><h4>What's the deal?</h4><div class="pb-opts" data-pb="deal"><button type="button" data-v="off" aria-pressed="true">$ or % off</button><button type="button" data-v="price" aria-pressed="false">Set price</button><button type="button" data-v="group" aria-pressed="false">Group price</button><button type="button" data-v="free" aria-pressed="false">Free item</button></div></div>
+            <div class="pb-step"><h4>On what?</h4><div class="pb-opts" data-pb="what"><button type="button" data-v="order" aria-pressed="true">Whole order</button><button type="button" data-v="size" aria-pressed="false">A size</button><button type="button" data-v="items" aria-pressed="false">Chosen items</button></div></div>
+            <div class="pb-step"><h4>How much?</h4><div class="pb-opts" data-pb="unit"><button type="button" data-v="pct" aria-pressed="true">% off</button><button type="button" data-v="dollar" aria-pressed="false">$ off</button></div><div class="pb-inline"><label for="pbAmount">Amount</label><input type="text" id="pbAmount" inputmode="decimal" value="10"></div></div>
+            <div class="pb-step"><h4>When?</h4><div class="pb-opts" data-pb="when"><button type="button" data-v="always" aria-pressed="true">Always</button><button type="button" data-v="days" aria-pressed="false">Some days</button><button type="button" data-v="dates" aria-pressed="false">Between dates</button></div><div class="pb-opts" data-pb="type" style="margin-top:7px"><button type="button" data-v="both" aria-pressed="true">Pickup and delivery</button><button type="button" data-v="pickup" aria-pressed="false">Pickup only</button><button type="button" data-v="delivery" aria-pressed="false">Delivery only</button></div></div>
+            <div class="pb-step"><h4>How do customers get it?</h4><div class="pb-opts" data-pb="get"><button type="button" data-v="auto" aria-pressed="true">Automatically</button><button type="button" data-v="code" aria-pressed="false">With a code</button></div><div class="pb-inline" id="pbCodeRow" hidden><label for="pbCode">Code</label><input type="text" id="pbCode" value="TUESDAY10" data-no-i18n><label><input type="checkbox" id="pbOnce"> Once per customer</label></div></div>
+            <div class="pb-actions"><button class="btn primary" type="button" id="pbStart">Start promotion</button><button class="btn" type="button" id="pbCancel">Cancel</button></div>
+          </div>
+          <div class="pb-preview" aria-live="polite"><small>What customers get</small><p id="pbSummary"></p><p class="hint" id="pbHow"></p></div>
+        </div>
+        <div id="promoList"></div>
+        <div class="promo-quick"><span class="hint">Quick start: each one fills in the steps</span><div class="chips" id="promoQuick"><button class="chip" type="button" data-q="0">$6 off Medium on Tuesdays</button><button class="chip" type="button" data-q="1">Medium at one price</button><button class="chip" type="button" data-q="2">Group price from 6 Medium</button><button class="chip" type="button" data-q="3">Free French Fries over $30</button><button class="chip" type="button" data-q="4">10% off pickup orders</button></div></div>
+      </div>
     </div>
   </div>
+
+  <div class="status-grid" style="margin-top:18px">
+    <article class="info-card"><span class="badge edit">Quick start</span><h3>Common deals in one tap</h3><p>The buttons under your list fill in every step for a common deal, such as $6 off Medium on Tuesdays or Free French Fries over $30. Change anything you like before you start it.</p></article>
+    <article class="info-card"><span class="badge edit">Kinds of deal</span><h3>Four ways to save</h3><p>Money off the order or some items, one set price for a size or items, a lower price each when customers buy more, or a free item once the order is big enough.</p></article>
+    <article class="info-card"><span class="badge edit">Code or automatic</span><h3>How customers get it</h3><p>An automatic deal comes off by itself and shows a tag on the menu items it covers. A code deal applies when the customer enters the code; choose Once per customer to limit it to one use each.</p></article>
+    <article class="info-card"><span class="badge edit">Manage</span><h3>Edit, pause, restart</h3><p>Edit changes a deal. Pause stops it without deleting it, and Restart turns it back on. Deals that have finished move to Ended at the bottom of the list.</p></article>
+    <article class="info-card"><span class="badge viewonly">Results</span><h3>Used on how many orders</h3><p>Each promotion shows how many orders used it, so you can see which deals customers actually take.</p></article>
+    <article class="info-card"><span class="badge viewonly">Check</span><h3>Check it in your cart</h3><p>Opens your storefront so you can add items and confirm the discount appears the way you expect.</p></article>
+  </div>
+  <div class="callout"><b>Names customers see:</b><p>The builder suggests a French and an English name from your choices. Edit them so they read well. Customers see them on your menu and in the cart, and each discount prints on its own line, by name, on the kitchen ticket.</p></div>
+  <p class="hint" style="margin-top:14px">Need a deal the builder cannot make, or a refund for a discount that went wrong? Use Owner help — see Lessons 14–15.</p>
 </section>
 
 <!-- ================= 9 HANDLED ================= -->
@@ -1164,10 +1209,10 @@ Please confirm before changing anything that moves money.</code></div>
   <p class="lede">The portal works best when it becomes part of opening, service, weekly bookkeeping, and holiday planning—not something opened only after a customer reports a problem.</p>
   <div id="openingReference" class="quick-answer"><h2>Before service: opening checklist</h2><p>Use this each shift. Ticks are a reminder in this guide, not a check of your restaurant systems. They reset when you reload the page.</p><div class="opening-list"><label><input type="checkbox" class="opening-check"><span>Confirm today’s customer-facing hours and any holiday or vacation exception.</span></label><label><input type="checkbox" class="opening-check"><span>Review sold-out dishes; restore only the items the kitchen can make.</span></label><label><input type="checkbox" class="opening-check"><span>Check that current menu prices and active offers are correct.</span></label><label><input type="checkbox" class="opening-check"><span>Check the tablet, printer, internet, staffing, and kitchen readiness.</span></label><label><input type="checkbox" class="opening-check"><span>Open the customer storefront and verify the result of any changes.</span></label></div><p id="openingCount" role="status">0 of 5 checked</p><div class="quick-actions"><button class="btn" id="resetOpening" type="button">Reset checklist</button><button class="btn" id="printReference" type="button">Print one-page reference</button></div><h3>During service</h3><p><b>Sold out:</b> Menu → find the dish → switch availability off → verify the customer menu.</p><p><b>Close early:</b> Hours &amp; availability → close for today → verify the storefront. Check existing orders separately.</p><p><b>Order issue:</b> Before acceptance, reject or cancel on the tablet. After acceptance, use Owner help for cancellations or refunds.</p><h3>Need help?</h3><p>Choose Owner help on your restaurant’s portal sign-in page. Include the restaurant, exact order or item, current status, requested outcome, and date.</p><p>Full guide: guide.menuconnect.ca/start</p></div>
   <div class="routine-grid">
-    <article class="routine-card"><span class="badge edit">Before service</span><h3>Two-minute opening check</h3><p>Hours, today's exceptions, sold-out items, active coupons, tablet, printer, and internet readiness.</p></article>
+    <article class="routine-card"><span class="badge edit">Before service</span><h3>Two-minute opening check</h3><p>Hours, today's exceptions, sold-out items, running promotions, tablet, printer, and internet readiness.</p></article>
     <article class="routine-card"><span class="badge edit">During service</span><h3>Keep the storefront honest</h3><p>Update availability immediately, look up customer orders, and close today only when the restaurant cannot accept orders.</p></article>
     <article class="routine-card"><span class="badge viewonly">Every week</span><h3>Review money and activity</h3><p>Open the payout position, read the statement, inspect unfamiliar order totals, and download or note the period you reviewed.</p></article>
-    <article class="routine-card"><span class="badge edit">Before holidays</span><h3>Plan exceptions early</h3><p>Review recurring hours, add dated closures, check coupons, and verify the customer storefront before the date arrives.</p></article>
+    <article class="routine-card"><span class="badge edit">Before holidays</span><h3>Plan exceptions early</h3><p>Review recurring hours, add dated closures, set up or pause promotions, and verify the customer storefront before the date arrives.</p></article>
     <article class="routine-card"><span class="badge prepare">Keep current</span><h3>Review photos and bilingual copy</h3><p>Keep dish and section photos current, and review approved copy in every language enabled for your restaurant.</p></article>
     <article class="routine-card"><span class="badge viewonly">When unsure</span><h3>Stop and use Owner help</h3><p>Do not guess when money, menu structure, delivery settings, branding, or the correct restaurant/order is uncertain.</p></article>
   </div>
@@ -1204,7 +1249,7 @@ Please confirm before changing anything that moves money.</code></div>
     </div>
   </div>
   <div class="helpnote" style="margin-top:26px">
-    <b>Keep the guide bookmarked with your portal.</b> Hours, prices, availability, photos, bilingual menu editing, and existing coupon switches are yours today. Use Owner help for anything that moves money or restructures the menu.
+    <b>Keep the guide bookmarked with your portal.</b> Hours, prices, availability, photos, bilingual menu editing, and promotions are yours today. Use Owner help for anything that moves money or restructures the menu.
   </div>
 </section>
 
@@ -1502,40 +1547,79 @@ $('#orderSearch').addEventListener('input',function(){
   $('#orderEmpty').style.display=any?'none':'block';
 });
 
-/* ---------- lesson 13: coupons ---------- */
-var coupons=[
- {code:'WELCOME10',name:'10% off your first order',sub:'New customers · online orders only',on:true},
- {code:'FREEDEL25',name:'Free delivery over $25',sub:'All customers · delivery orders',on:false},
- {code:'LUNCH5',name:'$5 off lunch pickup',sub:'Mon–Fri before 2 pm · pickup only',on:true}
+/* ---------- lesson 13: promotions ---------- */
+var promos=[
+ {name:'Welcome offer',desc:'10% off the order, code WELCOME10, once per customer',on:true,used:14},
+ {name:'Free French Fries over $30',desc:'Free French Fries on orders of $30 or more, automatic',on:false,used:6},
+ {name:'$5 off lunch pickup',desc:'$5 off the order, Monday to Friday, pickup only, code LUNCH5',on:true,used:9}
 ];
-var couponPanel=$('#couponPanel');var undoTimers={};
-function renderCoupons(){
-  couponPanel.innerHTML='';
-  coupons.forEach(function(c,i){
-    var row=document.createElement('div');row.className='coupon'+(c.on?' on':'');
-    row.innerHTML='<span class="code">'+c.code+'</span>'+
-      '<span class="cdesc"><b>'+c.name+'</b><span>'+c.sub+'</span></span>'+
-      '<span class="undo-pill" id="undo'+i+'"><span>Undo in <b id="undoN'+i+'">10</b>s</span><button data-undo="'+i+'">Undo</button></span>'+
-      '<span class="cstate"><em>'+(c.on?'Live':'Off')+'</em><button class="switch" role="switch" aria-checked="'+c.on+'" aria-label="'+c.code+' live" data-c="'+i+'"></button></span>';
-    couponPanel.appendChild(row);
+var promoList=$('#promoList');
+function renderPromos(){
+  promoList.textContent='';
+  // Built with text nodes: names and codes can come from what the visitor typed.
+  function el(tag,cls,text){var n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n}
+  promos.forEach(function(p,i){
+    var row=el('div','promo-row');
+    var d=el('span','pdesc');d.appendChild(el('b',null,p.name));d.appendChild(el('span',null,p.desc));
+    var u=el('span','pused');u.appendChild(el('span',null,'Orders using it:'));u.appendChild(document.createTextNode(' '));u.appendChild(el('b',null,String(p.used)));d.appendChild(u);
+    var a=el('span','pacts');a.appendChild(el('span','pstate '+(p.on?'run':'paused'),p.on?'Running':'Paused'));
+    var e=el('button','btn','Edit');e.type='button';e.setAttribute('data-pe',i);a.appendChild(e);
+    var b=el('button','btn',p.on?'Pause':'Restart');b.type='button';b.setAttribute('data-pp',i);a.appendChild(b);
+    row.appendChild(d);row.appendChild(a);promoList.appendChild(row);
   });
 }
-renderCoupons();
-couponPanel.addEventListener('click',function(e){
-  var t=e.target.closest('[data-c]');
-  if(t){var i=+t.getAttribute('data-c');flipCoupon(i,true);return}
-  var u=e.target.closest('[data-undo]');
-  if(u){var j=+u.getAttribute('data-undo');clearInterval(undoTimers[j]);flipCoupon(j,false);toast('Undone — no change made ✓');return}
+renderPromos();
+promoList.addEventListener('click',function(e){
+  var t=e.target.closest('[data-pp]');
+  if(t){var p=promos[+t.getAttribute('data-pp')];p.on=!p.on;renderPromos();toast(p.on?'Restarted — the deal is running again ✓':'Paused — customers can no longer use it ✓');return}
+  if(e.target.closest('[data-pe]'))toast('In your portal, Edit opens the same steps with this deal filled in');
 });
-function flipCoupon(i,offerUndo){
-  coupons[i].on=!coupons[i].on;renderCoupons();
-  if(!offerUndo)return;
-  toast(coupons[i].code+' is now '+(coupons[i].on?'live ✓':'off ✓')+' — change logged');
-  var pill=$('#undo'+i),n=10,numEl=$('#undoN'+i);
-  pill.classList.add('show');
-  clearInterval(undoTimers[i]);
-  undoTimers[i]=setInterval(function(){n--;if(n<=0){clearInterval(undoTimers[i]);pill.classList.remove('show')}else numEl.textContent=n},1000);
+var pb={deal:'off',what:'order',unit:'pct',when:'always',type:'both',get:'auto'};
+var pbBuilder=$('#promoBuilder');
+var promoPresets=[
+ {deal:'off',what:'size',unit:'dollar',amount:'6',when:'days',type:'both',get:'auto'},
+ {deal:'price',what:'size',amount:'12',when:'always',type:'both',get:'auto'},
+ {deal:'group',what:'size',amount:'11',when:'always',type:'both',get:'auto'},
+ {deal:'free',what:'items',amount:'30',when:'always',type:'both',get:'auto'},
+ {deal:'off',what:'order',unit:'pct',amount:'10',when:'always',type:'pickup',get:'auto'}
+];
+function pbSync(){
+  pbBuilder.querySelectorAll('[data-pb]').forEach(function(g){
+    g.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-v')===pb[g.getAttribute('data-pb')]))});
+  });
+  $('#pbCodeRow').hidden=pb.get!=='code';
+  var a=$('#pbAmount').value.trim()||'0';
+  var on={order:'the whole order',size:'Medium items',items:'chosen items'}[pb.what];
+  var lead={off:pb.unit==='pct'?a+'% off':'$'+a+' off',price:'One price: $'+a,group:'$'+a+' each from 6',free:'Free French Fries over $'+a}[pb.deal];
+  var parts=[lead];
+  if(pb.deal!=='free')parts.push(on);
+  if(pb.when==='days')parts.push('on Tuesdays');
+  if(pb.when==='dates')parts.push('between your chosen dates');
+  if(pb.type!=='both')parts.push(pb.type==='pickup'?'pickup only':'delivery only');
+  var sum=$('#pbSummary');sum.textContent='';
+  parts.forEach(function(x,i){if(i){var dot=document.createElement('span');dot.textContent=' · ';sum.appendChild(dot)}var n=document.createElement('span');n.textContent=x;sum.appendChild(n)});
+  $('#pbHow').textContent=pb.get==='code'?'Customers enter the code at checkout.':'It comes off by itself. No code needed.';
 }
+pbBuilder.addEventListener('click',function(e){
+  var b=e.target.closest('[data-pb] button');if(!b)return;
+  pb[b.closest('[data-pb]').getAttribute('data-pb')]=b.getAttribute('data-v');pbSync();
+});
+$('#pbAmount').addEventListener('input',pbSync);
+function pbOpen(){pbBuilder.hidden=false;pbSync()}
+$('#promoNewBtn').addEventListener('click',function(){pb={deal:'off',what:'order',unit:'pct',when:'always',type:'both',get:'auto'};$('#pbAmount').value='10';pbOpen()});
+$('#promoQuick').addEventListener('click',function(e){
+  var c=e.target.closest('[data-q]');if(!c)return;
+  var q=promoPresets[+c.getAttribute('data-q')];
+  pb={deal:q.deal,what:q.what,unit:q.unit||'pct',when:q.when,type:q.type,get:q.get};$('#pbAmount').value=q.amount;pbOpen();
+  pbBuilder.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+$('#pbCancel').addEventListener('click',function(){pbBuilder.hidden=true});
+$('#pbStart').addEventListener('click',function(){
+  var name=$('#pbSummary').textContent;
+  var desc=name+(pb.get==='code'?', code '+($('#pbCode').value.trim()||'CODE')+($('#pbOnce').checked?', once per customer':''):', automatic');
+  promos.unshift({name:name,desc:desc,on:true,used:0});
+  pbBuilder.hidden=true;renderPromos();toast('Promotion started — check it in your cart ✓');
+});
 
 /* ---------- lesson 17: quiz ---------- */
 var quiz=[
@@ -1548,7 +1632,7 @@ var quiz=[
  {q:'You close between lunch and dinner every Friday.',a:'you',why:'Use two service windows on Friday and verify the intentional gap (Lesson 6).'},
  {q:'The restaurant will be closed for a five-day vacation next month.',a:'you',why:'Add a dated vacation exception and confirm that regular weekly hours resume afterward (Lesson 7).'},
  {q:'You want to raise the delivery minimum from $15 to $20.',a:'team',why:'Delivery zones, fees, and minimums stay with Menu.ca (Lessons 14–15). Include the exact new value and effective date.'},
- {q:'Your existing special-offer code should stop running tonight.',a:'you',why:'Switch the existing coupon off and verify its state (Lesson 13). New coupons or rule changes still go through Owner help.'},
+ {q:'Your special-offer code should stop running tonight.',a:'you',why:'Pause the promotion in Promotions and check that it shows Paused (Lesson 13). You can also create new deals there yourself.'},
  {q:'You need to understand why a cash-heavy week produced a small carried balance.',a:'you',why:'Review gross sales, cash and card orders, deductions, refunds, and net payout first (Lessons 3–4). Use Owner help if it still does not reconcile.'},
  {q:'A customer calls and gives only part of their phone number.',a:'you',why:'Search the post-acceptance order history by phone, name, or order number (Lesson 12), then record the exact order before requesting any action.'},
  {q:'You want to edit English and French dish descriptions yourself today.',a:'you',why:'Use the bilingual editor, review both language versions, save, and verify them on the customer menu (Lesson 11).'},
