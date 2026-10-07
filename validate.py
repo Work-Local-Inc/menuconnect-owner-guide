@@ -22,7 +22,7 @@ class Page(HTMLParser):
         if tag == "section" and "lesson" in data.get("class", "").split():
             self.lessons.append(data.get("data-title"))
 
-expected = ["Welcome", "Signing in", "Your owner home", "Weekly statements",
+expected = ["Welcome", "Signing in", "Your dashboard", "Weekly statements",
     "Cash, card & refunds", "Opening hours", "Split shifts", "Holidays & closures",
     "Close today safely", "Prices & availability", "Availability routine",
     "Photos & bilingual editing", "Orders", "Promotions", "Announcements", "We handle these",
