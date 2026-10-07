@@ -93,6 +93,8 @@ input{font:inherit;color:inherit}
   display:grid;place-items:center;font-family:'Ubuntu';font-weight:500;font-size:11px;color:var(--rail-muted)}
 .rail-item[aria-current="true"] .rail-num{border-color:var(--accent);color:var(--accent)}
 .rail-item.done .rail-num{background:var(--accent);border-color:var(--accent);color:#06231F}
+.rail-item.done .rail-num{position:relative}
+.rail-item.done .rail-num::after{content:'✓';position:absolute;right:-5px;bottom:-4px;width:13px;height:13px;border-radius:50%;background:var(--rail);color:var(--accent);border:1px solid var(--accent);box-sizing:border-box;font-size:8px;line-height:11px;text-align:center;font-weight:800}
 .rail-part{font-family:'Ubuntu';font-weight:500;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rail-muted);padding:16px 12px 6px}
 
 /* ---------- main ---------- */
@@ -1353,7 +1355,6 @@ var setupStages=[[1,2],[3,4],[5,6,7,8],[9,10,11],[12,13,14,15,16,17,18,19]];
 var progressBackend=window.MenuConnectProgress.selectStorage(window);
 var progressStore=window.MenuConnectProgress.createStore(progressBackend.storage,{total:lessons.length-1,stages:setupStages,persistent:progressBackend.persistent});
 var lessonSlugs=lessons.map(function(sec,i){return i===0?'welcome':sec.getAttribute('data-title').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')});
-function doneIcon(){return '<svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l3 3 5-6"/></svg>'}
 lessons.forEach(function(sec,i){
   sec.id=lessonSlugs[i];
   var part=sec.getAttribute('data-part');
@@ -1374,7 +1375,7 @@ function updateProgress(state){
     if(i===0)return;
     var done=state.viewed.indexOf(i)>-1;
     lesson._railBtn.classList.toggle('done',done);
-    lesson._railBtn.querySelector('.rail-num').innerHTML=done?doneIcon():i;
+    lesson._railBtn.querySelector('.rail-num').textContent=i; // keep the number visible; .done adds the check badge
   });
   $$('.setup-stage').forEach(function(stage,i){stage.classList.toggle('done',state.stageComplete[i])});
   $('#setupPersistenceNote').textContent=state.persistent?'Progress is saved on this device so you can close the guide and continue later.':'Progress is available for this visit only. Keep this page open to continue your setup.';
