@@ -30,7 +30,7 @@ const corrections = {
   'Refunds (1)': '退款 (1)',
   'One order was refunded this week. Refunds always land in the week they happen — a past statement never changes after it\'s frozen.': '本周有一笔订单已退款。退款计入实际发生退款的那一周；已锁定的往期报表不会更改。',
   'A later refund appears in the statement period when it is processed rather than rewriting an older statement.': '后续退款计入处理退款时所在的报表周期，不会修改之前的报表。',
-  'Before acceptance, the restaurant can reject or cancel on its tablet. After acceptance, refunds go through Owner help (Lessons 12, 14–15). Look up the order first and include its number, date, customer, and amount.': '接单前，餐厅可在平板电脑上拒绝或取消订单。接单后，请通过“店主帮助”申请退款（第 12、14–15 课）。先查找订单，并提供订单号、日期、顾客姓名及金额。',
+  'Before acceptance, the restaurant can reject or cancel on its tablet. After acceptance, refunds go through Owner help (Lessons 12, 15–16). Look up the order first and include its number, date, customer, and amount.': '接单前，餐厅可在平板电脑上拒绝或取消订单。接单后，请通过“店主帮助”申请退款（第 12、15–16 课）。先查找订单，并提供订单号、日期、顾客姓名及金额。',
   'Send Owner help everything needed the first time': '首次联系“店主帮助”时提供所有必要信息',
   'Use Owner help with the statement period and order number if the figures still do not make sense.': '如果金额仍无法核对，请通过“店主帮助”提供报表周期和订单号。',
   'Apply': '应用',
@@ -51,8 +51,8 @@ test('Chinese financial and operational instructions preserve the direction, act
 });
 
 test('critical technical tokens and numbers remain intact in translated instructions', () => {
-  for (const key of ['Refunds (1)', 'change Friday close to 10pm', 'Before acceptance, the restaurant can reject or cancel on its tablet. After acceptance, refunds go through Owner help (Lessons 12, 14–15). Look up the order first and include its number, date, customer, and amount.']) {
-    const tokens = key === 'Refunds (1)' ? ['1'] : key.includes('10pm') ? ['10'] : ['12', '14', '15'];
+  for (const key of ['Refunds (1)', 'change Friday close to 10pm', 'Before acceptance, the restaurant can reject or cancel on its tablet. After acceptance, refunds go through Owner help (Lessons 12, 15–16). Look up the order first and include its number, date, customer, and amount.']) {
+    const tokens = key === 'Refunds (1)' ? ['1'] : key.includes('10pm') ? ['10'] : ['12', '15', '16'];
     for (const token of tokens) assert.ok(zh[key].includes(token), `${key} lost ${token}`);
   }
 });

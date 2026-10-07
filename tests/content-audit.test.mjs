@@ -37,3 +37,11 @@ test('the primary setup button appears before the stage list on narrow screens',
   assert.ok(card.indexOf('id="setupPrimaryBtn"') < card.indexOf('class="setup-stages"'), 'place start before five-stage preview');
   assert.match(guide, /@media\(max-width:480px\).*\.language-switcher/);
 });
+
+test('quick-answer shortcuts jump to the lesson their link names', () => {
+  const titles = [...guide.matchAll(/<section class="lesson" data-title="([^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, '&'));
+  const slugs = titles.map((t, i) => (i === 0 ? 'welcome' : t.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')));
+  for (const [, slug, jump] of guide.matchAll(/href="#([a-z0-9-]+)" data-jump="(\d+)"/g)) {
+    assert.equal(slugs[Number(jump)], slug, `#${slug} jumps to lesson ${jump} (${slugs[Number(jump)]})`);
+  }
+});

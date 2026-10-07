@@ -93,6 +93,8 @@ input{font:inherit;color:inherit}
   display:grid;place-items:center;font-family:'Ubuntu';font-weight:500;font-size:11px;color:var(--rail-muted)}
 .rail-item[aria-current="true"] .rail-num{border-color:var(--accent);color:var(--accent)}
 .rail-item.done .rail-num{background:var(--accent);border-color:var(--accent);color:#06231F}
+.rail-item.done .rail-num{position:relative}
+.rail-item.done .rail-num::after{content:'✓';position:absolute;right:-5px;bottom:-4px;width:13px;height:13px;border-radius:50%;background:var(--rail);color:var(--accent);border:1px solid var(--accent);box-sizing:border-box;font-size:8px;line-height:11px;text-align:center;font-weight:800}
 .rail-part{font-family:'Ubuntu';font-weight:500;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rail-muted);padding:16px 12px 6px}
 
 /* ---------- main ---------- */
@@ -403,6 +405,28 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 .pb-actions{display:flex;gap:8px;margin-top:4px}
 @media(max-width:720px){.promo-builder{grid-template-columns:1fr}}
 
+/* ============ ANNOUNCEMENTS ============ */
+.ann-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;padding:16px 17px}
+.ann-live{padding:13px 17px;border-bottom:1px solid var(--line)}
+.ann-live h3{font-size:15px;margin:0 0 8px}
+.ann-item{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px}
+.ann-item b{flex:1;min-width:160px}
+.ann-item .btn{font-size:12.5px;padding:6px 11px}
+.ann-count{font-size:11.5px;color:var(--muted);font-weight:600;margin-left:6px}
+.ann-field{display:flex;flex-direction:column;gap:5px;margin-bottom:9px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.ann-field input{border:1px solid var(--line);border-radius:9px;padding:8px 11px;background:var(--paper);font-size:14px;color:var(--ink);font-weight:400}
+.ann-phone{border:1px solid var(--line);border-radius:22px;padding:10px;background:var(--paper);align-self:start}
+.ann-phone .pb-opts{margin-bottom:8px}
+.ann-screen{border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);min-height:210px;position:relative}
+.ann-site{padding:14px 12px;font-size:12.5px;color:var(--muted)}
+.ann-site b{display:block;color:var(--ink);font-size:14px;margin-bottom:4px}
+.ann-msg{background:var(--accent);color:#fff;padding:9px 12px;font-size:12.5px}
+.ann-msg strong{display:block;font-size:13.5px}
+.ann-msg.card{margin:12px;border-radius:12px;padding:14px}
+.ann-msg.tag{display:inline-block;margin:10px 12px 0;border-radius:99px;padding:4px 10px;background:var(--accent-soft);color:var(--accent-ink)}
+.ann-msg.tag span{display:none}
+@media(max-width:720px){.ann-grid{grid-template-columns:1fr}.ann-phone{order:-1}}
+
 /* ============ HANDLED FOR YOU ============ */
 .handled-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:24px}
 .hcard{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:20px;box-shadow:var(--shadow-sm)}
@@ -543,7 +567,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 .lesson-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .lesson-video figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 </style>
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"How to navigate and view insights","description":"Read your owner home and Insights. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/HV8NARECdok/hqdefault.jpg","uploadDate":"2026-10-02","duration":"PT1M20S","embedUrl":"https://www.youtube-nocookie.com/embed/HV8NARECdok","url":"https://www.youtube.com/watch?v=HV8NARECdok","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to view statements","description":"Find and read your weekly statements. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/SLErMDvIS6g/hqdefault.jpg","uploadDate":"2026-09-29","duration":"PT1M17S","embedUrl":"https://www.youtube-nocookie.com/embed/SLErMDvIS6g","url":"https://www.youtube.com/watch?v=SLErMDvIS6g","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to adjust hours on MenuConnect","description":"Change your opening hours. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/YWAbTZHQHcU/hqdefault.jpg","uploadDate":"2026-09-30","duration":"PT1M24S","embedUrl":"https://www.youtube-nocookie.com/embed/YWAbTZHQHcU","url":"https://www.youtube.com/watch?v=YWAbTZHQHcU","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to edit your menu on MenuConnect mobile","description":"Change a dish's price and hide it when it sells out. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/eDu90ZwPHpQ/hqdefault.jpg","uploadDate":"2026-10-02","duration":"PT1M34S","embedUrl":"https://www.youtube-nocookie.com/embed/eDu90ZwPHpQ","url":"https://www.youtube.com/watch?v=eDu90ZwPHpQ","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to request refunds","description":"Ask Menu.ca to review a refund. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/aI3paESK3AE/hqdefault.jpg","uploadDate":"2026-09-29","duration":"PT1M15S","embedUrl":"https://www.youtube-nocookie.com/embed/aI3paESK3AE","url":"https://www.youtube.com/watch?v=aI3paESK3AE","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to submit a request","description":"Send a request from your portal. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/ACqXj6bBVDM/hqdefault.jpg","uploadDate":"2026-09-30","duration":"PT1M8S","embedUrl":"https://www.youtube-nocookie.com/embed/ACqXj6bBVDM","url":"https://www.youtube.com/watch?v=ACqXj6bBVDM","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to increase the prep time when the restaurant is busy","description":"Use Busy mode on the MenuConnect kitchen tablet: separate busy extras for pickup and delivery, the When busy totals and remembered extras. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/y1EUCGU0CjU/hqdefault.jpg","uploadDate":"2026-10-05","duration":"PT1M26S","embedUrl":"https://www.youtube-nocookie.com/embed/y1EUCGU0CjU","url":"https://www.youtube.com/watch?v=y1EUCGU0CjU","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to adjust the ringtone on your restaurant tablet","description":"Change the new-order sound on the MenuConnect kitchen tablet. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/gYIQhMd2YIQ/hqdefault.jpg","uploadDate":"2026-10-02","duration":"PT1M22S","embedUrl":"https://www.youtube-nocookie.com/embed/gYIQhMd2YIQ","url":"https://www.youtube.com/watch?v=gYIQhMd2YIQ","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"How to navigate and view insights","description":"Read your owner home and Insights. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/HV8NARECdok/hqdefault.jpg","uploadDate":"2026-10-02","duration":"PT1M20S","embedUrl":"https://www.youtube-nocookie.com/embed/HV8NARECdok","url":"https://www.youtube.com/watch?v=HV8NARECdok","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to view statements","description":"Find and read your weekly statements. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/SLErMDvIS6g/hqdefault.jpg","uploadDate":"2026-09-29","duration":"PT1M17S","embedUrl":"https://www.youtube-nocookie.com/embed/SLErMDvIS6g","url":"https://www.youtube.com/watch?v=SLErMDvIS6g","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to adjust hours on MenuConnect","description":"Change your opening hours. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/YWAbTZHQHcU/hqdefault.jpg","uploadDate":"2026-09-30","duration":"PT1M24S","embedUrl":"https://www.youtube-nocookie.com/embed/YWAbTZHQHcU","url":"https://www.youtube.com/watch?v=YWAbTZHQHcU","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to edit your menu on MenuConnect mobile","description":"Change a dish's price and hide it when it sells out. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/eDu90ZwPHpQ/hqdefault.jpg","uploadDate":"2026-10-02","duration":"PT1M34S","embedUrl":"https://www.youtube-nocookie.com/embed/eDu90ZwPHpQ","url":"https://www.youtube.com/watch?v=eDu90ZwPHpQ","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to request refunds","description":"Ask Menu.ca to review a refund. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/aI3paESK3AE/hqdefault.jpg","uploadDate":"2026-09-29","duration":"PT1M15S","embedUrl":"https://www.youtube-nocookie.com/embed/aI3paESK3AE","url":"https://www.youtube.com/watch?v=aI3paESK3AE","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to submit a request","description":"Send a request from your portal. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/ACqXj6bBVDM/hqdefault.jpg","uploadDate":"2026-09-30","duration":"PT1M8S","embedUrl":"https://www.youtube-nocookie.com/embed/ACqXj6bBVDM","url":"https://www.youtube.com/watch?v=ACqXj6bBVDM","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to increase the prep time when the restaurant is busy","description":"Use Busy mode on the MenuConnect kitchen tablet: separate busy extras for pickup and delivery, the When busy totals and remembered extras. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/y1EUCGU0CjU/hqdefault.jpg","uploadDate":"2026-10-05","duration":"PT1M26S","embedUrl":"https://www.youtube-nocookie.com/embed/y1EUCGU0CjU","url":"https://www.youtube.com/watch?v=y1EUCGU0CjU","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to adjust the ringtone on your restaurant tablet","description":"Change the new-order sound on the MenuConnect kitchen tablet. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/gYIQhMd2YIQ/hqdefault.jpg","uploadDate":"2026-10-02","duration":"PT1M22S","embedUrl":"https://www.youtube-nocookie.com/embed/gYIQhMd2YIQ","url":"https://www.youtube.com/watch?v=gYIQhMd2YIQ","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to create and manage promotions on your website","description":"Build a promo code step by step with the MenuConnect promotion builder, then edit, track, and pause it. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/okDC4SJpkwI/hqdefault.jpg","uploadDate":"2026-10-07","duration":"PT2M19S","embedUrl":"https://www.youtube-nocookie.com/embed/okDC4SJpkwI","url":"https://www.youtube.com/watch?v=okDC4SJpkwI","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}},{"@context":"https://schema.org","@type":"VideoObject","name":"How to post an announcement on your website","description":"Post a news announcement on your restaurant website in English and French with the MenuConnect Announcements editor, then turn it off. A MenuConnect tutorial for restaurant owners from Menu.ca.","thumbnailUrl":"https://i.ytimg.com/vi/9SX_dXO2sf0/hqdefault.jpg","uploadDate":"2026-10-07","duration":"PT1M37S","embedUrl":"https://www.youtube-nocookie.com/embed/9SX_dXO2sf0","url":"https://www.youtube.com/watch?v=9SX_dXO2sf0","publisher":{"@type":"Organization","name":"Menu.ca","url":"https://menu.ca"}}]</script>
 
 <div class="app">
 <aside class="rail" id="rail">
@@ -553,7 +577,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <a class="overview-link" href="/" aria-label="Back to the MenuConnect overview">← MenuConnect overview</a>
     <div class="progress">
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <div class="progress-label" id="progressLabel">0 of 18 lessons viewed</div>
+      <div class="progress-label" id="progressLabel">0 of 19 lessons viewed</div>
     </div>
   </div>
   <nav id="railNav" aria-label="Lessons"></nav>
@@ -579,8 +603,8 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 </section>
 <nav class="quick-tools" aria-label="Quick help">
 <a href="#welcome" data-jump="0">Find a task</a>
-<a href="#owner-routine" data-jump="16">Opening checklist</a>
-<a href="#ask-for-help-clearly" data-jump="15">Get help</a>
+<a href="#owner-routine" data-jump="18">Opening checklist</a>
+<a href="#ask-for-help-clearly" data-jump="16">Get help</a>
 </nav>
 
 <!-- ================= 0 WELCOME ================= -->
@@ -608,7 +632,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
       <p class="setup-note">Opening a lesson marks it viewed; the quick check records an attempt, not a passing score or completed restaurant setup.</p>
     </section>
     <p class="lede">MenuConnect is your restaurant's online-ordering home base — money, menu, hours, and orders in one connected place. This comprehensive guide covers the owner workflows available today and when to ask Menu.ca for help. Practice controls never touch a real restaurant.</p>
-    <div class="quick-start"><h2>Already set up? Find a quick answer.</h2><p class="hint">Use these shortcuts anytime. They do not replace the setup.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#promotions" data-jump="13">Create a promotion →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="15">Get help →</a></div></div>
+    <div class="quick-start"><h2>Already set up? Find a quick answer.</h2><p class="hint">Use these shortcuts anytime. They do not replace the setup.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#promotions" data-jump="13">Create a promotion →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="16">Get help →</a></div></div>
     <div class="value-cards">
       <div class="vcard">
         <div class="ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="3.5" width="15" height="13" rx="2"/><path d="M2.5 8h15M6.5 12h4"/></svg></div>
@@ -1073,6 +1097,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <p class="lede">Open the Promotions card on your owner home. New promotion walks you through a deal one question at a time, and a preview shows what customers will see before you start it. Every promotion in your list can be edited, paused, or restarted, and shows how many orders used it.</p>
   <div class="quick-answer"><h2>Quick answer: Create a promotion</h2><p><b>Where:</b> Owner home → Promotions → New promotion.</p><p><b>Do this:</b> Answer each step: what the deal is, what it covers, how much, when it runs, and how customers get it. Check the names customers see in French and English, then choose Start promotion.</p><p><b>Check:</b> The promotion shows Running in your list. Use Check it in your cart to see it on your storefront.</p></div><details class="quick-fix"><summary>A customer says the code did not work</summary><p>Find the promotion in your list. Make sure it is Running, not Paused or Ended, and that the order matches its days, dates, order type, and minimum. A code set to once per customer works only once for each customer. Use Check it in your cart to test it yourself.</p></details>
 
+  <figure class="lesson-video" data-video="okDC4SJpkwI">
+    <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/okDC4SJpkwI?rel=0" title="Video walkthrough: create a promotion and pause it" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>Video walkthrough: create a promotion and pause it</figcaption>
+  </figure>
+
   <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — build a deal, then pause it</div>
   <div class="frame">
     <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="urlbar">…/<b>coupons</b></div></div>
@@ -1105,12 +1134,62 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <article class="info-card"><span class="badge viewonly">Check</span><h3>Check it in your cart</h3><p>Opens your storefront so you can add items and confirm the discount appears the way you expect.</p></article>
   </div>
   <div class="callout"><b>Names customers see:</b><p>The builder suggests a French and an English name from your choices. Edit them so they read well. Customers see them on your menu and in the cart, and each discount prints on its own line, by name, on the kitchen ticket.</p></div>
-  <p class="hint" style="margin-top:14px">Need a deal the builder cannot make, or a refund for a discount that went wrong? Use Owner help — see Lessons 14–15.</p>
+  <p class="hint" style="margin-top:14px">Need a deal the builder cannot make, or a refund for a discount that went wrong? Use Owner help — see Lessons 15–16.</p>
+</section>
+
+<!-- ================= 8b ANNOUNCEMENTS ================= -->
+<section class="lesson" data-title="Announcements" data-part="">
+  <div class="eyebrow">Lesson 14 · Tell customers <span class="badge edit">You can edit</span></div>
+  <h1>Announcements — tell customers what is happening</h1>
+  <p class="lede">Put a message on your website: a deal, a day you are closed, a delivery or pickup change, or news. The Announcements editor writes it in English and French for you, and a phone preview shows exactly what customers will see before you post it.</p>
+  <div class="quick-answer"><h2>Quick answer: Post an announcement</h2><p><b>Where:</b> Owner home → Announcements.</p><p><b>Do this:</b> Pick a quick start, or choose what is happening and follow the steps. Check the English and French text, choose when it shows and how it looks, then choose Post now.</p><p><b>Check:</b> It appears under On your website. Turn off takes it down in one tap.</p></div><details class="quick-fix"><summary>Closed for a holiday — and no online orders that day</summary><p>Choose Closed a day, pick the date, and keep Also close online ordering that day ticked. It adds Closed all day to your Hours for that date, and the message comes down by itself when you reopen. Untick it if you will still take orders.</p></details>
+
+  <figure class="lesson-video" data-video="9SX_dXO2sf0">
+    <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/9SX_dXO2sf0?rel=0" title="Video walkthrough: post an announcement and turn it off" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>Video walkthrough: post an announcement and turn it off</figcaption>
+  </figure>
+
+  <div class="try"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — write a message, preview it, post it</div>
+  <div class="frame">
+    <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="urlbar">…/<b>announcements</b></div></div>
+    <div class="screen">
+      <div class="panel" style="padding:0">
+        <div class="ann-live"><h3>On your website</h3><div id="annLive"></div>
+          <div class="promo-quick" style="background:none;padding:10px 0 0"><span class="hint">Quick start: each one fills in everything below</span><div class="chips" id="annQuick"><button class="chip" type="button" data-q="0">Advertise a promo code</button><button class="chip" type="button" data-q="1">Closed for a holiday</button><button class="chip" type="button" data-q="2">No delivery tonight</button><button class="chip" type="button" data-q="3">Something else</button></div></div></div>
+        <div class="ann-grid">
+          <div>
+            <div class="pb-step"><h4>What's happening?</h4><div class="pb-opts" data-ann="kind"><button type="button" data-v="deal" aria-pressed="true">A deal</button><button type="button" data-v="closed" aria-pressed="false">Closed a day</button><button type="button" data-v="change" aria-pressed="false">Delivery or pickup change</button><button type="button" data-v="news" aria-pressed="false">News</button></div></div>
+            <div class="pb-step"><h4>What it says</h4>
+              <label class="ann-field"><span>English <span class="ann-count" id="annEnCount" data-no-i18n></span></span><input type="text" id="annEn" dir="auto" maxlength="48" value="10% off pickup this week" data-no-i18n></label>
+              <label class="ann-field"><span>Français <span class="ann-count" id="annFrCount" data-no-i18n></span></span><input type="text" id="annFr" dir="auto" maxlength="48" value="10 % de rabais pour emporter cette semaine" data-no-i18n></label></div>
+            <div class="pb-step"><h4>When?</h4><div class="pb-opts" data-ann="when"><button type="button" data-v="now" aria-pressed="true">Now, until I turn it off</button><button type="button" data-v="dates" aria-pressed="false">Pick dates</button></div></div>
+            <div class="pb-step"><h4>How it looks</h4><div class="pb-opts" data-ann="look"><button type="button" data-v="banner" aria-pressed="true">Banner across the top</button><button type="button" data-v="card" aria-pressed="false">Big card</button><button type="button" data-v="tag" aria-pressed="false">Small tag</button></div></div>
+            <div class="pb-actions"><button class="btn primary" type="button" id="annPost">Post now</button></div>
+          </div>
+          <div class="ann-phone" aria-live="polite">
+            <div class="pb-opts" data-ann="lang"><button type="button" data-v="en" aria-pressed="true" data-no-i18n>EN</button><button type="button" data-v="fr" aria-pressed="false" data-no-i18n>FR</button></div>
+            <div class="ann-screen"><div id="annMsg" class="ann-msg"><strong id="annMsgText" dir="auto" data-no-i18n></strong></div><div class="ann-site"><b data-no-i18n>Wok Bistro</b><span>Open now · closes 10 PM</span></div></div>
+            <p class="hint" style="margin:8px 4px 0">What customers see</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-grid" style="margin-top:18px">
+    <article class="info-card"><span class="badge edit">On your website</span><h3>See it, turn it off</h3><p>The top of the page shows what is on your website right now. Turn off takes a message down in one tap; finished messages move to Turned off or ended.</p></article>
+    <article class="info-card"><span class="badge edit">Quick starts</span><h3>Common messages in one tap</h3><p>Advertise a promo code, closed for a holiday, no delivery tonight, or something else. Each one fills in every step, written in both languages.</p></article>
+    <article class="info-card"><span class="badge edit">A deal</span><h3>Advertise a promo code</h3><p>Pick one of your codes from Promotions (Lesson 13). The message can end when the code ends, and a Use code button opens your menu with the code already applied.</p></article>
+    <article class="info-card"><span class="badge edit">What it says</span><h3>English and French</h3><p>Up to 48 letters a line, with an optional second line. A letter counter shows how much room is left. A blank French line shows the English.</p></article>
+    <article class="info-card"><span class="badge edit">How it looks</span><h3>Banner, big card, or small tag</h3><p>Show it on your home and order pages or the home page only. Colours come from your own website, or pick your own.</p></article>
+    <article class="info-card"><span class="badge edit">Second button</span><h3>Send customers somewhere else</h3><p>Add an optional second button with its own label and link, for example Order on Uber Eats.</p></article>
+  </div>
+  <div class="callout"><b>Check the preview first:</b><p>The phone preview on the right (above the steps on a phone) shows the message in English or French, on your home page or order page. What you see there is what customers see once you post.</p></div>
 </section>
 
 <!-- ================= 9 HANDLED ================= -->
 <section class="lesson" data-title="We handle these" data-part="">
-  <div class="eyebrow">Lesson 14 · One message away</div>
+  <div class="eyebrow">Lesson 15 · One message away</div>
   <h1>Menu.ca handles these for you</h1>
   <p class="lede">Some changes are deliberately kept with our team — the ones that move money or reshape your storefront. You never have to wrestle with them; just tell us what you need.</p>
   <div class="handled-grid">
@@ -1142,7 +1221,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 
 <!-- ================= 15 OWNER HELP ================= -->
 <section class="lesson" data-title="Ask for help clearly" data-part="Know when to ask">
-  <div class="eyebrow">Lesson 15 · A complete request</div>
+  <div class="eyebrow">Lesson 16 · A complete request</div>
   <h1>Send Owner help everything needed the first time</h1>
   <p class="lede">A clear request protects the wrong order, item, restaurant, or date from being changed. Use Owner help on the portal sign-in page and include identifiers rather than relying on a description alone.</p>
   <div class="quick-answer"><h2>Quick answer: Ask for help</h2><p><b>Where:</b> Your restaurant’s portal sign-in page → Owner help.</p><p><b>Do this:</b> Use the template below. Include the exact restaurant, order or item, requested outcome, and effective date.</p><p><b>Check:</b> Keep the team’s confirmation so you know what changed and when.</p></div><details class="quick-fix"><summary>What should I include?</summary><p>For an order: number, date, customer, amount, and requested outcome. For a menu change: exact category, dish, wording, sizes, prices, and effective date. Never include passwords, sign-in links, or payment-card details.</p></details>
@@ -1175,7 +1254,7 @@ Please confirm before changing anything that moves money.</code></div>
 
 <!-- ================= 16 KITCHEN TABLET ================= -->
 <section class="lesson" data-title="Kitchen tablet" data-part="Run the kitchen tablet">
-  <div class="eyebrow">Lesson 16 · Where orders arrive <span class="badge edit">You can edit</span></div>
+  <div class="eyebrow">Lesson 17 · Where orders arrive <span class="badge edit">You can edit</span></div>
   <h1>Your kitchen tablet</h1>
   <p class="lede">New orders ring on your restaurant’s tablet. Its Settings screen, behind the gear icon at the bottom of the left menu, has the controls you need during service: online ordering, prep times and Busy mode, pausing pickup or delivery, the printer, auto-accept and the new-order sound.</p>
   <div class="quick-answer"><h2>Quick answer: Slow orders down during a rush</h2><p><b>Where:</b> Tablet → Settings (gear icon) → Prep times.</p><p><b>Do this:</b> Switch Busy mode on at the top right of the card. Need more time? Use + in the Extra when busy column for pickup or delivery.</p><p><b>Check:</b> The When busy column shows the new totals. While online ordering is on, the Current prep times strip shows what customers are quoted right now.</p></div><details class="quick-fix"><summary>The tablet is not ringing for new orders</summary><p>In Settings, check that New-order sound is on, then tap a sound to hear it. Keep the tablet charged, awake and online. If it still stays silent, use Owner help.</p></details>
@@ -1204,7 +1283,7 @@ Please confirm before changing anything that moves money.</code></div>
 
 <!-- ================= 17 OWNER ROUTINE ================= -->
 <section class="lesson" data-title="Owner routine" data-part="Wrap up">
-  <div class="eyebrow">Lesson 17 · Daily, weekly &amp; seasonal</div>
+  <div class="eyebrow">Lesson 18 · Daily, weekly &amp; seasonal</div>
   <h1>A practical operating routine</h1>
   <p class="lede">The portal works best when it becomes part of opening, service, weekly bookkeeping, and holiday planning—not something opened only after a customer reports a problem.</p>
   <div id="openingReference" class="quick-answer"><h2>Before service: opening checklist</h2><p>Use this each shift. Ticks are a reminder in this guide, not a check of your restaurant systems. They reset when you reload the page.</p><div class="opening-list"><label><input type="checkbox" class="opening-check"><span>Confirm today’s customer-facing hours and any holiday or vacation exception.</span></label><label><input type="checkbox" class="opening-check"><span>Review sold-out dishes; restore only the items the kitchen can make.</span></label><label><input type="checkbox" class="opening-check"><span>Check that current menu prices and active offers are correct.</span></label><label><input type="checkbox" class="opening-check"><span>Check the tablet, printer, internet, staffing, and kitchen readiness.</span></label><label><input type="checkbox" class="opening-check"><span>Open the customer storefront and verify the result of any changes.</span></label></div><p id="openingCount" role="status">0 of 5 checked</p><div class="quick-actions"><button class="btn" id="resetOpening" type="button">Reset checklist</button><button class="btn" id="printReference" type="button">Print one-page reference</button></div><h3>During service</h3><p><b>Sold out:</b> Menu → find the dish → switch availability off → verify the customer menu.</p><p><b>Close early:</b> Hours &amp; availability → close for today → verify the storefront. Check existing orders separately.</p><p><b>Order issue:</b> Before acceptance, reject or cancel on the tablet. After acceptance, use Owner help for cancellations or refunds.</p><h3>Need help?</h3><p>Choose Owner help on your restaurant’s portal sign-in page. Include the restaurant, exact order or item, current status, requested outcome, and date.</p><p>Full guide: guide.menuconnect.ca/start</p></div>
@@ -1221,7 +1300,7 @@ Please confirm before changing anything that moves money.</code></div>
 
 <!-- ================= 18 QUIZ ================= -->
 <section class="lesson" data-title="Quick check" data-part="Wrap up">
-  <div class="eyebrow">Lesson 18 · Final check</div>
+  <div class="eyebrow">Lesson 19 · Final check</div>
   <h1>Who does it — you, or Menu.ca?</h1>
   <p class="lede">Fifteen everyday situations covering money, hours, menu accuracy, orders, offers, photos, and bilingual editing. Tap who handles each one and review the explanation.</p>
   <div style="margin-top:24px">
@@ -1272,11 +1351,10 @@ function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearT
 var lessons=$$('.lesson');
 var railNav=$('#railNav');
 var current=0;
-var setupStages=[[1,2],[3,4],[5,6,7,8],[9,10,11],[12,13,14,15,16,17,18]];
+var setupStages=[[1,2],[3,4],[5,6,7,8],[9,10,11],[12,13,14,15,16,17,18,19]];
 var progressBackend=window.MenuConnectProgress.selectStorage(window);
 var progressStore=window.MenuConnectProgress.createStore(progressBackend.storage,{total:lessons.length-1,stages:setupStages,persistent:progressBackend.persistent});
 var lessonSlugs=lessons.map(function(sec,i){return i===0?'welcome':sec.getAttribute('data-title').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')});
-function doneIcon(){return '<svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l3 3 5-6"/></svg>'}
 lessons.forEach(function(sec,i){
   sec.id=lessonSlugs[i];
   var part=sec.getAttribute('data-part');
@@ -1297,7 +1375,7 @@ function updateProgress(state){
     if(i===0)return;
     var done=state.viewed.indexOf(i)>-1;
     lesson._railBtn.classList.toggle('done',done);
-    lesson._railBtn.querySelector('.rail-num').innerHTML=done?doneIcon():i;
+    lesson._railBtn.querySelector('.rail-num').textContent=i; // keep the number visible; .done adds the check badge
   });
   $$('.setup-stage').forEach(function(stage,i){stage.classList.toggle('done',state.stageComplete[i])});
   $('#setupPersistenceNote').textContent=state.persistent?'Progress is saved on this device so you can close the guide and continue later.':'Progress is available for this visit only. Keep this page open to continue your setup.';
@@ -1560,7 +1638,7 @@ function renderPromos(){
   function el(tag,cls,text){var n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n}
   promos.forEach(function(p,i){
     var row=el('div','promo-row');
-    var d=el('span','pdesc');d.appendChild(el('b',null,p.name));d.appendChild(el('span',null,p.desc));
+    var d=el('span','pdesc');var nm=el('b',null,p.name),ds=el('span',null,p.desc);if(p.typed){nm.dir='auto';ds.dir='auto'}d.appendChild(nm);d.appendChild(ds);
     var u=el('span','pused');u.appendChild(el('span',null,'Orders using it:'));u.appendChild(document.createTextNode(' '));u.appendChild(el('b',null,String(p.used)));d.appendChild(u);
     var a=el('span','pacts');a.appendChild(el('span','pstate '+(p.on?'run':'paused'),p.on?'Running':'Paused'));
     var e=el('button','btn','Edit');e.type='button';e.setAttribute('data-pe',i);a.appendChild(e);
@@ -1617,27 +1695,73 @@ $('#pbCancel').addEventListener('click',function(){pbBuilder.hidden=true});
 $('#pbStart').addEventListener('click',function(){
   var name=$('#pbSummary').textContent;
   var desc=name+(pb.get==='code'?', code '+($('#pbCode').value.trim()||'CODE')+($('#pbOnce').checked?', once per customer':''):', automatic');
-  promos.unshift({name:name,desc:desc,on:true,used:0});
+  promos.unshift({name:name,desc:desc,on:true,used:0,typed:true});
   pbBuilder.hidden=true;renderPromos();toast('Promotion started — check it in your cart ✓');
 });
+
+/* ---------- lesson 14: announcements ---------- */
+var ann={kind:'deal',when:'now',look:'banner',lang:'en'};
+var annLive=[{en:'Closed Monday Oct 12 for Thanksgiving'}];
+var annQuick=[
+ {kind:'deal',en:'10% off pickup this week',fr:'10 % de rabais pour emporter cette semaine'},
+ {kind:'closed',en:'Closed Monday Oct 12 for Thanksgiving',fr:'Fermé le lundi 12 octobre pour l’Action de grâce'},
+ {kind:'change',en:'No delivery tonight, pickup only',fr:'Pas de livraison ce soir, pour emporter seulement'},
+ {kind:'news',en:'New: our General Tso chicken',fr:'Nouveau : notre poulet du Général Tao'}
+];
+function annRenderLive(){
+  var box=$('#annLive');box.textContent='';
+  if(!annLive.length){var e=document.createElement('p');e.className='hint';e.style.margin='0';e.textContent='Nothing on your website right now.';box.appendChild(e);return}
+  annLive.forEach(function(a,i){
+    var row=document.createElement('div');row.className='ann-item';
+    var t=document.createElement('b');t.dir='auto';t.textContent=a.en;row.appendChild(t);
+    var st=document.createElement('span');st.className='pstate run';st.textContent='On your website';row.appendChild(st);
+    var off=document.createElement('button');off.className='btn';off.type='button';off.textContent='Turn off';off.setAttribute('data-off',i);row.appendChild(off);
+    box.appendChild(row);
+  });
+}
+function annSync(){
+  document.querySelectorAll('[data-ann]').forEach(function(g){
+    g.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-v')===ann[g.getAttribute('data-ann')]))});
+  });
+  var en=$('#annEn').value,fr=$('#annFr').value;
+  $('#annEnCount').textContent=en.length+' / 48';$('#annFrCount').textContent=fr.length+' / 48';
+  $('#annMsgText').textContent=ann.lang==='fr'?(fr.trim()||en):en;
+  $('#annMsg').className='ann-msg'+(ann.look==='card'?' card':ann.look==='tag'?' tag':'');
+}
+document.querySelectorAll('[data-ann]').forEach(function(g){
+  g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;ann[g.getAttribute('data-ann')]=b.getAttribute('data-v');annSync()});
+});
+$('#annEn').addEventListener('input',annSync);$('#annFr').addEventListener('input',annSync);
+$('#annQuick').addEventListener('click',function(e){
+  var c=e.target.closest('[data-q]');if(!c)return;var q=annQuick[+c.getAttribute('data-q')];
+  ann.kind=q.kind;$('#annEn').value=q.en;$('#annFr').value=q.fr;annSync();
+});
+$('#annPost').addEventListener('click',function(){
+  var en=$('#annEn').value.trim();if(!en){toast('Write the English line first');return}
+  annLive.unshift({en:en});annRenderLive();toast('Posted — it is on your website now ✓');
+});
+$('#annLive').addEventListener('click',function(e){
+  var b=e.target.closest('[data-off]');if(!b)return;annLive.splice(+b.getAttribute('data-off'),1);annRenderLive();toast('Turned off — it is no longer on your website ✓');
+});
+annRenderLive();annSync();
 
 /* ---------- lesson 17: quiz ---------- */
 var quiz=[
  {q:'It’s Tuesday, the dining room floods, and you need to stop orders for the rest of the day.',a:'you',why:'Use the same-day closure and verify the customer storefront (Lesson 8). It should not rewrite your normal weekly hours.'},
- {q:'A customer wants a refund on last night’s accepted order.',a:'team',why:'Before acceptance, the restaurant can reject or cancel on its tablet. After acceptance, refunds go through Owner help (Lessons 12, 14–15). Look up the order first and include its number, date, customer, and amount.'},
+ {q:'A customer wants a refund on last night’s accepted order.',a:'team',why:'Before acceptance, the restaurant can reject or cancel on its tablet. After acceptance, refunds go through Owner help (Lessons 12, 15–16). Look up the order first and include its number, date, customer, and amount.'},
  {q:'You’ve run out of Butter Chicken halfway through dinner service.',a:'you',why:'Mark it sold out immediately, then verify the customer menu (Lessons 9–10). Restore it only when the kitchen is ready.'},
- {q:'You want to add a brand-new appetizer section with six new dishes.',a:'team',why:'New dishes, categories, modifiers, and combos change menu structure, so send a complete request through Owner help (Lessons 14–15).'},
+ {q:'You want to add a brand-new appetizer section with six new dishes.',a:'team',why:'New dishes, categories, modifiers, and combos change menu structure, so send a complete request through Owner help (Lessons 15–16).'},
  {q:'You want to replace a dish photo today.',a:'you',why:'Use the live photo editor, confirm the correct dish, upload the labelled photo, and verify it on the customer menu (Lesson 11).'},
  {q:'Starting next week, you want to open at noon every Sunday.',a:'you',why:'That is a recurring weekly-hours change (Lesson 5), not a dated exception.'},
  {q:'You close between lunch and dinner every Friday.',a:'you',why:'Use two service windows on Friday and verify the intentional gap (Lesson 6).'},
  {q:'The restaurant will be closed for a five-day vacation next month.',a:'you',why:'Add a dated vacation exception and confirm that regular weekly hours resume afterward (Lesson 7).'},
- {q:'You want to raise the delivery minimum from $15 to $20.',a:'team',why:'Delivery zones, fees, and minimums stay with Menu.ca (Lessons 14–15). Include the exact new value and effective date.'},
+ {q:'You want to raise the delivery minimum from $15 to $20.',a:'team',why:'Delivery zones, fees, and minimums stay with Menu.ca (Lessons 15–16). Include the exact new value and effective date.'},
  {q:'Your special-offer code should stop running tonight.',a:'you',why:'Pause the promotion in Promotions and check that it shows Paused (Lesson 13). You can also create new deals there yourself.'},
  {q:'You need to understand why a cash-heavy week produced a small carried balance.',a:'you',why:'Review gross sales, cash and card orders, deductions, refunds, and net payout first (Lessons 3–4). Use Owner help if it still does not reconcile.'},
  {q:'A customer calls and gives only part of their phone number.',a:'you',why:'Search the post-acceptance order history by phone, name, or order number (Lesson 12), then record the exact order before requesting any action.'},
  {q:'You want to edit English and French dish descriptions yourself today.',a:'you',why:'Use the bilingual editor, review both language versions, save, and verify them on the customer menu (Lesson 11).'},
  {q:'A sold-out item is back in stock before dinner.',a:'you',why:'Restore availability, then check that customers can order it again (Lesson 10).'},
- {q:'You’ve re-done the dining room and want new branding across your storefront.',a:'team',why:'Overall branding and profile changes remain with Menu.ca (Lessons 14–15). Dish and section photos are separate menu-editor controls.'}
+ {q:'You’ve re-done the dining room and want new branding across your storefront.',a:'team',why:'Overall branding and profile changes remain with Menu.ca (Lessons 15–16). Dish and section photos are separate menu-editor controls.'}
 ];
 var qi=0,qScoreN=0,answered=false;
 function renderQ(){
