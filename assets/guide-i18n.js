@@ -10,10 +10,10 @@ var attrs=['aria-label','placeholder','title'];
 var skipSelector='script,style,svg,code,[data-no-i18n]';
 var statuses={
   en:'The complete guide is shown in English.',
-  ar:'ترجمة تلقائية — تحقّق من التفاصيل المالية مع Menu.ca.',
-  fr:'Traduction automatique — vérifiez les détails financiers auprès de Menu.ca.',
-  zh:'自动翻译——请向 Menu.ca 核实财务信息。',
-  pa:'ਸਵੈਚਾਲਿਤ ਅਨੁਵਾਦ — ਵਿੱਤੀ ਵੇਰਵਿਆਂ ਦੀ Menu.ca ਨਾਲ ਪੁਸ਼ਟੀ ਕਰੋ।'
+  ar:'ترجمة تلقائية — قبل تغيير الأسعار أو الساعات أو طلب استرداد، راجع النسخة الإنجليزية أو اسأل Menu.ca.',
+  fr:'Traduction automatique — avant de modifier des prix ou des heures, ou de demander un remboursement, vérifiez la version anglaise ou demandez à Menu.ca.',
+  zh:'自动翻译——更改价格、营业时间或申请退款前，请对照英文版或咨询 Menu.ca。',
+  pa:'ਸਵੈਚਾਲਿਤ ਅਨੁਵਾਦ — ਕੀਮਤਾਂ ਜਾਂ ਘੰਟੇ ਬਦਲਣ ਜਾਂ ਰਿਫੰਡ ਮੰਗਣ ਤੋਂ ਪਹਿਲਾਂ, ਅੰਗਰੇਜ਼ੀ ਵਰਜਨ ਦੇਖੋ ਜਾਂ Menu.ca ਨੂੰ ਪੁੱਛੋ।'
 };
 var interfaceTranslations={
   ar:{'Right ✓':'صحيح ✓','Not quite —':'ليس تمامًا —'},
