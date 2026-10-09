@@ -8,6 +8,11 @@ const context = { window: {} };
 vm.runInNewContext(source, context, { filename: 'guide-progress.js' });
 const progress = context.window.MenuConnectProgress;
 
+// Model the live curriculum: lesson count and setup stages come from guide.html.
+const guide = await readFile(new URL('../guide.html', import.meta.url), 'utf8');
+const total = (guide.match(/<section class="lesson"/g) || []).length - 1;
+const stages = JSON.parse(guide.match(/var setupStages=(\[\[[\d,\[\]]+\]\]);/)[1]);
+
 function storageWith(initial = {}) {
   const values = new Map(Object.entries(initial));
   return {
@@ -19,8 +24,8 @@ function storageWith(initial = {}) {
 }
 
 const options = {
-  total: 17,
-  stages: [[1, 2], [3, 4], [5, 6, 7, 8], [9, 10, 11], [12, 13, 14, 15, 16, 17]],
+  total,
+  stages,
   now: () => '2026-09-22T12:00:00.000Z',
 };
 
@@ -43,10 +48,7 @@ test('viewed lessons and the resume lesson persist across store instances', () =
 test('reports each stage independently and requires the quick check for stage five', () => {
   const store = progress.createStore(storageWith(), options);
 
-  store.markViewed(9);
-  store.markViewed(10);
-  store.markViewed(11);
-  for (let lesson = 12; lesson <= 17; lesson += 1) store.markViewed(lesson);
+  for (const lesson of [...stages[3], ...stages[4]]) store.markViewed(lesson);
 
   const beforeQuiz = store.snapshot();
   assert.deepEqual(Array.from(beforeQuiz.stageComplete), [false, false, false, true, false]);
@@ -80,11 +82,11 @@ test('storage selection probes writes and exposes whether progress is persistent
 test('all lessons viewed without the quick check resumes at the quick check', () => {
   const storage = storageWith();
   const store = progress.createStore(storage, options);
-  for (let lesson = 1; lesson <= 17; lesson += 1) store.markViewed(lesson);
+  for (let lesson = 1; lesson <= total; lesson += 1) store.markViewed(lesson);
 
   const state = store.snapshot();
   assert.equal(state.complete, false);
-  assert.equal(state.nextLesson, 17);
+  assert.equal(state.nextLesson, total);
 });
 
 test('setup completes only after every lesson is viewed and the quick check is finished', () => {
@@ -95,7 +97,7 @@ test('setup completes only after every lesson is viewed and the quick check is f
   assert.equal(store.snapshot().complete, false);
   assert.equal(store.snapshot().completedAt, null);
 
-  for (let lesson = 1; lesson <= 17; lesson += 1) store.markViewed(lesson);
+  for (let lesson = 1; lesson <= total; lesson += 1) store.markViewed(lesson);
 
   const completed = store.snapshot();
   assert.equal(completed.complete, true);
@@ -108,7 +110,7 @@ test('setup completes only after every lesson is viewed and the quick check is f
 test('malformed or out-of-range saved progress is safely normalized', () => {
   const storage = storageWith({
     'menuconnect-owner-setup-v1': JSON.stringify({
-      viewed: [0, 1, 1, 18, '2', 7],
+      viewed: [0, 1, 1, total + 1, '2', 7],
       lastLesson: 99,
       quizComplete: 'yes',
       completedAt: 42,
@@ -121,6 +123,14 @@ test('malformed or out-of-range saved progress is safely normalized', () => {
   assert.equal(state.nextLesson, 2);
   assert.equal(state.quizComplete, false);
   assert.equal(state.completedAt, null);
+});
+
+test('the curriculum matches the guide and the default lesson count', () => {
+  assert.equal(total, 19);
+  assert.deepEqual(stages.flat(), Array.from({ length: total }, (_, i) => i + 1));
+  const byDefault = progress.createStore(storageWith());
+  byDefault.markViewed(total);
+  assert.deepEqual(Array.from(byDefault.snapshot().viewed), [total], 'default lesson count must cover the whole curriculum');
 });
 
 test('reset clears persisted progress and returns to the first lesson', () => {

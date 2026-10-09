@@ -26,7 +26,7 @@ function selectStorage(host){
 
 function createStore(storage,options){
   options=options||{};
-  var total=Number(options.total)||17;
+  var total=Number(options.total)||19;
   var stages=Array.isArray(options.stages)?options.stages:[];
   var persistent=options.persistent!==false;
   var now=typeof options.now==='function'?options.now:function(){return new Date().toISOString()};

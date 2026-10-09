@@ -45,3 +45,46 @@ test('quick-answer shortcuts jump to the lesson their link names', () => {
     assert.equal(slugs[Number(jump)], slug, `#${slug} jumps to lesson ${jump} (${slugs[Number(jump)]})`);
   }
 });
+
+test('each quiz review link opens a lesson its explanation cites', () => {
+  const whys = [...guide.matchAll(/\{q:'.*?',a:'(?:you|team)',why:'(.*?)'\}/g)].map((m) => m[1]);
+  const links = JSON.parse(guide.match(/var quizLessons=(\[[\d,]+\]);/)[1]);
+  assert.equal(whys.length, 15);
+  assert.equal(links.length, whys.length);
+  whys.forEach((why, i) => {
+    const cited = new Set();
+    for (const [, refs] of why.matchAll(/Lessons? ([\d,–\s]+)/g)) {
+      for (const part of refs.split(',')) {
+        const [from, to] = part.trim().split('–').map(Number);
+        if (!from) continue;
+        for (let n = from; n <= (to || from); n += 1) cited.add(n);
+      }
+    }
+    assert.ok(cited.has(links[i]), `question ${i + 1} reviews lesson ${links[i]} but cites ${[...cited].join(', ')}`);
+  });
+});
+
+test('lesson navigation records the lesson in the URL', () => {
+  assert.doesNotMatch(guide, /go\((?:i|i-1|i\+1|0|current[+-]1)\)/, 'every navigation call passes updateHash');
+  assert.match(guide, /window\.addEventListener\('popstate',syncFromHash\)/);
+});
+
+test('closure practice understands its own examples in every language', () => {
+  const chips = [...guide.matchAll(/<button class="chip" type="button" data-say="(\w+)">/g)].map((m) => m[1]);
+  assert.deepEqual(chips, ['today', 'vacation', 'sunday', 'friday']);
+  assert.doesNotMatch(guide, /sayCardText\.innerHTML/);
+});
+
+test('practice confirmations ask the owner to verify instead of promising instant results', () => {
+  for (const claim of [/your storefront shows it immediately/, /go straight to the customer menu/, /gone from the live menu/,
+    /carries straight through to the cart/, /changes are recorded so they can be reversed/, /Menu\.ca handles cancellations and refunds/,
+    /refunds and cancellations are handled by the Menu\.ca team/]) {
+    assert.doesNotMatch(guide, claim);
+  }
+});
+
+test('owners are warned about dietary claims, promotion costs and customer data', () => {
+  assert.match(guide, /allergen or dietary claims/);
+  assert.match(guide, /Before you start a deal:/);
+  assert.match(guide, /Share only the customer details needed to find the order/);
+});
