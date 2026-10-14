@@ -30,7 +30,7 @@ const corrections = {
   'Refunds (1)': '退款 (1)',
   'One order was refunded this week. Refunds always land in the week they happen — a past statement never changes after it\'s frozen.': '本周有一笔订单已退款。退款计入实际发生退款的那一周；已锁定的往期报表不会更改。',
   'A later refund appears in the statement period when it is processed rather than rewriting an older statement.': '后续退款计入处理退款时所在的报表周期，不会修改之前的报表。',
-  'Before acceptance, the restaurant can reject or cancel on its tablet. After acceptance, refunds go through Owner help (Lessons 12, 15–16). Look up the order first and include its number, date, customer, and amount.': '接单前，餐厅可在平板电脑上拒绝或取消订单。接单后，请通过“店主帮助”申请退款（第 12、15–16 课）。先查找订单，并提供订单号、日期、顾客姓名及金额。',
+  'Open the order in Orders and use its Refund card: choose what to refund, pick a reason, then review and confirm (Lesson 12). If you would rather Menu.ca handle it, choose Request a refund from Menu.ca.': '在“订单”中打开该订单并使用其 Refund 卡片：选择退款内容、选择原因，然后检查并确认（第 12 课）。如果您希望由 Menu.ca 处理，请选择 Request a refund from Menu.ca。',
   'Send Owner help everything needed the first time': '首次联系“店主帮助”时提供所有必要信息',
   'Use Owner help with the statement period and order number if the figures still do not make sense.': '如果金额仍无法核对，请通过“店主帮助”提供报表周期和订单号。',
   'Apply': '应用',
@@ -38,7 +38,7 @@ const corrections = {
   'change Friday close to 10pm': '将周五关门时间改为晚上 10 点',
   '⚠ Close for the rest of today': '⚠ 今天剩余时间停止接单',
   'Close for the rest of today': '今天剩余时间停止接单',
-  'Closing today is for stopping new orders. Look up existing orders separately. After acceptance, use Owner help for a cancellation or refund; include the order details and requested outcome.': '当日停业仅用于停止接收新订单。请另行查询已接订单。接单后如需取消或退款，请通过“店主帮助”提供订单详情及所需处理结果。',
+  'Closing today is for stopping new orders. Look up existing orders separately. After acceptance, open the order in Orders (Lesson 12) to refund it, or choose Request a refund from Menu.ca there.': '当日停业仅用于停止接收新订单。请另行查询已接订单。接单后，请在“订单”（第 12 课）中打开该订单进行退款，或在那里选择 Request a refund from Menu.ca。',
   'Remove the same-day closure only after the kitchen and ordering setup are genuinely ready.': '仅在厨房和接单设备确实准备就绪后，才解除当日停业设置。',
   'Hours or delivery': '营业时间或配送',
   'Restaurant, exact dates or recurring days, opening/closing times, delivery zone or minimum, and when it should start.': '餐厅名称、具体日期或每周固定日期、开门/关门时间、配送区域或最低起送金额，以及生效时间。',
@@ -51,8 +51,8 @@ test('Chinese financial and operational instructions preserve the direction, act
 });
 
 test('critical technical tokens and numbers remain intact in translated instructions', () => {
-  for (const key of ['Refunds (1)', 'change Friday close to 10pm', 'Before acceptance, the restaurant can reject or cancel on its tablet. After acceptance, refunds go through Owner help (Lessons 12, 15–16). Look up the order first and include its number, date, customer, and amount.']) {
-    const tokens = key === 'Refunds (1)' ? ['1'] : key.includes('10pm') ? ['10'] : ['12', '15', '16'];
+  for (const key of ['Refunds (1)', 'change Friday close to 10pm', 'Open the order in Orders and use its Refund card: choose what to refund, pick a reason, then review and confirm (Lesson 12). If you would rather Menu.ca handle it, choose Request a refund from Menu.ca.']) {
+    const tokens = key === 'Refunds (1)' ? ['1'] : key.includes('10pm') ? ['10'] : ['12'];
     for (const token of tokens) assert.ok(zh[key].includes(token), `${key} lost ${token}`);
   }
 });
