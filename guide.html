@@ -610,6 +610,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
       <button type="button" data-guide-lang="en" aria-pressed="true">English</button>
       <button type="button" data-guide-lang="ar" aria-pressed="false" lang="ar">العربية</button>
       <button type="button" data-guide-lang="fr" aria-pressed="false" lang="fr">Français</button>
+      <button type="button" data-guide-lang="es" aria-pressed="false" lang="es">Español</button>
       <button type="button" data-guide-lang="zh" aria-pressed="false" lang="zh-Hans">中文</button>
       <button type="button" data-guide-lang="pa" aria-pressed="false" lang="pa">ਪੰਜਾਬੀ</button>
     </div>
@@ -1564,12 +1565,12 @@ var sayResults={
  sunday:'Sundays now open at 12:00 (noon). Applies every week until you change it.',
  friday:'Friday close time changes to 22:00. Applies every week until you change it.'
 };
-// The examples are shown in the guide language, so typed text is matched in all five languages.
+// The examples are shown in the guide language, so typed text is matched in all six languages.
 var sayWords={
- vacation:['vacation','holiday','vacances','congé','إجازة','عطلة','假期','休假','度假','ਛੁੱਟੀ','ਛੁੱਟੀਆਂ'],
- today:['close today','closed today','private event','aujourd','privé','اليوم','حدث خاص','今天','私人活动','ਅੱਜ','ਨਿੱਜੀ'],
- sunday:['sunday','dimanche','الأحد','周日','星期日','星期天','ਐਤਵਾਰ'],
- friday:['friday','vendredi','الجمعة','周五','星期五','ਸ਼ੁੱਕਰਵਾਰ']
+ vacation:['vacation','holiday','vacances','congé','vacaciones','feriado','إجازة','عطلة','假期','休假','度假','ਛੁੱਟੀ','ਛੁੱਟੀਆਂ'],
+ today:['close today','closed today','private event','aujourd','privé','hoy','evento privado','اليوم','حدث خاص','今天','私人活动','ਅੱਜ','ਨਿੱਜੀ'],
+ sunday:['sunday','dimanche','domingo','الأحد','周日','星期日','星期天','ਐਤਵਾਰ'],
+ friday:['friday','vendredi','viernes','الجمعة','周五','星期五','ਸ਼ੁੱਕਰਵਾਰ']
 };
 function sayKind(v){
   var low=v.toLowerCase();

@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 var translations=window.MenuConnectTranslations||{};
-var supported=['en','ar','fr','zh','pa'];
+var supported=['en','ar','fr','es','zh','pa'];
 var rtl={ar:true};
 var sourceText=new WeakMap();
 var sourceAttrs=new WeakMap();
@@ -12,12 +12,14 @@ var statuses={
   en:'The complete guide is shown in English.',
   ar:'ترجمة تلقائية — قبل تغيير الأسعار أو الساعات أو طلب استرداد، راجع النسخة الإنجليزية أو اسأل Menu.ca.',
   fr:'Traduction automatique — avant de modifier des prix ou des heures, ou de demander un remboursement, vérifiez la version anglaise ou demandez à Menu.ca.',
+  es:'Traducción automática — antes de cambiar precios u horarios, o de solicitar un reembolso, revise la versión en inglés o consulte a Menu.ca.',
   zh:'自动翻译——更改价格、营业时间或申请退款前，请对照英文版或咨询 Menu.ca。',
   pa:'ਸਵੈਚਾਲਿਤ ਅਨੁਵਾਦ — ਕੀਮਤਾਂ ਜਾਂ ਘੰਟੇ ਬਦਲਣ ਜਾਂ ਰਿਫੰਡ ਮੰਗਣ ਤੋਂ ਪਹਿਲਾਂ, ਅੰਗਰੇਜ਼ੀ ਵਰਜਨ ਦੇਖੋ ਜਾਂ Menu.ca ਨੂੰ ਪੁੱਛੋ।'
 };
 var interfaceTranslations={
   ar:{'Right ✓':'صحيح ✓','Not quite —':'ليس تمامًا —'},
   fr:{'Right ✓':'Correct ✓','Not quite —':'Pas tout à fait —'},
+  es:{'Guide language':'Idioma de la guía','Right ✓':'Correcto ✓','Not quite —':'No exactamente —'},
   zh:{'Guide language':'指南语言','Right ✓':'正确 ✓','Not quite —':'不完全正确 —'},
   pa:{'Right ✓':'ਸਹੀ ✓','Not quite —':'ਪੂਰੀ ਤਰ੍ਹਾਂ ਨਹੀਂ —'}
 };
@@ -25,6 +27,7 @@ var generatedLabels={
   en:{practice:'Practice example',meaning:'What this means'},
   ar:{practice:'مثال عملي',meaning:'ماذا يعني هذا'},
   fr:{practice:'Exemple pratique',meaning:'Ce que cela signifie'},
+  es:{practice:'Ejemplo práctico',meaning:'Qué significa esto'},
   zh:{practice:'练习示例',meaning:'这意味着什么'},
   pa:{practice:'ਅਭਿਆਸ ਦੀ ਉਦਾਹਰਨ',meaning:'ਇਸਦਾ ਕੀ ਮਤਲਬ ਹੈ'}
 };
@@ -40,6 +43,7 @@ function translated(lang,key){
   if(match){
     if(lang==='ar')return 'السؤال '+match[1]+' من '+match[2]+(match[3]?' · '+match[3]+' إجابات صحيحة حتى الآن':'');
     if(lang==='fr')return 'Question '+match[1]+' sur '+match[2]+(match[3]?' · '+match[3]+' bonnes réponses jusqu’ici':'');
+    if(lang==='es')return 'Pregunta '+match[1]+' de '+match[2]+(match[3]?' · '+match[3]+(match[3]==='1'?' correcta':' correctas')+' hasta ahora':'');
     if(lang==='zh')return '第 '+match[1]+' 题，共 '+match[2]+' 题'+(match[3]?' · 目前答对 '+match[3]+' 题':'');
     if(lang==='pa')return 'ਸਵਾਲ '+match[1]+' / '+match[2]+(match[3]?' · ਹੁਣ ਤੱਕ '+match[3]+' ਸਹੀ':'');
   }
@@ -47,6 +51,7 @@ function translated(lang,key){
   if(match){
     if(lang==='ar')return 'تمت مشاهدة '+match[1]+' من '+match[2]+' درسًا';
     if(lang==='fr')return match[1]+' leçon'+(match[1]==='1'?'':'s')+' consultée'+(match[1]==='1'?'':'s')+' sur '+match[2];
+    if(lang==='es')return match[1]+' de '+match[2]+' lecciones vistas';
     if(lang==='zh')return '已查看 '+match[1]+' / '+match[2]+' 课';
     if(lang==='pa')return match[2]+' ਵਿੱਚੋਂ '+match[1]+' ਪਾਠ ਵੇਖੇ';
   }
@@ -54,6 +59,7 @@ function translated(lang,key){
   if(match){
     if(lang==='ar')return 'تمت مراجعة '+match[1]+' من '+match[2]+' درسًا · اكتملت '+match[3]+' من 5 مراحل';
     if(lang==='fr')return match[1]+' leçon'+(match[1]==='1'?'':'s')+' révisée'+(match[1]==='1'?'':'s')+' sur '+match[2]+' · '+match[3]+' étape'+(match[3]==='1'?'':'s')+' terminée'+(match[3]==='1'?'':'s')+' sur 5';
+    if(lang==='es')return match[1]+' de '+match[2]+' lecciones repasadas · '+match[3]+' de 5 etapas completas';
     if(lang==='zh')return '已复习 '+match[1]+' / '+match[2]+' 课 · 已完成 '+match[3]+' / 5 个阶段';
     if(lang==='pa')return match[2]+' ਵਿੱਚੋਂ '+match[1]+' ਪਾਠ ਵੇਖੇ · 5 ਵਿੱਚੋਂ '+match[3]+' ਪੜਾਅ ਪੂਰੇ';
   }
@@ -61,6 +67,7 @@ function translated(lang,key){
   if(match){
     if(lang==='ar')return match[1]==='1'?'تبقّى درس واحد — راجعه لإكمال إعداد المالك.':'تبقّى '+match[1]+' من الدروس — راجعها لإكمال إعداد المالك.';
     if(lang==='fr')return match[1]==='1'?'Il reste 1 leçon — révisez-la pour terminer votre configuration propriétaire.':'Il reste '+match[1]+' leçons — révisez-les pour terminer votre configuration propriétaire.';
+    if(lang==='es')return match[1]==='1'?'Queda 1 lección — repásela para completar su configuración de propietario.':'Quedan '+match[1]+' lecciones — repáselas para completar su configuración de propietario.';
     if(lang==='zh')return match[1]==='1'?'还剩 1 节课——请复习本课以完成店主设置。':'还剩 '+match[1]+' 节课——请复习它们以完成店主设置。';
     if(lang==='pa')return match[1]==='1'?'1 ਪਾਠ ਬਾਕੀ ਹੈ — ਮਾਲਕ ਸੈਟਅੱਪ ਪੂਰੀ ਕਰਨ ਲਈ ਇਸਦੀ ਸਮੀਖਿਆ ਕਰੋ।':match[1]+' ਪਾਠ ਬਾਕੀ ਹਨ — ਮਾਲਕ ਸੈਟਅੱਪ ਪੂਰੀ ਕਰਨ ਲਈ ਉਹਨਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰੋ।';
   }
@@ -68,6 +75,7 @@ function translated(lang,key){
   if(match){
     if(lang==='ar')return 'تم تحديد '+match[1]+' من 5';
     if(lang==='fr')return match[1]+' éléments cochés sur 5';
+    if(lang==='es')return match[1]+' de 5 marcados';
     if(lang==='zh')return '已勾选 '+match[1]+' / 5';
     if(lang==='pa')return '5 ਵਿੱਚੋਂ '+match[1]+' ਚੁਣੇ';
   }

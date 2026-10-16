@@ -36,9 +36,9 @@ for name in ["index.html", "guide.html"]:
         assert page.lessons == expected, "Guide curriculum is incomplete or reordered"
         assert source.count("{q:'") == 15, "Expected 15 final-check scenarios"
         assert "orderDetailView" in source and "backToOrders" in source, "Order detail practice missing"
-        for language in ["en", "ar", "fr", "zh", "pa"]:
+        for language in ["en", "ar", "fr", "es", "zh", "pa"]:
             assert f'data-guide-lang="{language}"' in source, f"Missing guide language: {language}"
-        assert source.count("data-guide-lang=") == 5, "Expected exactly five guide languages"
+        assert source.count("data-guide-lang=") == 6, "Expected exactly six guide languages"
         assert 'class="language-options" role="group" aria-labelledby="languageLabel"' in source, \
             "Language selector group must use the localized visible label as its accessible name"
         assert 'src="/assets/guide-translations.js"' in source, "Translation catalog is not loaded"
@@ -50,12 +50,12 @@ for name in ["index.html", "guide.html"]:
         runtime = (root / "assets/guide-i18n.js").read_text()
         assert "document.documentElement.dir" in runtime and "rtl={ar:true}" in runtime, "Arabic RTL support is incomplete"
         catalog = (root / "assets/guide-translations.js").read_text()
-        for language in ['"ar":', '"fr":', '"zh":', '"pa":']:
+        for language in ['"ar":', '"fr":', '"es":', '"zh":', '"pa":']:
             assert language in catalog, f"Translation catalog is missing {language}"
         match = re.fullmatch(r"window\.MenuConnectTranslations=(\{.*\});?\s*", catalog, re.S)
         assert match, "Translation catalog wrapper is malformed"
         translations = json.loads(match.group(1))
-        assert set(translations) == {"ar", "fr", "zh", "pa"}, "Translation catalog languages changed"
+        assert set(translations) == {"ar", "fr", "es", "zh", "pa"}, "Translation catalog languages changed"
         key_sets = [set(values) for values in translations.values()]
         assert len(key_sets[0]) >= 700, "Translation catalog is unexpectedly incomplete"
         assert all(keys == key_sets[0] for keys in key_sets[1:]), "Translation languages do not cover the same source text"
@@ -109,6 +109,7 @@ for name in ["index.html", "guide.html"]:
         expected_language_field_labels = {
             "ar": ("اسم الطبق · EN", "اسم الطبق · FR", "الوصف · EN", "الوصف · FR"),
             "fr": ("Nom du plat · EN", "Nom du plat · FR", "Description · EN", "Description · FR"),
+            "es": ("Nombre del platillo · EN", "Nombre del platillo · FR", "Descripción · EN", "Descripción · FR"),
             "zh": ("菜名 · EN", "菜名 · FR", "描述 · EN", "描述 · FR"),
             "pa": ("ਪਕਵਾਨ ਦਾ ਨਾਮ · EN", "ਪਕਵਾਨ ਦਾ ਨਾਮ · FR", "ਵਰਣਨ · EN", "ਵਰਣਨ · FR"),
         }
@@ -123,6 +124,7 @@ for name in ["index.html", "guide.html"]:
             "en": ("Practice example", "What this means"),
             "ar": ("مثال عملي", "ماذا يعني هذا"),
             "fr": ("Exemple pratique", "Ce que cela signifie"),
+            "es": ("Ejemplo práctico", "Qué significa esto"),
             "zh": ("练习示例", "这意味着什么"),
             "pa": ("ਅਭਿਆਸ ਦੀ ਉਦਾਹਰਨ", "ਇਸਦਾ ਕੀ ਮਤਲਬ ਹੈ"),
         }
