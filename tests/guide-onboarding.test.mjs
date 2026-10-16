@@ -60,7 +60,7 @@ test('fallback persistence messages are translated in every supported language',
     'Progress is available for this visit only. Keep this page open to continue your setup.',
     'Your setup is complete for this visit. Keep this page open if you want to review it.',
   ];
-  for (const language of ['ar', 'fr', 'zh', 'pa']) {
+  for (const language of ['ar', 'fr', 'es', 'zh', 'pa']) {
     for (const key of keys) assert.ok(catalog[language][key], `${language} is missing: ${key}`);
   }
 });
@@ -78,12 +78,13 @@ test('remaining lesson copy has singular forms in every supported language', asy
   assert.ok(start > -1 && end > start, 'dynamic translator must be extractable for behavior testing');
   const context = {};
   vm.runInNewContext(
-    `var interfaceTranslations={};var translations={};${i18n.slice(start, end)};result={ar:translated('ar','1 remaining lesson — review it to complete your Owner Setup.'),fr:translated('fr','1 remaining lesson — review it to complete your Owner Setup.'),zh:translated('zh','1 remaining lesson — review it to complete your Owner Setup.'),pa:translated('pa','1 remaining lesson — review it to complete your Owner Setup.')};`,
+    `var interfaceTranslations={};var translations={};${i18n.slice(start, end)};result={ar:translated('ar','1 remaining lesson — review it to complete your Owner Setup.'),fr:translated('fr','1 remaining lesson — review it to complete your Owner Setup.'),es:translated('es','1 remaining lesson — review it to complete your Owner Setup.'),zh:translated('zh','1 remaining lesson — review it to complete your Owner Setup.'),pa:translated('pa','1 remaining lesson — review it to complete your Owner Setup.')};`,
     context,
   );
   assert.deepEqual(JSON.parse(JSON.stringify(context.result)), {
     ar: 'تبقّى درس واحد — راجعه لإكمال إعداد المالك.',
     fr: 'Il reste 1 leçon — révisez-la pour terminer votre configuration propriétaire.',
+    es: 'Queda 1 lección — repásela para completar su configuración de propietario.',
     zh: '还剩 1 节课——请复习本课以完成店主设置。',
     pa: '1 ਪਾਠ ਬਾਕੀ ਹੈ — ਮਾਲਕ ਸੈਟਅੱਪ ਪੂਰੀ ਕਰਨ ਲਈ ਇਸਦੀ ਸਮੀਖਿਆ ਕਰੋ।',
   });
