@@ -17,7 +17,7 @@ test('guide avoids unverified immediate-change and unconditional refund promises
   assert.doesNotMatch(guide, /every change is audited, reversible, and includes a ten-second undo/);
   assert.doesNotMatch(guide, /we'll take care of any cancellation or refund/);
   assert.match(guide, /confirm the change on the customer storefront/);
-  assert.match(guide, /review the request and confirm the outcome/);
+  assert.doesNotMatch(guide, /Request a refund from Menu\.ca|ask Menu\.ca to handle/);
 });
 
 test('support guide has a safe fallback when sign-in help is unavailable', () => {
