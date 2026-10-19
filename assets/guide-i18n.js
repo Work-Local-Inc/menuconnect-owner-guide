@@ -6,7 +6,7 @@ var rtl={ar:true};
 var sourceText=new WeakMap();
 var sourceAttrs=new WeakMap();
 var applying=false;
-var attrs=['aria-label','placeholder','title'];
+var attrs=['aria-label','placeholder','title','alt'];
 var skipSelector='script,style,svg,code,[data-no-i18n]';
 var statuses={
   en:'The complete guide is shown in English.',
