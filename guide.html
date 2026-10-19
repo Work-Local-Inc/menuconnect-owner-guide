@@ -467,6 +467,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 .artifact-figure img{display:block;width:100%;height:auto;background:#f8fafc}
 .screen-shot img{max-height:620px;object-fit:contain;background:#fff}
 .shot-link{display:block;cursor:zoom-in}
+.screen-shot.narrow img{max-width:520px;margin:0 auto}
 .artifact-figure figcaption{padding:12px 15px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .artifact-figure figcaption b{color:var(--amber)}
 .live-ui-panel{margin:20px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;box-shadow:var(--shadow-sm)}
@@ -665,7 +666,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
       <div class="vcard">
         <div class="ic"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 3l2 4 4.5.6-3.2 3.1.7 4.4L10 13l-4 2.1.7-4.4L3.5 7.6 8 7z"/></svg></div>
         <h3>We've got the rest</h3>
-        <p>After an order is accepted, you refund it yourself from Orders. We handle menu builds, delivery zones, and your profile and account settings.</p>
+        <p>After an order is accepted, you refund it yourself from Orders. We handle full menu builds and your profile and account settings.</p>
       </div>
     </div>
     <div class="legend-row">
@@ -679,8 +680,12 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 <section class="lesson" data-title="Signing in" data-part="Your owner portal">
   <div class="eyebrow">Lesson 1 · Getting in <span class="badge edit">Start here</span></div>
   <h1>Signing in with an emailed link</h1>
-  <p class="lede">Your portal lives at your restaurant's own web address with <b>/portal</b> on the end. Choose <b>Email a sign-in link</b>, enter the owner email Menu.ca set up for you, then open the newest link in the same browser you want to use. You land on your restaurant’s dashboard (Lesson 2).</p>
-  <div class="quick-answer"><h2>Quick answer: Sign in</h2><p><b>Where:</b> Your restaurant’s web address, with /portal on the end.</p><p><b>Do this:</b> Request an emailed sign-in link using the owner email set up for you. Open the newest link within 15 minutes in the browser you want to use.</p><p><b>Check:</b> Your restaurant dashboard opens. Confirm that the name at the top is the correct restaurant.</p></div><details class="quick-fix"><summary>My sign-in email hasn’t arrived</summary><p>Check that you entered the configured owner email and check your spam folder. Use the newest link if you requested more than one. If you are unsure of the email or still cannot sign in, choose Owner help on the portal sign-in page.</p></details>
+  <p class="lede">Your portal lives at your restaurant's own web address with <b>/portal</b> on the end. Enter the owner email Menu.ca set up for you and choose <b>Email me a link</b>, then open the newest link in the same browser you want to use. You can also use Continue with Google, or a password if you have set one. You land on your restaurant’s dashboard (Lesson 2).</p>
+  <div class="quick-answer"><h2>Quick answer: Sign in</h2><p><b>Where:</b> Your restaurant’s web address, with /portal on the end.</p><p><b>Do this:</b> Request an emailed sign-in link using the owner email set up for you. Open the newest link within 15 minutes in the browser you want to use.</p><p><b>Check:</b> Your restaurant dashboard opens. Confirm that the name at the top is the correct restaurant.</p></div><details class="quick-fix"><summary>My sign-in email hasn’t arrived</summary><p>Check that you entered the configured owner email and check your spam folder. Use the newest link if you requested more than one. If you are unsure of the email or still cannot sign in, email restaurants@menu.ca.</p></details>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/signin-owner.webp" target="_blank" rel="noopener"><img src="/assets/screens/signin-owner.webp" alt="Screenshot of the Pizza Lime owner sign-in page with the Email me a link button outlined." width="1580" height="1542" loading="lazy" decoding="async"></a>
+    <figcaption>Your restaurant’s address with /portal on the end: enter your owner email and choose Email me a link.</figcaption>
+  </figure>
 
   <div class="try"><svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — request a link</div>
   <div class="frame">
@@ -877,6 +882,10 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 6 · Lunch and dinner windows <span class="badge edit">You can edit</span></div>
   <h1>Set split shifts without leaving accidental gaps</h1>
   <p class="lede">If you close between lunch and dinner, use two windows on the same day instead of one continuous opening. Customers can order only inside the windows you save.</p>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/hours-second-window.webp" target="_blank" rel="noopener"><img src="/assets/screens/hours-second-window.webp" alt="Screenshot of Pickup hours with Add a second window outlined on Monday." width="1600" height="370" loading="lazy" decoding="async"></a>
+    <figcaption>Pickup hours: Add a second window gives a day two opening periods, for a split shift.</figcaption>
+  </figure>
   <div class="panel" style="margin-top:22px">
     <p class="mock-h" style="font-size:17px">Friday</p>
     <div class="windows" style="margin-top:12px;max-width:340px">
@@ -898,6 +907,10 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 7 · The exceptions <span class="badge edit">You can edit</span></div>
   <h1>Holidays, vacations &amp; closing early</h1>
   <p class="lede">Closing for a holiday, or shutting early one specific night? Dated closures sit <em>on top of</em> your normal week — they override it for those days, then disappear after they pass. Your weekly schedule is never touched.</p>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/hours-vacation.webp" target="_blank" rel="noopener"><img src="/assets/screens/hours-vacation.webp" alt="Screenshot of Vacation & holidays with the Add special date button outlined." width="1600" height="414" loading="lazy" decoding="async"></a>
+    <figcaption>Hours & availability → Vacation & holidays: add a holiday, special date, or vacation range.</figcaption>
+  </figure>
 
   <div class="try"><svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7.5h7M8 4l3.5 3.5L8 11"/></svg>Try it — say it in plain English, or hit the panic button</div>
   <div class="frame">
@@ -941,6 +954,10 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <h1>Stop orders today — then reopen safely</h1>
   <p class="lede">A flood, power outage, equipment failure, or staff shortage needs a same-day action, not a permanent rewrite of your weekly schedule.</p>
   <div class="quick-answer"><h2>Quick answer: Close early today</h2><p><b>Where:</b> Hours &amp; availability → Close for the rest of today.</p><p><b>Do this:</b> Apply a same-day closure. Keep your recurring weekly schedule for normal operating hours.</p><p><b>Check:</b> Open the customer storefront and confirm the restaurant is unavailable. Reopen only when you can fulfil new orders.</p></div><details class="quick-fix"><summary>What about orders already accepted?</summary><p>Closing today is for stopping new orders. Look up existing orders separately. After acceptance, open the order in Orders (Lesson 12) and refund it there.</p></details>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/hours-close-today.webp" target="_blank" rel="noopener"><img src="/assets/screens/hours-close-today.webp" alt="Screenshot of Close early tonight with the Close for the rest of today button outlined." width="1600" height="192" loading="lazy" decoding="async"></a>
+    <figcaption>Hours & availability → Close early tonight: Close for the rest of today stops new orders for today only.</figcaption>
+  </figure>
   <div class="reference-grid">
     <article class="info-card"><span class="badge edit">Right now</span><h3>Close for the rest of today</h3><p>Use the same-day closure control when the restaurant cannot take more orders today.</p></article>
     <article class="info-card"><span class="badge edit">Later today</span><h3>Reopen when ready</h3><p>Remove the same-day closure only after the kitchen and ordering setup are genuinely ready.</p></article>
@@ -1034,6 +1051,10 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 10 · During service <span class="badge edit">Owner control</span></div>
   <h1>Use sold out — do not delete a temporary problem</h1>
   <p class="lede">Availability is the fastest menu control during service. It protects customers from ordering something the kitchen cannot make while preserving the item for later.</p>
+  <figure class="artifact-figure screen-shot narrow">
+    <a class="shot-link" href="/assets/screens/menu-off-your-menu.webp" target="_blank" rel="noopener"><img src="/assets/screens/menu-off-your-menu.webp" alt="Screenshot of the Off your menu list with a hidden dish and its Make available button outlined." width="866" height="600" loading="lazy" decoding="async"></a>
+    <figcaption>Menu → Off your menu: every hidden dish, with Make available to put it back.</figcaption>
+  </figure>
   <div class="daily-strip">
     <article class="routine-card"><span class="badge edit">Before service</span><h3>Check limited-stock dishes</h3><p>Confirm that yesterday's sold-out items are still unavailable only when stock is actually missing.</p></article>
     <article class="routine-card"><span class="badge edit">During service</span><h3>Mark sold out immediately</h3><p>As soon as a dish becomes unavailable, click 86 (hide) and verify the customer menu.</p></article>
@@ -1052,6 +1073,10 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 11 · Expanded menu editor <span class="badge edit">Owner tools</span></div>
   <h1>Use photos and bilingual menu editing</h1>
   <p class="lede"><b>Photos are optional.</b> Upload JPG, PNG, or WebP files up to 10 MB; the portal sizes and tidies them. Language fields follow the languages enabled for your restaurant.</p>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/menu-section-photo.webp" target="_blank" rel="noopener"><img src="/assets/screens/menu-section-photo.webp" alt="Screenshot of the Pizza section heading with the Upload a photo button outlined." width="1600" height="294" loading="lazy" decoding="async"></a>
+    <figcaption>Menu → the section: Upload a photo puts one photo at the top of the whole section.</figcaption>
+  </figure>
   <div class="callout warning"><b>Before you save:</b><p>Confirm the correct dish or section, review every enabled language, and verify the customer menu after publishing. Menu commands show a preview first, and nothing changes until you press Apply.</p></div>
   <div class="live-ui-panel" role="group" aria-label="Practice example of the live photo controls">
     <div class="live-ui-head"><b>Photo on your menu card</b><span>Practice example</span></div>
@@ -1134,7 +1159,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <li>Click Review refund and check the summary: the amount, the card it goes back to, and what is left on the order. Nothing is refunded yet.</li>
     <li>Click Confirm refund. It locks after one tap, so the same refund cannot be sent twice.</li>
   </ol>
-  <figure class="artifact-figure screen-shot">
+  <figure class="artifact-figure screen-shot narrow">
     <a class="shot-link" href="/assets/screens/orders-refund-card.webp" target="_blank" rel="noopener"><img src="/assets/screens/orders-refund-card.webp" alt="Screenshot of an order’s Refund card with Pick dishes chosen and the Review refund button outlined." width="1004" height="1094" loading="lazy" decoding="async"></a>
     <figcaption>Orders → open the order → Refund: pick what to give back, choose a reason, then Review refund. Sample order.</figcaption>
   </figure>
@@ -1158,6 +1183,10 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <h1>Promotions — create a deal and manage it</h1>
   <p class="lede">Open the Promotions card on your dashboard. New promotion walks you through a deal one question at a time, and a preview shows what customers will see before you start it. Every promotion in your list can be edited, paused, or restarted, and shows how many orders used it.</p>
   <div class="quick-answer"><h2>Quick answer: Create a promotion</h2><p><b>Where:</b> Dashboard → Promotions → New promotion.</p><p><b>Do this:</b> Answer each step: what the deal is, what it covers, how much, when it runs, and how customers get it. Check the names customers see in French and English, then choose Start promotion.</p><p><b>Check:</b> The promotion shows Running in your list. Use Check it in your cart to see it on your storefront.</p></div><details class="quick-fix"><summary>A customer says the code did not work</summary><p>Find the promotion in your list. Make sure it is Running, not Paused or Ended, and that the order matches its days, dates, order type, and minimum. A code set to once per customer works only once for each customer. Use Check it in your cart to test it yourself.</p></details>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/promotions-list.webp" target="_blank" rel="noopener"><img src="/assets/screens/promotions-list.webp" alt="Screenshot of the Your promotions list with the New promotion button outlined." width="1600" height="588" loading="lazy" decoding="async"></a>
+    <figcaption>Promotions: New promotion starts a deal; each promotion has Edit and Pause.</figcaption>
+  </figure>
 
   <figure class="lesson-video" data-video="GF5-Hzrt8to">
     <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/GF5-Hzrt8to?rel=0" title="Video walkthrough: create a promotion and pause it" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
@@ -1206,6 +1235,10 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <h1>Announcements — tell customers what is happening</h1>
   <p class="lede">Put a message on your website: a deal, a day you are closed, a delivery or pickup change, or news. The Announcements editor writes it in English and French for you, and a phone preview shows exactly what customers will see before you post it.</p>
   <div class="quick-answer"><h2>Quick answer: Post an announcement</h2><p><b>Where:</b> Dashboard → Announcements.</p><p><b>Do this:</b> Pick a quick start, or choose what is happening and follow the steps. Check the English and French text, choose when it shows and how it looks, then choose Post now.</p><p><b>Check:</b> It appears under On your website. Turn off takes it down in one tap.</p></div><details class="quick-fix"><summary>Closed for a holiday — and no online orders that day</summary><p>Choose Closed a day, pick the date, and keep Also close online ordering that day ticked. It adds Closed all day to your Hours for that date, and the message comes down by itself when you reopen. Untick it if you will still take orders.</p></details>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/announcements.webp" target="_blank" rel="noopener"><img src="/assets/screens/announcements.webp" alt="Screenshot of the Announcements page with the + New announcement button outlined." width="1600" height="258" loading="lazy" decoding="async"></a>
+    <figcaption>Announcements: + New announcement, or a quick start, puts a banner, card, or tag on your website.</figcaption>
+  </figure>
 
   <figure class="lesson-video" data-video="mqHyWXMs2l4">
     <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/mqHyWXMs2l4?rel=0" title="Video walkthrough: post an announcement and turn it off" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
@@ -1262,18 +1295,18 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
       <p>Combos and complete menu builds still come through our team. You can add sections, dishes, and choices yourself in the menu editor (Lesson 9).</p>
     </div>
     <div class="hcard">
-      <div class="ic"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10" cy="8" r="4.5"/><path d="M10 12.5v5M5 17.5h10"/></svg></div>
-      <h3>Delivery &amp; fees</h3>
-      <p>Zones, fee tiers, and order minimums are set with your account manager so they always match your costs.</p>
-    </div>
-    <div class="hcard">
       <div class="ic"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2.5" y="4" width="15" height="12" rx="2"/><circle cx="7" cy="9" r="1.6"/><path d="M17 13.5l-4-3.5-6.5 6"/></svg></div>
       <h3>Profile &amp; account</h3>
       <p>Your storefront name, profile, and account settings stay with our team. Your website’s colours, style, and brand images are yours on the Look page, and dish and menu-section photos are in the menu editor.</p>
     </div>
   </div>
+    <div class="callout"><b>Delivery zones are yours now:</b><p>Open Delivery &amp; fees on your dashboard, click Draw new zone, then set each zone’s delivery fee and minimum order. The page notes that zones drawn there are not used for customer pricing yet, so check checkout on your storefront after a change.</p></div>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/delivery-zones.webp" target="_blank" rel="noopener"><img src="/assets/screens/delivery-zones.webp" alt="Screenshot of Delivery &amp; fees showing the delivery zones map with the Draw new zone button outlined." width="1600" height="750" loading="lazy" decoding="async"></a>
+    <figcaption>Delivery &amp; fees: Draw new zone, then set each zone’s delivery fee and minimum order.</figcaption>
+  </figure>
   <div class="helpnote">
-    <p style="margin:0"><b>How to reach us:</b> open <b>Help</b> on your dashboard and choose <b>Send a request</b>. Tell us what you need; we reply by email and confirm before anything changes. If you cannot sign in, use <b>Owner help</b> on the portal sign-in page. If the sign-in page is unavailable, use your restaurant's existing Menu.ca support contact. Do not send passwords, sign-in links, or payment-card details.</p>
+    <p style="margin:0"><b>How to reach us:</b> open <b>Help</b> on your dashboard and choose <b>Send a request</b>. Tell us what you need; we reply by email and confirm before anything changes. If you cannot sign in, email restaurants@menu.ca. If the sign-in page is unavailable, use your restaurant's existing Menu.ca support contact. Do not send passwords, sign-in links, or payment-card details.</p>
   </div>
 </section>
 
@@ -1282,7 +1315,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 16 · A complete request</div>
   <h1>Send Owner help everything needed the first time</h1>
   <p class="lede">A clear request protects the wrong order, item, restaurant, or date from being changed. Open Help on your dashboard, choose Send a request, and include identifiers rather than relying on a description alone.</p>
-  <div class="quick-answer"><h2>Quick answer: Ask for help</h2><p><b>Where:</b> Dashboard → Help → Send a request. Cannot sign in? Use Owner help on your portal sign-in page.</p><p><b>Do this:</b> Choose a category and write a short subject. In the message, use the template below: the exact restaurant, order or item, requested outcome, and effective date.</p><p><b>Check:</b> We reply by email, usually the same business day. Keep the team’s confirmation so you know what changed and when.</p></div><details class="quick-fix"><summary>What should I include?</summary><p>For an order: number, date, customer, amount, and requested outcome. For a menu change: exact category, dish, wording, sizes, prices, and effective date. Never include passwords, sign-in links, or payment-card details.</p></details>
+  <div class="quick-answer"><h2>Quick answer: Ask for help</h2><p><b>Where:</b> Dashboard → Help → Send a request. Cannot sign in? Email restaurants@menu.ca.</p><p><b>Do this:</b> Choose a category and write a short subject. In the message, use the template below: the exact restaurant, order or item, requested outcome, and effective date.</p><p><b>Check:</b> We reply by email, usually the same business day. Keep the team’s confirmation so you know what changed and when.</p></div><details class="quick-fix"><summary>What should I include?</summary><p>For an order: number, date, customer, amount, and requested outcome. For a menu change: exact category, dish, wording, sizes, prices, and effective date. Never include passwords, sign-in links, or payment-card details.</p></details>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/help-request.webp" target="_blank" rel="noopener"><img src="/assets/screens/help-request.webp" alt="Screenshot of the Help page's New request form with the Send request button outlined." width="1600" height="544" loading="lazy" decoding="async"></a>
+    <figcaption>Help → New request: choose a category, add a subject and the details, then Send request.</figcaption>
+  </figure>
   <div class="reference-grid">
     <article class="info-card"><h3>Order issue</h3><p>Restaurant, order number, order date, customer name, amount, and the requested outcome.</p></article>
     <article class="info-card"><h3>Menu change</h3><p>Restaurant, exact category and item, current wording, requested wording, prices, sizes, and effective date.</p></article>
@@ -1847,7 +1884,7 @@ var quiz=[
  {q:'Starting next week, you want to open at noon every Sunday.',a:'you',why:'That is a recurring weekly-hours change (Lesson 5), not a dated exception.'},
  {q:'You close between lunch and dinner every Friday.',a:'you',why:'Use two service windows on Friday and verify the intentional gap (Lesson 6).'},
  {q:'The restaurant will be closed for a five-day vacation next month.',a:'you',why:'Add a dated vacation exception and confirm that regular weekly hours resume afterward (Lesson 7).'},
- {q:'You want to raise the delivery minimum from $15 to $20.',a:'team',why:'Delivery zones, fees, and minimums stay with Menu.ca (Lessons 15–16). Include the exact new value and effective date.'},
+ {q:'You want to raise the delivery minimum from $15 to $20.',a:'you',why:'Open Delivery & fees, change the zone’s minimum order, then check checkout on your storefront (Lesson 15).'},
  {q:'Your special-offer code should stop running tonight.',a:'you',why:'Pause the promotion in Promotions and check that it shows Paused (Lesson 13). You can also create new deals there yourself.'},
  {q:'You need to understand why a cash-heavy week produced a small carried balance.',a:'you',why:'Review gross sales, cash and card orders, deductions, refunds, and net payout first (Lessons 3–4). Use Owner help if it still does not reconcile.'},
  {q:'A customer calls and gives only part of their phone number.',a:'you',why:'Search the post-acceptance order history by phone, name, or order number (Lesson 12), then record the exact order before requesting any action.'},
