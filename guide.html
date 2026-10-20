@@ -468,6 +468,9 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 .screen-shot img{max-height:620px;object-fit:contain;background:#fff}
 .shot-link{display:block;cursor:zoom-in}
 .screen-shot.narrow img{max-width:520px;margin:0 auto}
+.shot-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.shot-pair .artifact-figure{margin-top:0}
+@media (max-width:700px){.shot-pair{grid-template-columns:1fr}}
 .artifact-figure figcaption{padding:12px 15px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .artifact-figure figcaption b{color:var(--amber)}
 .live-ui-panel{margin:20px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;box-shadow:var(--shadow-sm)}
@@ -1369,6 +1372,20 @@ Please confirm before changing anything that moves money.</code></div>
     <article class="info-card"><span class="badge edit">Printer</span><h3>Kitchen chits</h3><p>Connect your printer and use Test print to check it. Auto-print can print each chit when an order arrives or when you accept it.</p></article>
     <article class="info-card"><span class="badge edit">Auto-accept</span><h3>Accept orders without a tap</h3><p>When it is on, new orders are accepted automatically, so there is no chance to reject one on the tablet first. Leave it off if you want to review each order.</p></article>
     <article class="info-card"><span class="badge edit">New-order sound</span><h3>Hear every order</h3><p>Turn the alert on or off, and tap a sound to hear it and use it for new orders. Changes take effect right away; there is no save button.</p></article>
+  </div>
+  <h2 style="margin-top:22px">Your tablet’s Settings screen</h2>
+  <p>Tap the gear icon at the bottom of the tablet’s left menu. Settings starts with your printer, then Auto-print, Auto-accept and New-order sound. Scroll down for the alert sounds, the tablet’s language and the Device details.</p>
+  <p>The two lines at the very top are status messages. Tap one to fix what it says, for example to turn online ordering back on or reconnect the printer.</p>
+  <p>Langue / Language switches the tablet between English and French; the printed chit does not change. Device shows which restaurant and tablet this is, which is useful to mention when you contact us.</p>
+  <div class="shot-pair">
+    <figure class="artifact-figure screen-shot">
+      <a class="shot-link" href="/assets/screens/tablet-settings-top.webp" target="_blank" rel="noopener"><img src="/assets/screens/tablet-settings-top.webp" alt="Screenshot of the tablet Settings screen showing Printer, Auto-print, Auto-accept, and New-order sound." width="1459" height="1006" loading="lazy" decoding="async"></a>
+      <figcaption>Tablet → Settings, top: Printer (Connect printer, Test print), Auto-print, Auto-accept, and New-order sound.</figcaption>
+    </figure>
+    <figure class="artifact-figure screen-shot">
+      <a class="shot-link" href="/assets/screens/tablet-settings-bottom.webp" target="_blank" rel="noopener"><img src="/assets/screens/tablet-settings-bottom.webp" alt="Screenshot of the tablet Settings screen further down, showing Alert sound, Langue / Language, and Device." width="1459" height="1006" loading="lazy" decoding="async"></a>
+      <figcaption>Further down: Alert sound, Langue / Language, and Device, which shows the restaurant and tablet name.</figcaption>
+    </figure>
   </div>
   <div class="callout"><b>Accepting is the handoff:</b><p>Reject or cancel an order on the tablet before you accept it. Once accepted, open it in Orders (Lesson 12) and refund it there.</p></div>
 
