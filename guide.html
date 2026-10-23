@@ -98,6 +98,22 @@ input{font:inherit;color:inherit}
 .rail-item.done .rail-num{background:var(--accent);border-color:var(--accent);color:#06231F}
 .rail-item.done .rail-num{position:relative}
 .rail-item.done .rail-num::after{content:'✓';position:absolute;right:-5px;bottom:-4px;width:13px;height:13px;border-radius:50%;background:var(--rail);color:var(--accent);border:1px solid var(--accent);box-sizing:border-box;font-size:8px;line-height:11px;text-align:center;font-weight:800}
+.rail-link{display:block;width:100%;text-align:left;background:none;border:0;border-radius:7px;padding:5px 12px 5px 45px;color:var(--rail-muted);font-size:12.5px;line-height:1.3;position:relative}
+.rail-link::before{content:'';position:absolute;left:33px;top:50%;width:4px;height:4px;border-radius:50%;background:var(--rail-line)}
+.rail-link:hover{background:rgba(255,255,255,.06);color:var(--rail-ink)}
+[dir="rtl"] .rail-link{text-align:right;padding:5px 45px 5px 12px}[dir="rtl"] .rail-link::before{left:auto;right:33px}
+.rail-search{padding:6px 24px 4px}
+#guideSearch{width:100%;box-sizing:border-box;height:38px;border-radius:9px;border:1px solid var(--rail-line);background:rgba(255,255,255,.07);color:var(--rail-ink);padding:0 12px;font-size:13.5px}
+#guideSearch::placeholder{color:var(--rail-muted)}
+#guideSearch:focus{outline:2px solid var(--accent);outline-offset:1px}
+.search-results{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+.search-results button{display:block;width:100%;text-align:start;background:rgba(255,255,255,.04);border:0;border-radius:8px;padding:8px 10px;color:var(--rail-ink);font-size:12.5px;line-height:1.35}
+.search-results button:hover,.search-results button[aria-selected="true"]{background:rgba(45,181,165,.18)}
+.search-results b{display:block;font-size:11px;letter-spacing:.04em;color:var(--rail-muted);font-weight:500;margin-bottom:2px}
+.search-results mark{background:none;color:var(--accent);font-weight:700}
+.search-empty{margin:8px 0 0;font-size:12.5px;color:var(--rail-muted)}.search-empty a{color:var(--accent)}
+.rail-flash{animation:railflash 1.8s ease}
+@keyframes railflash{0%,40%{box-shadow:0 0 0 4px rgba(45,181,165,.45);border-radius:10px}100%{box-shadow:0 0 0 4px rgba(45,181,165,0)}}
 .rail-part{font-family:'Ubuntu';font-weight:500;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rail-muted);padding:16px 12px 6px}
 
 /* ---------- main ---------- */
@@ -601,6 +617,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
       <div class="progress-label" id="progressLabel">0 of 19 lessons viewed</div>
     </div>
   </div>
+  <div class="rail-search" role="search">
+    <input id="guideSearch" type="search" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" spellcheck="false" aria-controls="searchResults">
+    <ul id="searchResults" class="search-results" aria-label="Search results" hidden data-no-i18n></ul>
+    <p id="searchEmpty" class="search-empty" hidden>No matches. Try other words, or <a href="#ask-for-help-clearly" data-jump="16">get help</a>.</p>
+  </div>
   <nav id="railNav" aria-label="Lessons"></nav>
 </aside>
 <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="rail">
@@ -624,7 +645,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <p class="language-status" id="languageStatus" role="status" data-no-i18n>The complete guide is shown in English.</p>
 </section>
 <nav class="quick-tools" aria-label="Quick help">
-<a href="#welcome" data-jump="0">Find a task</a>
+<a href="#search" id="findTask">Find a task</a>
 <a href="#owner-routine" data-jump="18">Opening checklist</a>
 <a href="#ask-for-help-clearly" data-jump="16">Get help</a>
 </nav>
@@ -648,7 +669,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
         <li class="setup-stage" data-setup-stage="0">Access your portal</li>
         <li class="setup-stage" data-setup-stage="1">Understand your money</li>
         <li class="setup-stage" data-setup-stage="2">Keep hours accurate</li>
-        <li class="setup-stage" data-setup-stage="3">Keep your menu accurate</li>
+        <li class="setup-stage" data-setup-stage="3">Make changes to your menu</li>
         <li class="setup-stage" data-setup-stage="4">Orders, support &amp; final check</li>
       </ol>
       <p class="setup-note">Opening a lesson marks it viewed; the quick check records an attempt, not a passing score or completed restaurant setup.</p>
@@ -976,18 +997,18 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 </section>
 
 <!-- ================= 9 MENU ITEMS ================= -->
-<section class="lesson" data-title="Prices &amp; availability" data-part="Keep your menu accurate">
+<section class="lesson" data-title="Prices &amp; availability" data-part="Make changes to your menu">
   <div class="eyebrow">Lesson 9 · Manage your menu <span class="badge edit">Owner tools</span></div>
   <h1>Change prices and availability</h1>
   <p class="lede"><b>Edit your menu directly.</b> Search dishes, edit an existing dish's name, description, and price, hide or restore it, star dishes for your Featured section, and manage photos. You can also add sections and dishes, and build choices such as a protein or size. You can also edit the choices inside a deal; setting up a brand-new deal still goes through Owner help.</p>
-  <div class="quick-answer"><h2>Quick answer: Mark a dish sold out</h2><p><b>Where:</b> Menu → Find the dish.</p><p><b>Do this:</b> Click 86 (hide) beside the dish. When the kitchen can sell it again, open Off your menu and click Make available.</p><p><b>Check:</b> Check the customer menu to confirm the dish cannot be ordered.</p></div><details class="quick-fix"><summary>I cannot find the dish</summary><p>A dish you hide leaves your dish list. Open Off your menu, beside the dish search box, to see it. Confirm the exact dish before you click Make available. Use Owner help if the item, size, modifier, or category is wrong.</p></details>
+  <div class="quick-answer" data-rail="Hide a dish (86) and bring it back"><h2>Quick answer: Mark a dish sold out</h2><p><b>Where:</b> Menu → Find the dish.</p><p><b>Do this:</b> Click 86 (hide) beside the dish. When the kitchen can sell it again, open Off your menu and click Make available.</p><p><b>Check:</b> Check the customer menu to confirm the dish cannot be ordered.</p></div><details class="quick-fix"><summary>I cannot find the dish</summary><p>A dish you hide leaves your dish list. Open Off your menu, beside the dish search box, to see it. Confirm the exact dish before you click Make available. Use Owner help if the item, size, modifier, or category is wrong.</p></details>
 
   <figure class="artifact-figure screen-shot">
     <a class="shot-link" href="/assets/screens/menu-86-hide.webp" target="_blank" rel="noopener"><img src="/assets/screens/menu-86-hide.webp" alt="Screenshot of the Pizza section in the menu editor with the 86 (hide) button outlined." width="1600" height="856" loading="lazy" decoding="async"></a>
     <figcaption>Menu: click 86 (hide) beside a dish you have run out of. Off your menu lists everything hidden.</figcaption>
   </figure>
 
-  <figure class="lesson-video short" data-video="eDu90ZwPHpQ">
+  <figure class="lesson-video short" data-video="eDu90ZwPHpQ" data-rail="Change a price">
     <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/eDu90ZwPHpQ?rel=0" title="Video walkthrough (phone): change a dish's price and hide it when it sells out" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
     <figcaption>Video walkthrough (phone): change a dish's price and hide it when it sells out</figcaption>
   </figure>
@@ -1035,7 +1056,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <article class="info-card"><span class="badge edit">Find it fast</span><h3>Search and find hidden dishes</h3><p>Search by dish name. A dish you hide waits in Off your menu, beside the search box, until you click Make available.</p></article>
     <article class="info-card"><span class="badge edit">Featured section</span><h3>Star dishes to feature them</h3><p>Starring a dish adds it to the end of the Featured section at the top of your dish list. There you can rename the section in English and French (leave a box empty for “Featured” / “En vedette”), add an optional section photo shown above the Featured row on your website, and put the starred dishes in order with the up and down arrows. Unstarring a dish takes it out of Featured; it stays on your menu.</p></article>
   </div>
-  <h2 style="margin-top:22px">Add a section, a dish, or choices</h2>
+  <h2 style="margin-top:22px" data-rail="Add sections, dishes and choices">Add a section, a dish, or choices</h2>
   <ol class="steps">
     <li>New section: at the bottom of the menu, type its name in the New section box and click Add section. It appears at the end of your menu.</li>
     <li>New dish: under the section, type the item name and the price, then click Add item. Customers can order it right away.</li>
@@ -1047,7 +1068,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/cJgjwv16NCA?rel=0" title="Video walkthrough: add a section, a dish, and choices" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
     <figcaption>Video walkthrough: add a section, a dish, and choices</figcaption>
   </figure>
-  <h2 style="margin-top:22px">Edit the choices in a deal</h2>
+  <h2 style="margin-top:22px" data-rail="Edit deal choices">Edit the choices in a deal</h2>
   <ol class="steps">
     <li>Open Menu and click the deal to open it.</li>
     <li>Deal choices shows how many groups and options the deal has, for example 3 groups · 29 options. Other modifiers holds any extra choices that are not part of the deal.</li>
@@ -1092,7 +1113,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 11 · Expanded menu editor <span class="badge edit">Owner tools</span></div>
   <h1>Use photos and bilingual menu editing</h1>
   <p class="lede"><b>Photos are optional.</b> Upload JPG, PNG, or WebP files up to 10 MB; the portal sizes and tidies them. Language fields follow the languages enabled for your restaurant.</p>
-  <figure class="artifact-figure screen-shot">
+  <figure class="artifact-figure screen-shot" data-rail="Add a photo to a menu section">
     <a class="shot-link" href="/assets/screens/menu-section-photo.webp" target="_blank" rel="noopener"><img src="/assets/screens/menu-section-photo.webp" alt="Screenshot of the Pizza section heading with the Upload a photo button outlined." width="1600" height="294" loading="lazy" decoding="async"></a>
     <figcaption>Menu → the section: Upload a photo puts one photo at the top of the whole section.</figcaption>
   </figure>
@@ -1110,7 +1131,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   </div>
   <div class="live-ui-panel" role="group" aria-label="Practice example of the live bilingual fields">
     <div class="live-ui-head"><b>Name and description</b><span>Practice example · bilingual menu</span></div>
-    <div class="lang-ui">
+    <div class="lang-ui" data-rail="Edit English and French names">
       <div class="lang-ui-grid">
         <div class="lang-ui-field"><label for="guideNameEn">Dish name · EN</label><input id="guideNameEn" value="House Pizza" readonly></div>
         <div class="lang-ui-field"><label for="guideNameFr">Dish name · FR</label><input id="guideNameFr" value="Pizza maison" readonly></div>
@@ -1145,7 +1166,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 12 · When a customer calls <span class="badge edit">You can refund</span></div>
   <h1>Looking up orders</h1>
   <p class="lede">"Where's my order?" Search recent orders by number, customer name, or phone. The live table shows total, captured amount, refunded amount, status, and placement time. Before acceptance, the restaurant can reject or cancel the order on its tablet. After acceptance, you refund a card order yourself from its Refund card.</p>
-  <div class="quick-answer"><h2>Quick answer: Find a customer’s order</h2><p><b>Where:</b> Orders.</p><p><b>Do this:</b> Search by order number, customer name, or part of their phone number. Open the matching order.</p><p><b>Check:</b> Confirm the customer, placement time, status, total, captured amount, and refunded amount.</p></div><details class="quick-fix"><summary>I cannot find the order or need a refund</summary><p>Try another identifier and check that the list says Live · Up to date. If unresolved, send the available details through Owner help. Before acceptance, reject or cancel on the restaurant tablet. After acceptance, refund it yourself from the order’s Refund card. Do not promise a refund until the card shows Refunded.</p></details><div class="quick-answer"><h2>Quick answer: Refund an order</h2><p><b>Where:</b> Orders → open the order → Refund card.</p><p><b>Do this:</b> Click Refund. Choose Whole order, Pick dishes, or Type amount, pick a reason, add a note if you like, then click Review refund and Confirm refund.</p><p><b>Check:</b> The card shows Refunded, or tells you what happens next.</p></div>
+  <div class="quick-answer" data-rail="Find an order"><h2>Quick answer: Find a customer’s order</h2><p><b>Where:</b> Orders.</p><p><b>Do this:</b> Search by order number, customer name, or part of their phone number. Open the matching order.</p><p><b>Check:</b> Confirm the customer, placement time, status, total, captured amount, and refunded amount.</p></div><details class="quick-fix"><summary>I cannot find the order or need a refund</summary><p>Try another identifier and check that the list says Live · Up to date. If unresolved, send the available details through Owner help. Before acceptance, reject or cancel on the restaurant tablet. After acceptance, refund it yourself from the order’s Refund card. Do not promise a refund until the card shows Refunded.</p></details><div class="quick-answer"><h2>Quick answer: Refund an order</h2><p><b>Where:</b> Orders → open the order → Refund card.</p><p><b>Do this:</b> Click Refund. Choose Whole order, Pick dishes, or Type amount, pick a reason, add a note if you like, then click Review refund and Confirm refund.</p><p><b>Check:</b> The card shows Refunded, or tells you what happens next.</p></div>
 
   <figure class="lesson-video" data-video="3kXU2zEBY5w">
     <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/3kXU2zEBY5w?rel=0" title="Video walkthrough: refund an order" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
@@ -1170,7 +1191,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     </div>
   </div>
   <div class="callout"><b>The handoff is acceptance:</b><p>Reject or cancel an incoming order on the restaurant tablet before accepting it. Once accepted, refund it yourself here.</p></div>
-  <h2 style="margin-top:22px">Refunding an order</h2>
+  <h2 style="margin-top:22px" data-rail="Refund an order">Refunding an order</h2>
   <ol class="steps">
     <li>Open the order and scroll to the Refund card. It shows how much was captured and how much can still be refunded.</li>
     <li>Click Refund, then choose what to refund: Whole order, Pick dishes (with a box for the tip), or Type amount. Tax on picked dishes is added for you, and the card shows what the customer gets back.</li>
@@ -1201,7 +1222,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
   <div class="eyebrow">Lesson 13 · Your offers <span class="badge edit">You can edit</span></div>
   <h1>Promotions — create a deal and manage it</h1>
   <p class="lede">Open the Promotions card on your dashboard. New promotion walks you through a deal one question at a time, and a preview shows what customers will see before you start it. Every promotion in your list can be edited, paused, or restarted, and shows how many orders used it.</p>
-  <div class="quick-answer"><h2>Quick answer: Create a promotion</h2><p><b>Where:</b> Dashboard → Promotions → New promotion.</p><p><b>Do this:</b> Answer each step: what the deal is, what it covers, how much, when it runs, and how customers get it. Check the names customers see in French and English, then choose Start promotion.</p><p><b>Check:</b> The promotion shows Running in your list. Use Check it in your cart to see it on your storefront.</p></div><details class="quick-fix"><summary>A customer says the code did not work</summary><p>Find the promotion in your list. Make sure it is Running, not Paused or Ended, and that the order matches its days, dates, order type, and minimum. A code set to once per customer works only once for each customer. Use Check it in your cart to test it yourself.</p></details>
+  <div class="quick-answer" data-rail="Create a promotion"><h2>Quick answer: Create a promotion</h2><p><b>Where:</b> Dashboard → Promotions → New promotion.</p><p><b>Do this:</b> Answer each step: what the deal is, what it covers, how much, when it runs, and how customers get it. Check the names customers see in French and English, then choose Start promotion.</p><p><b>Check:</b> The promotion shows Running in your list. Use Check it in your cart to see it on your storefront.</p></div><details class="quick-fix"><summary>A customer says the code did not work</summary><p>Find the promotion in your list. Make sure it is Running, not Paused or Ended, and that the order matches its days, dates, order type, and minimum. A code set to once per customer works only once for each customer. Use Check it in your cart to test it yourself.</p></details>
   <figure class="artifact-figure screen-shot">
     <a class="shot-link" href="/assets/screens/promotions-list.webp" target="_blank" rel="noopener"><img src="/assets/screens/promotions-list.webp" alt="Screenshot of the Your promotions list with the New promotion button outlined." width="1600" height="588" loading="lazy" decoding="async"></a>
     <figcaption>Promotions: New promotion starts a deal; each promotion has Edit and Pause.</figcaption>
@@ -1372,7 +1393,7 @@ Please confirm before changing anything that moves money.</code></div>
   <div class="eyebrow">Lesson 17 · Where orders arrive <span class="badge edit">You can edit</span></div>
   <h1>Your kitchen tablet</h1>
   <p class="lede">New orders ring on your restaurant’s tablet. Its Settings screen, behind the gear icon at the bottom of the left menu, has the controls you need during service: online ordering, prep times and Busy mode, pausing pickup or delivery, the printer, auto-accept and the new-order sound.</p>
-  <div class="quick-answer"><h2>Quick answer: Slow orders down during a rush</h2><p><b>Where:</b> Tablet → Settings (gear icon) → Prep times.</p><p><b>Do this:</b> Switch Busy mode on at the top right of the card. Need more time? Use + in the Extra when busy column for pickup or delivery.</p><p><b>Check:</b> The When busy column shows the new totals. While online ordering is on, the Current prep times strip shows what customers are quoted right now.</p></div><details class="quick-fix"><summary>The tablet is not ringing for new orders</summary><p>In Settings, check that New-order sound is on, then tap a sound to hear it. Keep the tablet charged, awake and online. If it still stays silent, use Owner help.</p></details>
+  <div class="quick-answer" data-rail="Busy mode for a rush"><h2>Quick answer: Slow orders down during a rush</h2><p><b>Where:</b> Tablet → Settings (gear icon) → Prep times.</p><p><b>Do this:</b> Switch Busy mode on at the top right of the card. Need more time? Use + in the Extra when busy column for pickup or delivery.</p><p><b>Check:</b> The When busy column shows the new totals. While online ordering is on, the Current prep times strip shows what customers are quoted right now.</p></div><details class="quick-fix"><summary>The tablet is not ringing for new orders</summary><p>In Settings, check that New-order sound is on, then tap a sound to hear it. Keep the tablet charged, awake and online. If it still stays silent, use Owner help.</p></details>
 
   <figure class="lesson-video" data-video="y1EUCGU0CjU">
     <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/y1EUCGU0CjU?rel=0" title="Video walkthrough: use Busy mode when the kitchen is slammed" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
@@ -1389,7 +1410,7 @@ Please confirm before changing anything that moves money.</code></div>
     <article class="info-card"><span class="badge edit">Auto-accept</span><h3>Accept orders without a tap</h3><p>When it is on, new orders are accepted automatically, so there is no chance to reject one on the tablet first. Leave it off if you want to review each order.</p></article>
     <article class="info-card"><span class="badge edit">New-order sound</span><h3>Hear every order</h3><p>Turn the alert on or off, and tap a sound to hear it and use it for new orders. Changes take effect right away; there is no save button.</p></article>
   </div>
-  <h2 style="margin-top:22px">Your tablet’s Settings screen</h2>
+  <h2 style="margin-top:22px" data-rail="Tablet settings">Your tablet’s Settings screen</h2>
   <p>Tap the gear icon at the bottom of the tablet’s left menu. Settings starts with your printer, then Auto-print, Auto-accept and New-order sound. Scroll down for the alert sounds, the tablet’s language and the Device details.</p>
   <p>The two lines at the very top are status messages. Tap one to fix what it says, for example to turn online ordering back on or reconnect the printer.</p>
   <p>Langue / Language switches the tablet between English and French; the printed chit does not change. Device shows which restaurant and tablet this is, which is useful to mention when you contact us.</p>
@@ -1496,6 +1517,91 @@ lessons.forEach(function(sec,i){
   b.addEventListener('click',function(){go(i,true);closeRail()});
   railNav.appendChild(b);
   sec._railBtn=b;
+  // Sub-links: key tasks inside the lesson (elements marked data-rail="Label").
+  $$('[data-rail]',sec).forEach(function(el){
+    var s=document.createElement('button');s.type='button';s.className='rail-link';s.textContent=el.getAttribute('data-rail');
+    s.addEventListener('click',function(){showInLesson(i,el);closeRail()});
+    railNav.appendChild(s);
+  });
+});
+// Open a lesson and bring one part of it into view, with a brief highlight.
+function showInLesson(i,el){
+  go(i,true);
+  requestAnimationFrame(function(){
+    el.scrollIntoView({block:'start',behavior:'smooth'});
+    el.classList.remove('rail-flash');void el.offsetWidth;el.classList.add('rail-flash');
+  });
+}
+/* search: matches the text as currently shown (any language), runs entirely in the page */
+var searchInput=$('#guideSearch'),searchList=$('#searchResults'),searchEmpty=$('#searchEmpty'),searchIndex=null,searchLang='',searchSel=-1;
+function fold(s){return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
+function buildSearchIndex(){
+  var out=[];
+  lessons.forEach(function(sec,i){
+    if(i===0)return;
+    var title=sec._railBtn.querySelector('span:last-child').textContent.trim();
+    out.push({i:i,el:sec.querySelector('h1')||sec,title:title,text:title,w:6});
+    $$('[data-rail]',sec).forEach(function(el){out.push({i:i,el:el,title:title,text:el.getAttribute('data-rail'),w:11,label:true})});
+    $$('h2,h3,h4,summary,figcaption,p,li',sec).forEach(function(el){
+      if(el.closest('.frame,.lesson-nav,.quiz,.try,[data-no-i18n]'))return;
+      var t=el.textContent.replace(/\s+/g,' ').trim(); if(t.length<3)return;
+      out.push({i:i,el:el,title:title,text:t,w:/^H|SUMMARY|FIGCAPTION/.test(el.tagName)?3:1});
+    });
+  });
+  // Sub-link labels are English in the markup; use the translated sidebar text when one exists.
+  $$('.rail-link').forEach(function(btn,k){var e=out.filter(function(x){return x.label})[k];if(e)e.text=btn.textContent});
+  out.forEach(function(e){e.f=fold(e.text);e.ft=fold(e.title)});
+  return out;
+}
+function runSearch(){
+  var q=fold(searchInput.value).trim();
+  searchList.textContent='';searchSel=-1;
+  if(q.length<2){searchList.hidden=true;searchEmpty.hidden=true;return}
+  if(!searchIndex||searchLang!==document.documentElement.lang){searchIndex=buildSearchIndex();searchLang=document.documentElement.lang}
+  var words=q.split(/\s+/).filter(Boolean),seen={},perLesson={},hits=[];
+  searchIndex.forEach(function(e){
+    var hay=e.label?e.f:e.f+' '+e.ft; // task links match only their own words
+    if(!words.every(function(w){return hay.indexOf(w)>-1}))return;
+    var score=e.w+(e.f.indexOf(q)>-1?4:0)+(e.ft.indexOf(q)>-1?3:0);
+    hits.push({e:e,score:score});
+  });
+  hits.sort(function(a,b){return b.score-a.score});
+  var shown=hits.filter(function(h){
+    var key=h.e.i+'|'+h.e.f.slice(0,60);if(seen[key])return false;seen[key]=1;
+    perLesson[h.e.i]=(perLesson[h.e.i]||0)+1;return perLesson[h.e.i]<=3;
+  }).slice(0,8);
+  searchEmpty.hidden=shown.length>0;searchList.hidden=!shown.length;
+  shown.forEach(function(h,k){
+    var li=document.createElement('li'),btn=document.createElement('button');btn.type='button';btn.setAttribute('role','option');
+    var head=document.createElement('b');head.textContent=h.e.i+' · '+h.e.title;btn.appendChild(head);
+    var t=h.e.text,ft=h.e.f,pos=ft.indexOf(words[0]);var start=Math.max(0,pos-40);if(start){var sp=t.indexOf(' ',start);if(sp>-1&&sp<pos)start=sp+1}
+    var snippet=(start?'…':'')+t.slice(start,start+110)+(t.length>start+110?'…':'');
+    var fs=fold(snippet),span=document.createElement('span');
+    // highlight the first query word inside the snippet
+    var m=fs.indexOf(words[0]);
+    if(m>-1){span.appendChild(document.createTextNode(snippet.slice(0,m)));var mk=document.createElement('mark');mk.textContent=snippet.slice(m,m+words[0].length);span.appendChild(mk);span.appendChild(document.createTextNode(snippet.slice(m+words[0].length)))}
+    else span.textContent=snippet;
+    btn.appendChild(span);
+    btn.addEventListener('click',function(){showInLesson(h.e.i,h.e.el);closeRail()});
+    li.appendChild(btn);searchList.appendChild(li);
+  });
+}
+var searchTimer;
+searchInput.addEventListener('input',function(){clearTimeout(searchTimer);searchTimer=setTimeout(runSearch,120)});
+searchInput.addEventListener('keydown',function(e){
+  var items=$$('button',searchList);
+  if(e.key==='Escape'){searchInput.value='';runSearch();return}
+  if(!items.length)return;
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();e.stopPropagation();searchSel=(searchSel+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;
+    items.forEach(function(b,k){b.setAttribute('aria-selected',k===searchSel?'true':'false')});items[searchSel].scrollIntoView({block:'nearest'})}
+  if(e.key==='Enter'){e.preventDefault();items[Math.max(0,searchSel)].click()}
+});
+function openSearch(){if(window.matchMedia('(max-width: 900px)').matches)openRail();searchInput.focus();searchInput.select()}
+$('#findTask').addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openSearch()});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='/'||e.ctrlKey||e.metaKey||e.altKey)return;
+  var t=e.target;if(t&&(/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||t.isContentEditable))return;
+  e.preventDefault();openSearch();
 });
 function updateProgress(state){
   state=state||progressStore.snapshot();
