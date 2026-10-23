@@ -79,8 +79,15 @@ input{font:inherit;color:inherit}
 .rail{background:var(--rail);color:var(--rail-ink);padding:28px 0 24px;position:sticky;top:0;height:100vh;overflow-y:auto}
 .rail-head{padding:0 24px 20px;border-bottom:1px solid var(--rail-line)}
 .wordmark{font-family:'Ubuntu';font-weight:700;font-size:21px;letter-spacing:-.01em;color:#fff}
+/* menuconnect brand logo, version D (brand guide): M mark, "menu" in ink + "connect" in red, over "by Menu.ca" with a red dot. Arial, live text; the mark stays red on dark. */
+.brand-logo{display:flex;align-items:center;gap:11px}
+.brand-logo img{width:44px;height:44px;flex:0 0 44px}
+.bl-text{display:flex;flex-direction:column;font-family:Arial,Helvetica,sans-serif;font-weight:700}
+.bl-word{font-size:25px;line-height:28px;letter-spacing:-.5px;color:#fff}
+.bl-by{font-size:13px;line-height:17px;color:#9fb0c3;margin-top:1px}
+.bl-red{color:#fe4745}
 .wordmark em{font-style:normal;color:var(--brand-red)}
-.rail-sub{font-family:'Ubuntu';font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rail-muted);margin-top:5px}
+.rail-sub{font-family:'Ubuntu';font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rail-muted);margin-top:12px}
 .overview-link{display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:#dce7e9;font-size:12.5px;font-weight:600}
 .overview-link:hover{color:#fff}
 .progress{margin:14px 24px 4px}
@@ -609,8 +616,11 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 <div class="app">
 <aside class="rail" id="rail">
   <div class="rail-head">
-    <div class="wordmark">Menu<em>.ca</em></div>
-    <div class="rail-sub">MenuConnect · Owner Guide</div>
+    <div class="brand-logo" role="img" aria-label="menuconnect by Menu.ca" data-no-i18n>
+      <img src="/assets/menu-ca-logo.png" alt="" width="44" height="44">
+      <span class="bl-text"><span class="bl-word">menu<span class="bl-red">connect</span></span><span class="bl-by">by Menu<span class="bl-red">.</span>ca</span></span>
+    </div>
+    <div class="rail-sub">Owner guide</div>
     <a class="overview-link" href="/" aria-label="Back to the MenuConnect overview">← MenuConnect overview</a>
     <div class="progress">
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
