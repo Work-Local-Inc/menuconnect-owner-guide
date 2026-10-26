@@ -123,6 +123,29 @@ input{font:inherit;color:inherit}
 @keyframes railflash{0%,40%{box-shadow:0 0 0 4px rgba(45,181,165,.45);border-radius:10px}100%{box-shadow:0 0 0 4px rgba(45,181,165,0)}}
 .rail-part{font-family:'Ubuntu';font-weight:500;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rail-muted);padding:16px 12px 6px}
 
+
+/* ---------- dashboard-card home (cards first; Owner Setup below) ---------- */
+.card-home{margin-bottom:34px}
+.card-home h1,.card-hub h1{margin:6px 0 8px}
+.dash-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:14px;margin-top:20px}
+.dash-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 20px;cursor:pointer;color:inherit;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.dash-card:hover,.dash-card:focus-visible{transform:translateY(-2px);box-shadow:0 10px 26px rgba(13,27,46,.10);border-color:color-mix(in srgb,var(--c) 45%,var(--line))}
+.dc-ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,color-mix(in srgb,var(--c) 82%,#fff),var(--c));color:#fff;margin-bottom:6px;box-shadow:0 6px 14px color-mix(in srgb,var(--c) 30%,transparent)}
+.dc-ic svg{width:24px;height:24px}
+.dc-t{font-family:'Ubuntu';font-weight:700;font-size:17px}
+.dc-d{font-size:13px;color:var(--muted);line-height:1.4}
+.card-home-alt{margin-top:18px;color:var(--muted)}.card-home-alt a{color:var(--accent-ink);font-weight:700}
+.card-hub{margin-bottom:34px}
+.hub-head{display:flex;gap:18px;align-items:flex-start;margin-top:18px}
+.hub-head .dc-ic{flex:0 0 58px;width:58px;height:58px;margin-top:6px}
+.hub-group{margin-top:22px}
+.hub-group h2{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.hub-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.hub-list button{width:100%;display:flex;align-items:center;gap:12px;text-align:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:15px;color:inherit;cursor:pointer}
+.hub-list button:hover{border-color:var(--accent-line);background:color-mix(in srgb,var(--accent-soft) 40%,var(--card))}
+.hub-list .hk{flex:0 0 28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:13px}
+.hub-empty{margin-top:22px;padding:16px 18px;border-radius:12px;background:var(--card);border:1px dashed var(--line);color:var(--muted)}
+@media(max-width:560px){.dash-cards{grid-template-columns:1fr 1fr;gap:10px}.dash-card{padding:14px}.dc-ic{width:42px;height:42px}.dc-d{display:none}}
 /* ---------- main ---------- */
 main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 auto}
 .lesson{display:none}
@@ -662,6 +685,19 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
 
 <!-- ================= 0 WELCOME ================= -->
 <section class="lesson" data-title="Welcome" data-part="start">
+  <div class="card-home" id="cardHome">
+    <div class="eyebrow">Find help by dashboard card</div>
+    <h1>What do you want to do?</h1>
+    <p class="lede">These cards match your MenuConnect dashboard. Pick the one you are working in to see its how-tos and videos.</p>
+    <div class="dash-cards"><button type="button" class="dash-card" data-card="insights" style="--c:#7c3aed"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 12l3-3 2 2 5-6 2 2"/></svg></span><span class="dc-t">Insights</span><span class="dc-d">Traffic, funnel, sales, and promo performance</span></button><button type="button" class="dash-card" data-card="statements" style="--c:#16a34a"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="2.5" width="12" height="11" rx="1.5"/><path d="M2 6h12M5 9.5h3"/></svg></span><span class="dc-t">Statements</span><span class="dc-d">Payout history — net paid, fees, refunds</span></button><button type="button" class="dash-card" data-card="hours" style="--c:#15803d"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.3 1.5"/></svg></span><span class="dc-t">Hours</span><span class="dc-d">Weekly schedule, pause ordering, close early, vacations</span></button><button type="button" class="dash-card" data-card="menu" style="--c:#2563eb"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 4h11M2.5 8h11M2.5 12h7"/></svg></span><span class="dc-t">Menu</span><span class="dc-d">Dishes, prices, availability, and the Featured section</span></button><button type="button" class="dash-card" data-card="photos" style="--c:#0284c7"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg></span><span class="dc-t">Photos</span><span class="dc-d">Dish and section photos for your menu</span></button><button type="button" class="dash-card" data-card="look" style="--c:#0d9488"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><circle cx="6" cy="6.5" r="1"/><circle cx="10" cy="6.5" r="1"/><circle cx="6.5" cy="10" r="1"/></svg></span><span class="dc-t">Look</span><span class="dc-d">Colours, style, and brand images for your website</span></button><button type="button" class="dash-card" data-card="delivery" style="--c:#ea580c"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1.5 4h8v6h-8zM9.5 6.5h3l2 2V10h-5"/><circle cx="4.5" cy="11.5" r="1.3"/><circle cx="11.5" cy="11.5" r="1.3"/></svg></span><span class="dc-t">Delivery zones</span><span class="dc-d">Where you deliver, fees, and minimum orders</span></button><button type="button" class="dash-card" data-card="promotions" style="--c:#db2777"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 8l3-5h5l3 5-5.5 6z"/></svg></span><span class="dc-t">Promotions</span><span class="dc-d">Create, pause, and restart deals and promo codes</span></button><button type="button" class="dash-card" data-card="announcements" style="--c:#e11d48"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 6.5v3h2l5 3v-9l-5 3zM12 6a3 3 0 010 4"/></svg></span><span class="dc-t">Announcements</span><span class="dc-d">Banners on your site: promos, closures, news</span></button><button type="button" class="dash-card" data-card="orders" style="--c:#6d28d9"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="1.8" width="10" height="12.4" rx="1.5"/><path d="M6 5h4M6 8h4M6 11h2.5"/></svg></span><span class="dc-t">Orders</span><span class="dc-d">Recent orders and their status</span></button><button type="button" class="dash-card" data-card="customers" style="--c:#059669"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="5.5" r="2.5"/><path d="M1.5 14c.6-2.6 2.3-4 4.5-4s3.9 1.4 4.5 4M11 3.5a2.3 2.3 0 010 4.4M12.5 10.3c1.2.5 1.9 1.8 2.1 3.7"/></svg></span><span class="dc-t">Customers</span><span class="dc-d">Who orders from you and each person’s orders</span></button><button type="button" class="dash-card" data-card="help" style="--c:#1d4ed8"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6.3 6.3a1.8 1.8 0 113 1.3c-.6.4-1.3.8-1.3 1.6M8 11.3v.2"/></svg></span><span class="dc-t">Help</span><span class="dc-d">Send our team a request</span></button><button type="button" class="dash-card" data-card="tablet" style="--c:#0d1b2e"><span class="dc-ic"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2.5" y="2" width="11" height="12" rx="1.6"/><path d="M6.5 11.5h3"/></svg></span><span class="dc-t">Kitchen tablet</span><span class="dc-d">New orders, Busy mode, printing and alert sounds</span></button></div>
+    <p class="card-home-alt">New to MenuConnect? <a href="#setup" id="toSetup">Start Owner Setup</a>, a 15-minute tour of everything.</p>
+  </div>
+  <div class="card-hub" id="cardHub" hidden>
+    <button type="button" class="btn" id="hubBack">← All dashboard cards</button>
+    <div class="hub-head"><span class="dc-ic" id="hubIc"></span><div><div class="eyebrow">Dashboard card</div><h1 id="hubTitle"></h1><p class="lede" id="hubDesc"></p></div></div>
+    <div id="hubBody"></div>
+  </div>
+
   <div class="hero">
     <div class="eyebrow">Menu.ca · Restaurant owner training</div>
     <h1>Run your restaurant on MenuConnect</h1>
@@ -1613,6 +1649,59 @@ document.addEventListener('keydown',function(e){
   var t=e.target;if(t&&(/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||t.isContentEditable))return;
   e.preventDefault();openSearch();
 });
+
+/* dashboard-card hubs: every card gathers existing lessons, how-tos and videos (nothing is copied) */
+var CARD_MAP={
+  insights:{items:['figure[data-video="HV8NARECdok"]'],lessons:[2]},
+  statements:{lessons:[3,4]},
+  hours:{lessons:[5,6,7,8]},
+  menu:{lessons:[9,10,11]},
+  photos:{items:['[data-rail="Add a photo to a menu section"]','[data-rail="Edit English and French names"]'],lessons:[11]},
+  look:{items:['figure[data-video="CRuDm_qyCzU"]'],lessons:[2]},
+  delivery:{items:['figure:has(img[src*="delivery-zones"])'],lessons:[15]},
+  promotions:{lessons:[13]},
+  announcements:{lessons:[14]},
+  orders:{lessons:[12]},
+  customers:{lessons:[],empty:true},
+  help:{lessons:[16,15]},
+  tablet:{lessons:[17]}
+};
+function cardLabel(el){
+  var t=el.getAttribute('data-rail');
+  if(t){var k=$$('[data-rail]').indexOf(el),btn=$$('.rail-link')[k];return btn?btn.textContent:t}
+  var c=el.querySelector('figcaption');if(c)return c.textContent.trim();
+  var h=el.querySelector('h2,h3,b');return h?h.textContent.trim():el.textContent.trim().slice(0,80);
+}
+function lessonOf(el){var sec=el.closest('section.lesson');return lessons.indexOf(sec)}
+function openCard(key){
+  var spec=CARD_MAP[key],card=$('.dash-card[data-card="'+key+'"]');if(!spec||!card)return;
+  $('#hubIc').innerHTML=card.querySelector('.dc-ic').innerHTML;$('#hubIc').style.setProperty('--c',card.style.getPropertyValue('--c'));
+  $('#hubTitle').textContent=card.querySelector('.dc-t').textContent;$('#hubDesc').textContent=card.querySelector('.dc-d').textContent;
+  var body=$('#hubBody');body.textContent='';
+  var how=[],vids=[],full=[],seen=[];
+  function add(list,el,mark){if(!el||seen.indexOf(el)>-1)return;seen.push(el);list.push({el:el,mark:mark})}
+  (spec.items||[]).forEach(function(sel){$$(sel).forEach(function(el){
+    add(el.matches('figure.lesson-video')?vids:how,el)})});
+  spec.lessons.forEach(function(i){
+    if(key!=='insights'&&key!=='look'){
+      $$('[data-rail]',lessons[i]).forEach(function(el){add(how,el)});
+      $$('figure.lesson-video',lessons[i]).forEach(function(el){add(vids,el)});
+    }
+    full.push(i);
+  });
+  function group(title,rows,make){if(!rows.length)return;var d=document.createElement('div');d.className='hub-group';var h=document.createElement('h2');h.textContent=title;d.appendChild(h);
+    var ul=document.createElement('ul');ul.className='hub-list';rows.forEach(function(r){var li=document.createElement('li');li.appendChild(make(r));ul.appendChild(li)});d.appendChild(ul);body.appendChild(d)}
+  function btn(mark,text,fn){var b=document.createElement('button');b.type='button';var k=document.createElement('span');k.className='hk';k.textContent=mark;b.appendChild(k);var t=document.createElement('span');t.textContent=text;b.appendChild(t);b.addEventListener('click',fn);return b}
+  group('Quick how-tos',how,function(r){return btn('→',cardLabel(r.el),function(){showInLesson(lessonOf(r.el),r.el)})});
+  group('Videos',vids,function(r){return btn('▶',cardLabel(r.el),function(){showInLesson(lessonOf(r.el),r.el)})});
+  group('Full lessons',full,function(i){return btn(String(i),lessons[i]._railBtn.querySelector('span:last-child').textContent,function(){go(i,true)})});
+  if(spec.empty){var p=document.createElement('p');p.className='hub-empty';p.textContent='A short guide for this card is coming soon. Your dashboard’s Customers card lists who orders from you, with each person’s orders.';body.appendChild(p)}
+  $('#cardHome').hidden=true;$('#cardHub').hidden=false;window.scrollTo({top:0});$('#hubTitle').setAttribute('tabindex','-1');$('#hubTitle').focus({preventScroll:true});
+}
+function closeCard(){$('#cardHub').hidden=true;$('#cardHome').hidden=false;window.scrollTo({top:0})}
+$$('.dash-card').forEach(function(c){c.addEventListener('click',function(){openCard(c.getAttribute('data-card'))})});
+$('#hubBack').addEventListener('click',closeCard);
+$('#toSetup').addEventListener('click',function(e){e.preventDefault();var s=$('.setup-card');if(s)s.scrollIntoView({behavior:'smooth',block:'start'})});
 function updateProgress(state){
   state=state||progressStore.snapshot();
   var total=lessons.length-1;
