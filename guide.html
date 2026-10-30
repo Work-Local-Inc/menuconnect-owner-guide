@@ -1263,7 +1263,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <figcaption>Orders → open the order → Refund: pick what to give back, choose a reason, then Review refund. Sample order.</figcaption>
   </figure>
   <div class="status-grid" style="margin-top:18px">
-    <article class="info-card"><span class="badge edit">Refunded</span><h3>The refund went through</h3><p>The customer is sent a refund email. Banks usually show the money back in 5 to 10 business days.</p></article>
+    <article class="info-card"><span class="badge edit">Refunded</span><h3>The refund went through</h3><p>The customer is sent a refund email, and you get one too. Banks usually show the money back in 5 to 10 business days.</p></article>
     <article class="info-card"><span class="badge viewonly">Refund started</span><h3>Nothing to do</h3><p>The card company has it and is finishing up. The order updates by itself.</p></article>
     <article class="info-card"><span class="badge viewonly">Checking with the bank</span><h3>Do not refund again</h3><p>The order updates by itself. Menu.ca follows up if there is no answer within an hour.</p></article>
     <article class="info-card"><span class="badge viewonly">Didn’t go through</span><h3>No money moved</h3><p>Check the amount, then click Try again.</p></article>
@@ -1494,17 +1494,18 @@ Please confirm before changing anything that moves money.</code></div>
     <article class="info-card"><span class="badge edit">Large orders</span><h3>More time for big orders</h3><p>In your owner portal under Hours &amp; availability → Prep times, below Regular and Busy, turn on Large orders. Choose when an order counts as large (a number of items from the sections you tick, or a food total), and how many extra minutes it gets for pickup, delivery, or both. It stays off until you turn it on.</p></article>
     <article class="info-card"><span class="badge viewonly">What the kitchen sees</span><h3>The LARGE ORDER tag</h3><p>When an order meets your Large orders rule, the tablet shows an orange “LARGE ORDER +N MIN” tag above the restaurant name. Once you accept it, its due time already includes the extra minutes: 30 minutes of prep plus 20 extra shows as due in 50 minutes. The printed ticket has the same LARGE ORDER line and the later ready-by time. There is nothing to switch on at the tablet.</p></article>
     <article class="info-card"><span class="badge edit">Printer</span><h3>Kitchen chits</h3><p>Connect your printer and use Test print to check it. Auto-print can print each chit when an order arrives or when you accept it.</p></article>
+    <article class="info-card"><span class="badge edit">Chit margins</span><h3>Blank space above and below</h3><p>Under Printer, pick a Top margin and a Bottom margin, from None up to 5 cm. That much blank paper prints above and below every chit from this tablet. Tap Test print to check. Bluetooth printers start the text a little in from the left edge, so nothing is cut off.</p></article>
     <article class="info-card"><span class="badge edit">Auto-accept</span><h3>Accept orders without a tap</h3><p>When it is on, new orders are accepted automatically, so there is no chance to reject one on the tablet first. Leave it off if you want to review each order.</p></article>
     <article class="info-card"><span class="badge edit">New-order sound</span><h3>Hear every order</h3><p>Turn the alert on or off, and tap a sound to hear it and use it for new orders. Changes take effect right away; there is no save button.</p></article>
   </div>
   <h2 style="margin-top:22px" data-rail="Tablet settings">Your tablet’s Settings screen</h2>
-  <p>Tap the gear icon at the bottom of the tablet’s left menu. Settings starts with your printer, then Auto-print, Auto-accept and New-order sound. Scroll down for the alert sounds, the tablet’s language and the Device details.</p>
+  <p>Tap the gear icon at the bottom of the tablet’s left menu. Settings starts with Owner portal and Tablet PIN, then Online ordering and Prep times. Scroll down for your printer, Auto-print, Auto-accept, New-order sound, the alert sounds, the tablet’s language and the Device details.</p>
   <p>The two lines at the very top are status messages. Tap one to fix what it says, for example to turn online ordering back on or reconnect the printer.</p>
   <p>Langue / Language switches the tablet between English and French; the printed chit does not change. Device shows which restaurant and tablet this is, which is useful to mention when you contact us.</p>
   <div class="shot-pair">
     <figure class="artifact-figure screen-shot">
       <a class="shot-link" href="/assets/screens/tablet-settings-top.webp" target="_blank" rel="noopener"><img src="/assets/screens/tablet-settings-top.webp" alt="Screenshot of the tablet Settings screen showing Printer, Auto-print, Auto-accept, and New-order sound." width="1459" height="1006" loading="lazy" decoding="async"></a>
-      <figcaption>Tablet → Settings, top: Printer (Connect printer, Test print), Auto-print, Auto-accept, and New-order sound.</figcaption>
+      <figcaption>Tablet → Settings: Printer (Connect printer, Test print), Auto-print, Auto-accept, and New-order sound.</figcaption>
     </figure>
     <figure class="artifact-figure screen-shot">
       <a class="shot-link" href="/assets/screens/tablet-settings-bottom.webp" target="_blank" rel="noopener"><img src="/assets/screens/tablet-settings-bottom.webp" alt="Screenshot of the tablet Settings screen further down, showing Alert sound, Langue / Language, and Device." width="1459" height="1006" loading="lazy" decoding="async"></a>
@@ -1523,13 +1524,21 @@ Please confirm before changing anything that moves money.</code></div>
     <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/EfpHFi-6gnc?rel=0" title="Video walkthrough: change the tablet language" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
     <figcaption>Video walkthrough: change the tablet language</figcaption>
   </figure>
+  <h2 style="margin-top:22px" data-rail="Owner PIN">Change or turn off your Owner PIN</h2>
+  <p>Your 4-digit Owner PIN guards the owner portal, Refund and Cancel on the tablet. You manage it under Tablet PIN, near the top of Settings.</p>
+  <ol class="steps">
+    <li>To change it, tap Change PIN. Type your current PIN, then the new 4 digits twice, and tap Save. You get an email with the new PIN.</li>
+    <li>To turn it off, tap Turn off and type your PIN to confirm. With the PIN off, anyone at the tablet can open the owner portal and refund or cancel orders without a PIN.</li>
+    <li>To turn it back on, tap Turn on. Your PIN stays the same.</li>
+  </ol>
+  <div class="callout"><b>Forgot your PIN?</b><p>Tap Forgot PIN? Email it to the owner in any PIN box. The PIN goes to your owner sign-in email. Menu.ca can also email it to you, but only you can change it or turn it off.</p></div>
   <div class="callout"><b>Accepting is the handoff:</b><p>Reject or cancel an order on the tablet before you accept it. Once accepted, open it in Orders (Lesson 12) and refund it there.</p></div>
 
   <figure class="lesson-video" data-video="gYIQhMd2YIQ">
     <div class="lesson-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/gYIQhMd2YIQ?rel=0" title="Video walkthrough: change the new-order sound" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
     <figcaption>Video walkthrough: change the new-order sound</figcaption>
   </figure>
-  <p class="hint" style="margin-top:14px">The owner button in the tablet’s Settings asks for your Owner PIN, then opens your restaurant dashboard (Lesson 2).</p>
+  <p class="hint" style="margin-top:14px">Under Owner portal in the tablet’s Settings, Open shows today’s summary. Proceed to portal asks for your Owner PIN, unless you turned it off, then opens your restaurant dashboard (Lesson 2).</p>
 </section>
 
 <!-- ================= 17 OWNER ROUTINE ================= -->
