@@ -1325,14 +1325,18 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     <figcaption>Video walkthrough: the Customers page</figcaption>
   </figure>
   <h2 style="margin-top:22px" data-rail="Give a customer credit">Give a customer credit</h2>
-  <p>In the owner portal, open Customers, then open a customer. Click Give credit and the form opens right in the Credits section.</p>
+  <p>In the owner portal, open <b>Customers</b>, then click a customer. Under <b>Credits</b>, click <b>Give credit</b>. The form opens right there.</p>
   <ol class="steps">
-    <li>Under How much, pick an amount, or choose Other to type your own.</li>
-    <li>Under Why, pick Gift, Contest or Other.</li>
-    <li>Fill in Goes to, Good for and Paid by.</li>
-    <li>Click the green Give button. To close the form without giving credit, click Cancel.</li>
+    <li>Under <b>How much?</b>, pick $5, $10 or $20, or choose <b>Other</b> to type any amount from $1 to $100.</li>
+    <li>Under <b>Why?</b>, pick Gift, Contest or Other.</li>
+    <li>Check the details: <b>Goes to</b> shows where the code is sent, <b>Good for</b> is one order within 90 days, and <b>Paid by</b> is your restaurant.</li>
+    <li>Click the green button, which shows the amount (for example <b>Give $10 credit</b>). To stop without giving credit, click <b>Cancel</b>.</li>
   </ol>
-  <p>The result shows in the same place. Click Copy code to copy the code for text and screen credits, then click Done.</p>
+  <p>The code shows in the same place, with the date it expires. It works once. If it went by text or could not be sent, click <b>Copy code</b> to pass it on. Click <b>Done</b> to close it.</p>
+  <figure class="artifact-figure screen-shot">
+    <a class="shot-link" href="/assets/screens/give-credit.webp" target="_blank" rel="noopener"><img src="/assets/screens/give-credit.webp" alt="Screenshot of a customer page in the owner portal with the Give credit form open under Credits: How much, Why, Goes to, Good for, Paid by and the green Give button." width="1600" height="1075" loading="lazy" decoding="async"></a>
+    <figcaption>Customers → a customer → Credits → Give credit. Names and contact details are examples.</figcaption>
+  </figure>
   <p>You can also give credit from an order page. It is the same form, with its own reasons: Item missing, Wrong item, Late, Food quality or Other.</p>
   <p class="hint">On a phone, the customer page shows the Contact card first, with orders below.</p>
 </section>
@@ -1791,7 +1795,7 @@ var CARD_MAP={
   promotions:{lessons:[13]},
   announcements:{lessons:[14]},
   orders:{lessons:[12]},
-  customers:{items:['[data-rail="See your customers"]','figure[data-video="WCGVPcq7_3k"]','[data-rail="Give a customer credit"]'],lessons:[]},
+  customers:{items:['[data-rail="See your customers"]','figure[data-video="WCGVPcq7_3k"]','[data-rail="Give a customer credit"]','figure:has(img[src*="give-credit"])'],lessons:[]},
   help:{lessons:[16,15]},
   tablet:{lessons:[17]}
 };
