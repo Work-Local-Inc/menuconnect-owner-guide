@@ -90,6 +90,16 @@ input{font:inherit;color:inherit}
 .rail-sub{font-family:'Ubuntu';font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rail-muted);margin-top:12px}
 .overview-link{display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:#dce7e9;font-size:12.5px;font-weight:600}
 .overview-link:hover{color:#fff}
+.rail-head .overview-link{display:flex;width:max-content}
+.video-link{margin-top:8px}
+.video-cta{display:flex;align-items:center;gap:16px;margin-top:28px;padding:16px 18px;border-radius:14px;background:var(--rail);color:#fff;text-decoration:none;box-shadow:var(--shadow-sm)}
+.video-cta:hover{box-shadow:var(--shadow)}
+.video-cta-ic{flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.video-cta-text{display:flex;flex-direction:column;gap:2px;flex:1}
+.video-cta-text b{font-family:'Ubuntu';font-weight:700;font-size:17px}
+.video-cta-text span{color:#b9cccd;font-size:14px}
+.video-cta-go{font-weight:700;color:#7fd6cb;white-space:nowrap}
+@media (max-width:520px){.video-cta{flex-wrap:wrap}.video-cta-go{width:100%}}
 .progress{margin:14px 24px 4px}
 .progress-bar{height:4px;border-radius:99px;background:var(--rail-line);overflow:hidden}
 .progress-fill{height:100%;width:0%;border-radius:99px;background:var(--accent);transition:width .4s ease}
@@ -645,6 +655,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
     </div>
     <div class="rail-sub">Owner guide</div>
     <a class="overview-link" href="/" aria-label="Back to the MenuConnect overview">← MenuConnect overview</a>
+    <a class="overview-link video-link" href="/watch"><svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 16 16"><path d="M4 2.5v11L13.5 8z" fill="currentColor"/></svg><span>Video guide</span></a>
     <div class="progress">
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
       <div class="progress-label" id="progressLabel">0 of 19 lessons viewed</div>
@@ -721,6 +732,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
       <p class="setup-note">Opening a lesson marks it viewed; the quick check records an attempt, not a passing score or completed restaurant setup.</p>
     </section>
     <p class="lede">MenuConnect is your restaurant's online-ordering home base — money, menu, hours, and orders in one connected place. This comprehensive guide covers the owner workflows available today and when to ask Menu.ca for help. Practice controls never touch a real restaurant.</p>
+    <a class="video-cta" href="/watch"><span class="video-cta-ic"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 16 16"><path d="M4.5 2.5v11L13.5 8z" fill="#fff"/></svg></span><span class="video-cta-text"><b>Prefer to watch?</b><span>Every task as a short video with captions.</span></span><span class="video-cta-go">Open the video guide →</span></a>
     <div class="quick-start"><h2>Already set up? Find a quick answer.</h2><p class="hint">Use these shortcuts anytime. They do not replace the setup.</p><div class="task-grid"><a class="task-link" href="#prices-and-availability" data-jump="9">We’ve sold out of a dish →</a><a class="task-link" href="#close-today-safely" data-jump="8">Close early today →</a><a class="task-link" href="#opening-hours" data-jump="5">Change our hours →</a><a class="task-link" href="#orders" data-jump="12">Find a customer’s order →</a><a class="task-link" href="#promotions" data-jump="13">Create a promotion →</a><a class="task-link" href="#cash-card-and-refunds" data-jump="4">Understand my payout →</a><a class="task-link" href="#ask-for-help-clearly" data-jump="16">Get help →</a></div></div>
     <div class="value-cards">
       <div class="vcard">
