@@ -80,6 +80,8 @@ input{font:inherit;color:inherit}
 .chips{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
 .chips-in{max-width:1120px;margin:0 auto;padding:12px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 .chips-in::-webkit-scrollbar{display:none}
+@media (min-width:700px){.chips-in{flex-wrap:wrap;overflow:visible;gap:6px 8px;padding:10px 16px}.chip{padding:5px 13px}}
+@media (max-width:699px){.chips-in{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}.chips-in.at-end{-webkit-mask-image:none;mask-image:none}}
 .chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:7px 14px;font-size:14px;font-weight:600;color:var(--muted)}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
 
@@ -189,43 +191,44 @@ dialog::backdrop{background:rgba(5,12,16,.82)}
 <script>
 /* One list, grouped by what the owner is trying to do. `lesson` is the /start#slug
    with the written steps. `id` null = video not recorded yet (shown as "coming soon").
-   `short` = phone (9:16) recording. `note` = known caveat shown on the tile. */
+   `short` = upright 9:16 video (player frame); `phone` = shows the phone app (badge).
+   `keys` = extra search words owners might type (not shown). `note` = known caveat shown on the tile. */
 var GROUPS=[
  {key:'start',name:'Getting started',lesson:'signing-in',videos:[
-  {id:'iUrwEiavnsE',len:'1:03',title:'Sign in with your emailed link',desc:'Ask for a sign-in link and open your dashboard.',lesson:'signing-in'},
-  {id:'HV8NARECdok',title:'Read your Insights',desc:'Traffic, sales and promo performance for your restaurant.',len:'1:20',lesson:'your-dashboard',note:'Recorded before the new dashboard'},
-  {id:'CRuDm_qyCzU',title:'Change your website’s look',desc:'Style and fonts on the Look page.',len:'0:54',lesson:'your-dashboard'}]},
+  {id:'iUrwEiavnsE',keys:'login log in password sign-in link email access account locked out',len:'1:03',title:'Sign in with your emailed link',desc:'Ask for a sign-in link and open your dashboard.',lesson:'signing-in'},
+  {id:'HV8NARECdok',keys:'stats analytics reports sales numbers traffic dashboard',title:'Read your Insights',desc:'Traffic, sales and promo performance for your restaurant.',len:'1:20',lesson:'your-dashboard',note:'Recorded before the new dashboard'},
+  {id:'CRuDm_qyCzU',keys:'website design colours colors theme fonts branding storefront logo',title:'Change your website’s look',desc:'Style and fonts on the Look page.',len:'0:54',lesson:'your-dashboard'}]},
  {key:'money',name:'Your money',lesson:'weekly-statements',videos:[
-  {id:'SLErMDvIS6g',title:'Find and read your statements',desc:'Your weekly payout, fees and refunds.',len:'1:17',lesson:'weekly-statements'},
-  {id:'wfK6ICTJH4s',len:'1:32',title:'Cash, card, refunds and carried balances',desc:'Why a payout can be smaller than you expect.',lesson:'cash-card-and-refunds'}]},
+  {id:'SLErMDvIS6g',keys:'payout deposit pay money bank fees invoice report',title:'Find and read your statements',desc:'Your weekly payout, fees and refunds.',len:'1:17',lesson:'weekly-statements'},
+  {id:'wfK6ICTJH4s',keys:'payout deposit money bank short missing owe balance',len:'1:32',title:'Cash, card, refunds and carried balances',desc:'Why a payout can be smaller than you expect.',lesson:'cash-card-and-refunds'}]},
  {key:'hours',name:'Hours and closing',lesson:'opening-hours',videos:[
-  {id:'ae8X3uv7xJ0',title:'Change your opening hours',desc:'Edit your regular weekly hours (on a phone).',len:'1:06',lesson:'opening-hours',short:true},
-  {id:'GV-Xm1KGOic',len:'1:12',title:'Set split shifts',desc:'Open twice in one day, like lunch and dinner.',lesson:'split-shifts'},
-  {id:'5u2ryckKMQU',title:'Close early or add a holiday',desc:'Close tonight without changing your weekly hours, or plan a holiday.',len:'1:07',lesson:'holidays-and-closures'},
-  {id:'UfRNNHEaddU',len:'1:05',title:'Stop orders for today',desc:'Turn off online ordering for the rest of today.',lesson:'close-today-safely'}]},
+  {id:'ae8X3uv7xJ0',keys:'schedule open close times weekly phone mobile',title:'Change your opening hours',desc:'Edit your regular weekly hours (on a phone).',len:'1:06',lesson:'opening-hours',phone:true},
+  {id:'GV-Xm1KGOic',keys:'lunch dinner break two shifts hours closed afternoon',len:'1:12',title:'Set split shifts',desc:'Open twice in one day, like lunch and dinner.',lesson:'split-shifts'},
+  {id:'5u2ryckKMQU',keys:'close closed closure vacation holiday early tonight christmas stat day',title:'Close early or add a holiday',desc:'Close tonight without changing your weekly hours, or plan a holiday.',len:'1:07',lesson:'holidays-and-closures'},
+  {id:'UfRNNHEaddU',keys:'close closed closing pause stop turn off ordering tonight busy emergency',len:'1:05',title:'Stop orders for today',desc:'Turn off online ordering for the rest of today.',lesson:'close-today-safely'}]},
  {key:'menu',name:'Your menu',lesson:'prices-and-availability',videos:[
-  {id:'eDu90ZwPHpQ',title:'Change a price on your phone',desc:'Edit a dish’s price and hide it when it sells out.',len:'1:34',lesson:'prices-and-availability',short:true},
-  {id:'RIIyoH4qVf0',title:'Hide a dish (86) and bring it back',desc:'Take a dish off the menu and put it back.',len:'1:00',lesson:'prices-and-availability'},
-  {id:'Lvv3mJqEg8I',len:'1:07',title:'Mark a dish sold out',desc:'Sold out for today, back tomorrow.',lesson:'availability-routine'},
-  {id:'cJgjwv16NCA',title:'Add a section, a dish or choices',desc:'Build out your menu in the menu editor.',len:'1:43',lesson:'prices-and-availability'},
-  {id:'dmdVax6aJ90',title:'Edit the choices in a deal',desc:'Change what customers can pick inside a deal.',len:'1:07',lesson:'prices-and-availability'},
-  {id:'YBoUHqJPCAg',title:'Add a photo to a menu section',desc:'Put a photo at the top of a section.',len:'0:49',lesson:'photos-and-bilingual-editing'}]},
+  {id:'eDu90ZwPHpQ',keys:'price cost edit item dish phone mobile sold out',title:'Change a price on your phone',desc:'Edit a dish’s price and hide it when it sells out.',len:'1:34',lesson:'prices-and-availability',short:true,phone:true},
+  {id:'RIIyoH4qVf0',keys:'86 hide remove unavailable sold out item dish disable',title:'Hide a dish (86) and bring it back',desc:'Take a dish off the menu and put it back.',len:'1:00',lesson:'prices-and-availability'},
+  {id:'Lvv3mJqEg8I',keys:'sold out 86 out of stock unavailable tonight today',len:'1:07',title:'Mark a dish sold out',desc:'Sold out for today, back tomorrow.',lesson:'availability-routine'},
+  {id:'cJgjwv16NCA',keys:'add new item dish category section options modifiers choices toppings sizes menu editor',title:'Add a section, a dish or choices',desc:'Build out your menu in the menu editor.',len:'1:43',lesson:'prices-and-availability'},
+  {id:'dmdVax6aJ90',keys:'combo deal choices options modifiers special',title:'Edit the choices in a deal',desc:'Change what customers can pick inside a deal.',len:'1:07',lesson:'prices-and-availability'},
+  {id:'YBoUHqJPCAg',keys:'photo picture image section',title:'Add a photo to a menu section',desc:'Put a photo at the top of a section.',len:'0:49',lesson:'photos-and-bilingual-editing'}]},
  {key:'orders',name:'Orders and customers',lesson:'orders',videos:[
-  {id:'3kXU2zEBY5w',title:'Refund an order',desc:'Refund all or part of an order yourself.',len:'1:50',lesson:'orders'},
-  {id:'WCGVPcq7_3k',title:'See your customers',desc:'Find your regulars and who agreed to promotions.',len:'1:24',lesson:'orders'},
-  {id:'qoa0AZ7E1NM',title:'Give a customer store credit',desc:'Send a one-time credit code by email.',len:'0:54',lesson:'orders'}]},
+  {id:'3kXU2zEBY5w',keys:'refund money back cancel order partial',title:'Refund an order',desc:'Refund all or part of an order yourself.',len:'1:50',lesson:'orders'},
+  {id:'WCGVPcq7_3k',keys:'customers regulars list marketing emails consent',title:'See your customers',desc:'Find your regulars and who agreed to promotions.',len:'1:24',lesson:'orders'},
+  {id:'qoa0AZ7E1NM',keys:'credit store credit coupon code apology make good comp',title:'Give a customer store credit',desc:'Send a one-time credit code by email.',len:'0:54',lesson:'orders'}]},
  {key:'promote',name:'Promotions and news',lesson:'promotions',videos:[
-  {id:'GF5-Hzrt8to',title:'Create and pause a promotion',desc:'Build a promo code, track it, pause it.',len:'2:15',lesson:'promotions'},
-  {id:'mqHyWXMs2l4',title:'Post an announcement',desc:'A banner on your website, in English and French.',len:'1:37',lesson:'announcements'}]},
+  {id:'GF5-Hzrt8to',keys:'promotion promo code discount coupon deal sale special pause',title:'Create and pause a promotion',desc:'Build a promo code, track it, pause it.',len:'2:15',lesson:'promotions'},
+  {id:'mqHyWXMs2l4',keys:'announcement banner notice message french english',title:'Post an announcement',desc:'A banner on your website, in English and French.',len:'1:37',lesson:'announcements'}]},
  {key:'help',name:'Delivery and help',lesson:'we-handle-these',videos:[
-  {id:'aszC-SPSg5A',title:'Set up your delivery zones',desc:'Draw zones, set fees and minimum orders.',len:'1:17',lesson:'we-handle-these'},
-  {id:'ACqXj6bBVDM',title:'Send us a request',desc:'Ask the Menu.ca team for help from your portal.',len:'1:08',lesson:'ask-for-help-clearly',note:'Recorded before the new dashboard'}]},
+  {id:'aszC-SPSg5A',keys:'delivery zones area radius fee minimum distance map',title:'Set up your delivery zones',desc:'Draw zones, set fees and minimum orders.',len:'1:17',lesson:'we-handle-these'},
+  {id:'ACqXj6bBVDM',keys:'help support contact request ticket question problem',title:'Send us a request',desc:'Ask the Menu.ca team for help from your portal.',len:'1:08',lesson:'ask-for-help-clearly',note:'Recorded before the new dashboard'}]},
  {key:'tablet',name:'Kitchen tablet',lesson:'kitchen-tablet',videos:[
-  {id:'y1EUCGU0CjU',title:'Busy mode for a rush',desc:'Add prep time when the kitchen is slammed.',len:'1:26',lesson:'kitchen-tablet'},
-  {id:'gYIQhMd2YIQ',title:'Change the new-order sound',desc:'Pick the ringtone for new orders.',len:'1:22',lesson:'kitchen-tablet'},
-  {id:'EfpHFi-6gnc',title:'Switch the tablet language',desc:'English or French.',len:'0:35',lesson:'kitchen-tablet'},
-  {id:'JDZ01uHwIOY',title:'Change or turn off your PIN',desc:'And get it emailed if you forget it.',len:'1:09',lesson:'kitchen-tablet'},
-  {id:'uqJCJd9lAyw',title:'Set the chit margins',desc:'Blank space above and below each printed chit.',len:'0:44',lesson:'kitchen-tablet'}]}
+  {id:'y1EUCGU0CjU',keys:'busy rush prep time slow down wait time delay',title:'Busy mode for a rush',desc:'Add prep time when the kitchen is slammed.',len:'1:26',lesson:'kitchen-tablet'},
+  {id:'gYIQhMd2YIQ',keys:'sound ringtone ring ringing alert volume notification loud',title:'Change the new-order sound',desc:'Pick the ringtone for new orders.',len:'1:22',lesson:'kitchen-tablet'},
+  {id:'EfpHFi-6gnc',keys:'language french english français',title:'Switch the tablet language',desc:'English or French.',len:'0:35',lesson:'kitchen-tablet'},
+  {id:'JDZ01uHwIOY',keys:'pin password code lock forgot reset',title:'Change or turn off your PIN',desc:'And get it emailed if you forget it.',len:'1:09',lesson:'kitchen-tablet'},
+  {id:'uqJCJd9lAyw',keys:'printer printing print chit receipt ticket paper margin cut off',title:'Set the chit margins',desc:'Blank space above and below each printed chit.',len:'0:44',lesson:'kitchen-tablet'}]}
 ];
 
 var SEEN_KEY='menuconnect-watch-seen-v1', seen={};
@@ -243,6 +246,8 @@ var PLAY='<span><svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="tru
 
 function chip(key,label){var b=el('button',{type:'button',class:'chip','data-key':key,'aria-pressed':String(key===active)},esc(label));b.onclick=function(){active=key;render()};chipsEl.appendChild(b)}
 chip('all','All videos');GROUPS.forEach(function(g){chip(g.key,g.name)});
+function chipsEnd(){chipsEl.classList.toggle('at-end',chipsEl.scrollLeft+chipsEl.clientWidth>=chipsEl.scrollWidth-4)}
+chipsEl.addEventListener('scroll',chipsEnd,{passive:true});addEventListener('resize',chipsEnd);chipsEnd();
 
 GROUPS.forEach(function(g){
   var sec=el('section',{class:'group','data-key':g.key,'aria-labelledby':'g-'+g.key});
@@ -252,12 +257,12 @@ GROUPS.forEach(function(g){
   sec.appendChild(head);
   var grid=el('div',{class:'grid'});
   g.videos.forEach(function(v){
-    v.group=g.name;v.text=(v.title+' '+v.desc+' '+g.name).toLowerCase();
+    v.group=g.name;v.text=(v.title+' '+v.desc+' '+g.name+' '+(v.keys||'')).toLowerCase();
     var t;
     if(v.id){
       v.index=playable.length;playable.push(v);
       t=el('button',{type:'button',class:'tile'+(seen[v.id]?' seen':''),'data-id':v.id,'aria-label':'Play: '+v.title+' ('+v.len+')'});
-      t.innerHTML='<div class="thumb"><img src="https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"><div class="play">'+PLAY+'</div><span class="badge">'+v.len+'</span>'+(v.short?'<span class="badge left">Phone</span>':'')+'</div>'+
+      t.innerHTML='<div class="thumb"><img src="https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"><div class="play">'+PLAY+'</div><span class="badge">'+v.len+'</span>'+(v.phone?'<span class="badge left">Phone</span>':'')+'</div>'+
         '<div class="tile-body"><span class="tile-title">'+esc(v.title)+'</span><span class="tile-meta">'+esc(v.desc)+'</span>'+(v.note?'<span class="note">'+esc(v.note)+'</span>':'')+'</div>';
       t.onclick=function(){open(v.index)};
     }else{
