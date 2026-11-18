@@ -720,7 +720,7 @@ main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 
         <button class="bigbtn" id="setupPrimaryBtn">Start Owner Setup →</button>
         <button class="setup-reset" id="setupResetBtn" type="button" hidden>Reset progress</button>
       </div>
-      <p class="setup-status" id="setupStatus" role="status">5 short stages · 18 lessons and a quick check · about 15 minutes</p>
+      <p class="setup-status" id="setupStatus" role="status">5 short stages · 19 lessons · about 15 minutes</p>
       <p class="setup-note" id="setupPersistenceNote">Progress is saved on this device so you can close the guide and continue later.</p>
       <ol class="setup-stages" aria-label="5 short stages">
         <li class="setup-stage" data-setup-stage="0">Access your portal</li>
@@ -1834,20 +1834,22 @@ var CARD_MAP={
   help:{lessons:[16,15]},
   tablet:{lessons:[17]}
 };
-function cardLabel(el){
-  var t=el.getAttribute('data-rail');
+function cardLabel(el,asVideo){
+  var t=asVideo?null:el.getAttribute('data-rail');
   if(t){var k=$$('[data-rail]').indexOf(el),btn=$$('.rail-link')[k];return btn?btn.textContent:t}
   var c=el.querySelector('figcaption');if(c)return c.textContent.trim();
   var h=el.querySelector('h2,h3,b');return h?h.textContent.trim():el.textContent.trim().slice(0,80);
 }
 function lessonOf(el){var sec=el.closest('section.lesson');return lessons.indexOf(sec)}
-function openCard(key){
+function openCard(key,push){
   var spec=CARD_MAP[key],card=$('.dash-card[data-card="'+key+'"]');if(!spec||!card)return;
+  openCardKey=key;
   $('#hubIc').innerHTML=card.querySelector('.dc-ic').innerHTML;$('#hubIc').style.setProperty('--c',card.style.getPropertyValue('--c'));
   $('#hubTitle').textContent=card.querySelector('.dc-t').textContent;$('#hubDesc').textContent=card.querySelector('.dc-d').textContent;
   var body=$('#hubBody');body.textContent='';
-  var how=[],vids=[],full=[],seen=[];
-  function add(list,el,mark){if(!el||seen.indexOf(el)>-1)return;seen.push(el);list.push({el:el,mark:mark})}
+  var how=[],vids=[],full=[];
+  // De-duplicate per list, so a video that is also a quick how-to (e.g. Change a price) shows in both.
+  function add(list,el,mark){if(!el||list.some(function(r){return r.el===el}))return;list.push({el:el,mark:mark})}
   (spec.items||[]).forEach(function(sel){$$(sel).forEach(function(el){
     add(el.matches('figure.lesson-video')?vids:how,el)})});
   spec.lessons.forEach(function(i){
@@ -1861,13 +1863,20 @@ function openCard(key){
     var ul=document.createElement('ul');ul.className='hub-list';rows.forEach(function(r){var li=document.createElement('li');li.appendChild(make(r));ul.appendChild(li)});d.appendChild(ul);body.appendChild(d)}
   function btn(mark,text,fn){var b=document.createElement('button');b.type='button';var k=document.createElement('span');k.className='hk';k.textContent=mark;b.appendChild(k);var t=document.createElement('span');t.textContent=text;b.appendChild(t);b.addEventListener('click',fn);return b}
   group('Quick how-tos',how,function(r){return btn('→',cardLabel(r.el),function(){showInLesson(lessonOf(r.el),r.el)})});
-  group('Videos',vids,function(r){return btn('▶',cardLabel(r.el),function(){showInLesson(lessonOf(r.el),r.el)})});
+  group('Videos',vids,function(r){return btn('▶',cardLabel(r.el,true),function(){showInLesson(lessonOf(r.el),r.el)})});
   group('Full lessons',full,function(i){return btn(String(i),lessons[i]._railBtn.querySelector('span:last-child').textContent,function(){go(i,true)})});
-  $('#cardHome').hidden=true;$('#cardHub').hidden=false;window.scrollTo({top:0});$('#hubTitle').setAttribute('tabindex','-1');$('#hubTitle').focus({preventScroll:true});
+  $('#cardHome').hidden=true;$('.hero').hidden=true;$('#cardHub').hidden=false;window.scrollTo({top:0});$('#hubTitle').setAttribute('tabindex','-1');$('#hubTitle').focus({preventScroll:true});
+  if(push&&location.hash!=='#card-'+key)history.pushState({card:key},'',location.pathname+location.search+'#card-'+key);
 }
-function closeCard(){$('#cardHub').hidden=true;$('#cardHome').hidden=false;window.scrollTo({top:0})}
-$$('.dash-card').forEach(function(c){c.addEventListener('click',function(){openCard(c.getAttribute('data-card'))})});
-$('#hubBack').addEventListener('click',closeCard);
+var openCardKey=null;
+function closeCard(){if(openCardKey===null)return;openCardKey=null;$('#cardHub').hidden=true;$('#cardHome').hidden=false;$('.hero').hidden=false;window.scrollTo({top:0})}
+function cardFromHash(){var m=/^#card-([a-z]+)$/.exec(location.hash);return m&&CARD_MAP[m[1]]?m[1]:null}
+$$('.dash-card').forEach(function(c){c.addEventListener('click',function(){openCard(c.getAttribute('data-card'),true)})});
+$('#hubBack').addEventListener('click',function(){
+  // Opened from the cards during this visit: step back in history. Opened from a shared link: show the cards.
+  if(history.state&&history.state.card)history.back();
+  else{closeCard();history.pushState({lesson:0},'',location.pathname+location.search+'#welcome')}
+});
 $('#toSetup').addEventListener('click',function(e){e.preventDefault();var s=$('.setup-card');if(s)s.scrollIntoView({behavior:'smooth',block:'start'})});
 function updateProgress(state){
   state=state||progressStore.snapshot();
@@ -1891,7 +1900,7 @@ function updateProgress(state){
     $('#setupStatus').textContent=state.viewedCount+' of '+total+' lessons reviewed · '+state.completedStages+' of 5 stages complete';
   }else{
     $('#setupPrimaryBtn').textContent='Start Owner Setup →';
-    $('#setupStatus').textContent='5 short stages · 18 lessons and a quick check · about 15 minutes';
+    $('#setupStatus').textContent='5 short stages · 19 lessons · about 15 minutes';
   }
   return state;
 }
@@ -1900,6 +1909,7 @@ function go(i,updateHash){
   lessons[current].classList.remove('active');
   lessons[current]._railBtn.setAttribute('aria-current','false');
   current=i;
+  if(i===0)closeCard();
   lessons[i].classList.add('active');
   lessons[i]._railBtn.setAttribute('aria-current','true');
   updateProgress(i>0?markLessonViewed(i):progressStore.snapshot());
@@ -1937,7 +1947,13 @@ document.addEventListener('keydown',function(e){
 function indexFromHash(){var slug=location.hash.slice(1);var i=lessonSlugs.indexOf(slug);return i<0?null:i}
 var initialLesson=indexFromHash();if(initialLesson===null)initialLesson=0;
 current=initialLesson;lessons[current].classList.add('active');lessons[current]._railBtn.setAttribute('aria-current','true');updateProgress(current>0?markLessonViewed(current):progressStore.snapshot());
-function syncFromHash(){var i=indexFromHash();if(i===null){if(location.hash.length>1)return;i=0}if(i!==current)go(i,false)}
+function syncFromHash(){
+  var key=cardFromHash();
+  if(key){if(current!==0)go(0,false);if(openCardKey!==key)openCard(key,false);return}
+  var i=indexFromHash();if(i===null){if(location.hash.length>1)return;i=0}
+  if(i!==current)go(i,false);else if(i===0)closeCard();
+}
+if(cardFromHash())openCard(cardFromHash(),false);
 window.addEventListener('hashchange',syncFromHash);
 window.addEventListener('popstate',syncFromHash);
 
