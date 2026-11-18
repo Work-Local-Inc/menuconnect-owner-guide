@@ -156,6 +156,15 @@ input{font:inherit;color:inherit}
 .hub-list .hk{flex:0 0 28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:13px}
 .hub-empty{margin-top:22px;padding:16px 18px;border-radius:12px;background:var(--card);border:1px dashed var(--line);color:var(--muted)}
 @media(max-width:560px){.dash-cards{grid-template-columns:1fr 1fr;gap:10px}.dash-card{padding:14px}.dc-ic{width:42px;height:42px}.dc-d{display:none}}
+/* Kitchen tablet is the 13th card and a device, not a dashboard card: give it its own full-width row so it never sits alone in a column */
+.dash-card[data-card="tablet"]{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;column-gap:16px;row-gap:2px;align-items:center}
+.dash-card[data-card="tablet"] .dc-ic{grid-row:1/3;margin-bottom:0}
+.dash-card[data-card="tablet"] .dc-t{align-self:end}
+.dash-card[data-card="tablet"] .dc-d{align-self:start}
+@media(max-width:560px){.dash-card[data-card="tablet"] .dc-t{grid-row:1/3;align-self:center}}
+/* its navy icon disappears on a dark card */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dash-card[data-card="tablet"]{--c:#4B6475 !important}}
+:root[data-theme="dark"] .dash-card[data-card="tablet"]{--c:#4B6475 !important}
 /* ---------- main ---------- */
 main{padding:44px clamp(20px,5vw,64px) 80px;max-width:980px;width:100%;margin:0 auto}
 .lesson{display:none}
