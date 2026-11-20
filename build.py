@@ -13,7 +13,7 @@ output = root / "dist"
 if output.exists():
     shutil.rmtree(output)
 output.mkdir()
-for source, target in [("index.html", "index.html"), ("guide.html", "start.html"),
+for source, target in [("index.html", "index.html"), ("guide.html", "start.html"), ("watch.html", "watch.html"),
                        ("_redirects", "_redirects"), ("_headers", "_headers")]:
     shutil.copy2(root / source, output / target)
 shutil.copytree(root / "assets", output / "assets")

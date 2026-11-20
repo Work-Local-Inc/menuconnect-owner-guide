@@ -6,3 +6,5 @@
 /guide/             /start  301!
 /guide.html         /start  301!
 /start              /start.html 200
+/watch              /watch.html 200
+/videos             /watch  301!
